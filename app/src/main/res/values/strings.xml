@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Vitalize</string>
+    <string name="slogan">Comienza a crear una rutina saludable</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="inicia_sesión">Inicia sesión</string>
+    <string name="objetivo">Objetivo</string>
+    <string name="consumo">Consumo</string>
+    <string name="desayuno">Desayuno</string>
+    <string name="almuerzo">Almuerzo</string>
+    <string name="cena">Cena</string>
+    <string name="aperitivos">Aperitivos</string>
+    <string name="restante">Restante</string>
+    <string name="racha">RACHA</string>
+    <string name="email">email</string>
+    <string name="nombre">nombre</string>
+    <string name="contraseña">contraseña</string>
+    <string name="confirmar_contraseña">confirmar contraseña</string>
+</resources>
