@@ -6,19 +6,19 @@
     android:background="@drawable/background">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="400dp"
-        android:layout_height="379dp"
-        android:layout_marginTop="4dp"
+        android:id="@+id/logoUserRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
         android:foregroundGravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/vitalize_logo_foreground" />
+        app:srcCompat="@drawable/logo_user" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
+        android:id="@+id/buttonRegister"
         style="@style/ButtonStyle"
         android:layout_width="143dp"
         android:layout_height="31dp"
@@ -28,16 +28,16 @@
         android:text="@string/registrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextRepeatPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRepeatPasswordRegister"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editTextTextName"
+        android:id="@+id/editTextNameRegister"
         android:layout_width="221dp"
         android:layout_height="48dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="44dp"
         android:background="@drawable/input"
-        android:drawableLeft="@drawable/icon_user"
+        android:drawableLeft="@drawable/icon_user_input"
         android:drawablePadding="15dp"
         android:ems="10"
         android:fontFamily="@font/comfortaa_light"
@@ -48,15 +48,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logoUserRegister" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextEmailAddressRegister"
         android:layout_width="221dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/input"
-        android:drawableLeft="@drawable/icon_mail"
+        android:drawableLeft="@drawable/icon_mail_input"
         android:drawablePadding="15dp"
         android:ems="10"
         android:fontFamily="@font/comfortaa_light"
@@ -65,18 +65,17 @@
         android:minHeight="48dp"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameRegister" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextPasswordRegister"
         android:layout_width="221dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:autofillHints=""
         android:background="@drawable/input"
-        android:drawableStart="@drawable/icon_password"
+        android:drawableStart="@drawable/icon_password_input"
         android:drawablePadding="15dp"
         android:ems="10"
         android:fontFamily="@font/comfortaa_light"
@@ -87,16 +86,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddressRegister" />
 
     <EditText
-        android:id="@+id/editTextTextRepeatPassword"
+        android:id="@+id/editTextRepeatPasswordRegister"
         android:layout_width="221dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:autofillHints=""
         android:background="@drawable/input"
-        android:drawableStart="@drawable/icon_password"
+        android:drawableStart="@drawable/icon_password_input"
         android:drawablePadding="15dp"
         android:ems="10"
         android:fontFamily="@font/comfortaa_light"
@@ -108,19 +107,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordRegister" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/IniciaSesionRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginBottom="44dp"
         android:text="@string/inicia_sesion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

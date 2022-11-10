@@ -10,4 +10,20 @@
         <item name="android:textSize">12dp</item>
 
     </style>
+
+    <style name="TextStyleInput" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:fontFamily">@font/comfortaa_light</item>
+        <item name="android:layout_width">221dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:background">@drawable/input</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:drawablePadding">1dp</item>
+
+
+
+    </style>
 </resources>
