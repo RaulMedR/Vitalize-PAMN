@@ -6,3 +6,5 @@ Asimismo, brinda la posibilidad de inspirar o aconsejar que productos consumir d
 Se ha seguido la metología de SCRUM, para ello se ha hecho uso de la aplicación Trello para escribir y redactar nuestra pila de productos y las historias de usuario:
 
 https://trello.com/invite/b/IxO11mcK/ATTI8fc4920c79331750668e59bf4560f1baF5239DA2/proyecto-pamn
+
+Hemos creado una base de datos en Firebase con datos obtenidos de la base de datos (https://www.bedca.net/bdpub/). Esta la utilizaremos para obtener los carbohidratos, las proteínas, las kilocalorías y las grasas de 30 productos básicos.
