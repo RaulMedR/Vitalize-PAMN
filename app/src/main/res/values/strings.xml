@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Vitalize</string>
-    <string name="slogan">Comienza a crear una rutina saludable</string>
+    <string name="home_no_title">italize</string>
+    <string name="slogan">Comienza a crear una rutina saludable con</string>
     <string name="registrarse">Registrarse</string>
     <string name="inicia_sesión">Inicia sesión</string>
     <string name="objetivo">Objetivo</string>
