@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "535426898619",
+    "project_id": "vitalize-93ee6",
+    "storage_bucket": "vitalize-93ee6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535426898619:android:9dd99e01b69a3047e4279e",
+        "android_client_info": {
+          "package_name": "com.example.vitalize"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535426898619-i2it7955sskhb9fit94i48slkqvbm51a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBryTjVgIOV-c_nVNJnwwHV7fRGKOxZpZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535426898619-i2it7955sskhb9fit94i48slkqvbm51a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
