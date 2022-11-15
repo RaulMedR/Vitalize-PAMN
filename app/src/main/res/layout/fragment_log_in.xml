@@ -1,87 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/logoUserLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_user" />
+    <data>
+        <variable
+            name="userViewModel"
+            type="com.example.vitalize.user.UserViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".user.LogIn">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/IniciaSesionLogin"
-        style="@style/ButtonStyle"
-        android:layout_width="143dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/input"
-        android:fontFamily="@font/comfortaa_light"
-        android:text="@string/inicia_sesion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin"
-        tools:ignore="TouchTargetSizeCheck" />
+        <ImageView
+            android:id="@+id/logoUserLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="104dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_user" />
 
-    <EditText
-        android:id="@+id/editTextEmailAddressLogin"
-        style="@style/TextStyleInput"
-        android:layout_marginTop="64dp"
-        android:drawableStart="@drawable/icon_mail_input"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoUserLogin" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/IniciaSesionLogin"
+            style="@style/ButtonStyle"
+            android:layout_width="143dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/input"
+            android:fontFamily="@font/comfortaa_light"
+            android:text="@string/inicia_sesion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <EditText
-        android:id="@+id/editTextPasswordLogin"
-        style="@style/TextStyleInput"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:drawableStart="@drawable/icon_password_input"
-        android:ems="10"
-        android:hint="@string/contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddressLogin" />
+        <EditText
+            android:id="@+id/editTextEmailAddressLogin"
+            style="@style/TextStyleInput"
+            android:layout_marginTop="64dp"
+            android:drawableStart="@drawable/icon_mail_input"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoUserLogin" />
 
-    <TextView
-        android:id="@+id/RegistrarseLogin"
-        style="@style/TextStyleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/registrarse"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IniciaSesionLogin"
-        app:layout_constraintVertical_bias="0.374" />
+        <EditText
+            android:id="@+id/editTextPasswordLogin"
+            style="@style/TextStyleInput"
+            android:layout_marginTop="16dp"
+            android:autofillHints=""
+            android:drawableStart="@drawable/icon_password_input"
+            android:ems="10"
+            android:hint="@string/contraseña"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddressLogin"/>
+            <!--android:onClick="@{() -> LogIn.toRegister(6)}"-->
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        <TextView
+            android:id="@+id/RegistrarseLogin"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registrarse"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/IniciaSesionLogin"
+            app:layout_constraintVertical_bias="0.374"
+            android:clickable="true"
+            android:focusable="true"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
