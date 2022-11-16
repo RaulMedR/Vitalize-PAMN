@@ -3,19 +3,25 @@ package com.example.vitalize
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vitalize.user.LogIn
+import com.example.vitalize.user.SignUp
+import com.example.vitalize.user.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+
     private val TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //Establecemos la primera página
-        //supportFragmentManager.beginTransaction().replace(R.id.nav_graph, LogIn()).commit()
+        //supportFragmentManager.beginTransaction().replace(R.id.nav_graph, SignUp()).commit()
     }
 
     /*fun checkCurrentUser() {

@@ -11,13 +11,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.vitalize.databinding.FragmentLogInBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LogIn : Fragment() {
-    private val viewModel: UserViewModel by viewModels()
+    private val viewModel by viewModels<UserViewModel>()
 
     // Binding object instance with access to the views in the game_fragment.xml layout
     private lateinit var binding: FragmentLogInBinding
@@ -45,7 +47,6 @@ class LogIn : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.userViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         // Setup a click listener for the Submit and Skip buttons.
         binding.IniciaSesionLogin.setOnClickListener { iniciaSesion() }
@@ -66,7 +67,7 @@ class LogIn : Fragment() {
             binding.editTextEmailAddressLogin.setError("Correo requerido")
         }
         if (!binding.editTextEmailAddressLogin.text.toString().isEmpty() && !binding.editTextPasswordLogin.text.toString().isEmpty()) {
-            viewModel.signIn(binding.editTextEmailAddressLogin.text.toString(), binding.editTextPasswordLogin.text.toString())
+            viewModel.login(binding.editTextEmailAddressLogin.text.toString(), binding.editTextPasswordLogin.text.toString())
         } else {
             //Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
             Log.d("EmailPassword", "signIn:fieldsEmpty")

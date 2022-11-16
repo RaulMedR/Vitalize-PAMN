@@ -16,14 +16,14 @@ import com.example.vitalize.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SignUp : Fragment() {
     private val viewModel: UserViewModel by viewModels()
 
     // Binding object instance with access to the views in the game_fragment.xml layout
     private lateinit var binding: FragmentSignUpBinding
-    private lateinit var mAuth: FirebaseAuth;
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,6 @@ class SignUp : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, com.example.vitalize.R.layout.fragment_sign_up, container, false)
-        mAuth = FirebaseAuth.getInstance()
         return binding.root
     }
 
@@ -58,7 +57,7 @@ class SignUp : Fragment() {
         if (!binding.editTextNameRegister.text.toString().isEmpty() && !binding.editTextEmailAddressRegister.text.toString().isEmpty() &&
             !binding.editTextPasswordRegister.text.toString().isEmpty() && !binding.editTextRepeatPasswordRegister.text.toString().isEmpty()) {
             if (binding.editTextPasswordRegister.text.toString() == binding.editTextRepeatPasswordRegister.text.toString()) {
-                //viewModel.createAccount(binding.editTextEmailAddressRegister.text.toString(), binding.editTextPasswordRegister.text.toString())
+                viewModel.singup(binding.editTextNameRegister.text.toString(), binding.editTextEmailAddressRegister.text.toString(), binding.editTextPasswordRegister.text.toString())
             }
             else{
                 Log.d("EmailPassword", "signUp:contraseñasNoIguales")
