@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         //Establecemos la primera página
         //supportFragmentManager.beginTransaction().replace(R.id.nav_graph, SignUp()).commit()
     }

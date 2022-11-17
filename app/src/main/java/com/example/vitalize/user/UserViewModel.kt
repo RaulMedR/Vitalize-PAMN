@@ -1,21 +1,13 @@
 package com.example.vitalize.user
 
-import android.app.Application
 import android.util.Log
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.vitalize.data.AuthRepository
 import com.example.vitalize.data.Resource
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -46,7 +38,9 @@ class UserViewModel @Inject constructor(private val repository: AuthRepository) 
     }
 
     fun singup(name: String, email: String, password: String) = viewModelScope.launch {
+        Log.d("viewmodelregister", "he2")
         val result = repository.signup(name, email, password)
+        Log.d("viewmodelregister", "he3")
         _signupFlow.value = result
     }
 
