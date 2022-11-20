@@ -119,6 +119,19 @@
             app:srcCompat="@drawable/scale_icon"
             android:contentDescription="@string/peso_del_usuario" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRegister"
+            style="@style/ButtonStyle"
+            android:layout_width="143dp"
+            android:background="@drawable/input"
+            android:text="@string/cerrar_sesion"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icono_peso"
+            app:layout_constraintVertical_bias="0.747"
+            tools:ignore="TouchTargetSizeCheck" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

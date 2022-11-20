@@ -33,5 +33,6 @@
     <string name="menos">-</string>
     <string name="igual">=</string>
     <string name="simbolo_mas">+</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
 
 </resources>
