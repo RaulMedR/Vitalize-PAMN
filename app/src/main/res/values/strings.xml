@@ -23,4 +23,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="inicia_sesion">Inicia sesión</string>
+    <string name="mensajeTituloInicioCorrecto">Inicio sesión correcto</string>
+    <string name="perfil">Perfil</string>
+    <string name="nombre_y_apellidos">Nombre y apellidos</string>
+    <string name="edita_el_perfil_del_usuario">Edita el perfil del usuario</string>
+    <string name="vuelve_a_la_p_gina_anterior">Vuelve a la página anterior</string>
+    <string name="peso_del_usuario">Peso del usuario</string>
+    <string name="altura_del_usuario">Altura del usuario</string>
+
 </resources>
