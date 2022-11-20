@@ -6,13 +6,14 @@
     tools:context=".MainActivity">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/game_fragment"
-        android:name="com.example.vitalize.user.SignUp"
+        android:name="com.example.vitalize.HomeNoSession"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout="@layout/fragment_home_no_session" />
     <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
