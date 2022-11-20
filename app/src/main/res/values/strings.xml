@@ -30,5 +30,8 @@
     <string name="vuelve_a_la_p_gina_anterior">Vuelve a la página anterior</string>
     <string name="peso_del_usuario">Peso del usuario</string>
     <string name="altura_del_usuario">Altura del usuario</string>
+    <string name="menos">-</string>
+    <string name="igual">=</string>
+    <string name="simbolo_mas">+</string>
 
 </resources>
