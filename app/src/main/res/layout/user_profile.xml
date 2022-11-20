@@ -1,6 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="userViewModel"
+            type="com.example.vitalize.user.UserViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".user.LogIn">
+
+        <!--android:onClick="@{() -> LogIn.toRegister(6)}"-->
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/arrow_back_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/vuelve_a_la_p_gina_anterior" />
+
+        <TextView
+            android:id="@+id/texto_perfil"
+            style="@style/TextStyleBarraNavegacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/perfil"
+            app:layout_constraintStart_toEndOf="@+id/back_arrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagen_perfil"
+            android:layout_width="185dp"
+            android:layout_height="171dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logo_with_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_perfil" />
+
+        <ImageView
+            android:id="@+id/edit_user_profile_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:src="@drawable/edit_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toEndOf="@+id/imagen_perfil"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/edita_el_perfil_del_usuario" />
+
+        <TextView
+            android:id="@+id/nombre_apellidos_profile_user"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/nombre_y_apellidos"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagen_perfil" />
+
+        <TextView
+            android:id="@+id/text_altura"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="40dp"
+            android:text="172cm"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/icono_altura"
+            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user" />
+
+        <TextView
+            android:id="@+id/text_peso"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="72,50kg"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.228"
+            app:layout_constraintStart_toEndOf="@+id/icono_peso"
+            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user" />
+
+        <ImageView
+            android:id="@+id/icono_altura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user"
+            app:srcCompat="@drawable/height_icon"
+            android:contentDescription="@string/altura_del_usuario" />
+
+        <ImageView
+            android:id="@+id/icono_peso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="@+id/text_altura"
+            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user"
+            app:srcCompat="@drawable/scale_icon"
+            android:contentDescription="@string/peso_del_usuario" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
