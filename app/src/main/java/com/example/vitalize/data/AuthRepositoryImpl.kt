@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import javax.inject.Inject
 
-class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseAuth) : AuthRepository {
+class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseAuth, private val firestoreRepository: FirestoreRepository) : AuthRepository {
     override val currentUser: FirebaseUser?
         get() = firebaseAuth.currentUser
 
@@ -26,7 +26,9 @@ class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseA
         return try{
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
             result?.user?.updateProfile(UserProfileChangeRequest.Builder().setDisplayName(name).build())?.await()
+            firestoreRepository.registerNewUser(result.user!!.uid)
             Resource.Success(result.user!!)
+
         } catch (e: FirebaseAuthException){
             e.printStackTrace()
             Resource.Failure(e.errorCode)

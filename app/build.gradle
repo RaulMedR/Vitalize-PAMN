@@ -64,6 +64,10 @@ dependencies {
     // Add the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth'
+
+    // Add the dependency for the Firebase Firestore library
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     // LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
