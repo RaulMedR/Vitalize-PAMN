@@ -103,7 +103,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
             android:clickable="true"
-            android:focusable="true"/>
+            android:focusable="true"
+            android:textSize="15sp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
