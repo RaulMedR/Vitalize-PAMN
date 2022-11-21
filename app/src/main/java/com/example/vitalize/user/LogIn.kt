@@ -1,20 +1,14 @@
 package com.example.vitalize.user
 
-import android.R
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentLogInBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,11 +56,9 @@ class LogIn : Fragment() {
             Toast.makeText(activity, "Correo requerido", Toast.LENGTH_SHORT).show()
         }
         else if (emailInput.isNotEmpty() && passwordInput.isNotEmpty()) {
-            viewModel.logout()
             viewModel.login(emailInput, passwordInput)
             viewModel.loginFlow.observe(viewLifecycleOwner) {
                 it?.let {
-                    Log.d("viewmodellogin", it.toString())
                     when (it) {
                         is Resource.Failure -> {
                             viewModel.resetFlow()
@@ -84,7 +76,6 @@ class LogIn : Fragment() {
             }
         } else {
             Toast.makeText(activity, "Los campos deben estar rellenos", Toast.LENGTH_SHORT).show()
-            Log.d("EmailPassword", "signIn:fieldsEmpty")
         }
     }
 

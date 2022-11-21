@@ -1,7 +1,6 @@
 package com.example.vitalize.user
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,11 +56,9 @@ class SignUp : Fragment() {
 
         if (emailInput.isNotEmpty() && passwordInput.isNotEmpty() && repeatPasswordInput.isNotEmpty() && nameInput.isNotEmpty()) {
             if (passwordInput == repeatPasswordInput) {
-                Log.d("viewmodelregister", "he")
                 viewModel.singup(nameInput, emailInput, passwordInput)
                 viewModel.signupFlow.observe(viewLifecycleOwner) {
                     it?.let {
-                        Log.d("viewmodelregister", it.toString())
                         when (it) {
                             is Resource.Failure -> {
                                 viewModel.resetFlow()
@@ -94,11 +91,9 @@ class SignUp : Fragment() {
             }
             else{
                 Toast.makeText(activity, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
-                Log.d("EmailPassword", "signUp:contraseñasNoIguales")
             }
         } else {
             Toast.makeText(activity, "Por favor rellene todos los campos", Toast.LENGTH_SHORT).show()
-            Log.d("EmailPassword", "signUp:fieldsEmpty")
         }
 
 

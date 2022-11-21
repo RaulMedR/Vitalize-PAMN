@@ -1,7 +1,5 @@
 package com.example.vitalize.data
 
-import android.util.Log
-import android.widget.Toast
 import com.example.vitalize.data.utils.await
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
@@ -26,12 +24,10 @@ class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseA
 
     override suspend fun signup(name: String, email: String, password: String, ): Resource<FirebaseUser> {
         return try{
-            Log.d("viewmodelregister", "he4")
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
             result?.user?.updateProfile(UserProfileChangeRequest.Builder().setDisplayName(name).build())?.await()
             Resource.Success(result.user!!)
         } catch (e: FirebaseAuthException){
-            Log.d("viewmodelregister", "he5")
             e.printStackTrace()
             Resource.Failure(e.errorCode)
         }
