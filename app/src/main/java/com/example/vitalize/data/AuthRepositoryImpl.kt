@@ -24,11 +24,7 @@ class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseA
 
     }
 
-    override suspend fun signup(
-        name: String,
-        email: String,
-        password: String,
-    ): Resource<FirebaseUser> {
+    override suspend fun signup(name: String, email: String, password: String, ): Resource<FirebaseUser> {
         return try{
             Log.d("viewmodelregister", "he4")
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()

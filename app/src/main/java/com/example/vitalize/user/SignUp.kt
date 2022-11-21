@@ -14,12 +14,10 @@ import com.example.vitalize.R
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentSignUpBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class SignUp : Fragment() {
     private val viewModel: UserViewModel by viewModels()
-
     // Binding object instance with access to the views in the game_fragment.xml layout
     private lateinit var binding: FragmentSignUpBinding
 
@@ -41,7 +39,7 @@ class SignUp : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.userViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        // Setup a click listener for the Submit and Skip buttons.
+        // Setup a click listener for the Submit and go to Login Page buttons.
         binding.buttonRegister.setOnClickListener { registrarse() }
         binding.IniciaSesionRegister.setOnClickListener { toLogin() }
     }
