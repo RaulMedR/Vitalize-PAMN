@@ -61,25 +61,36 @@ class SignUp : Fragment() {
             if (passwordInput == repeatPasswordInput) {
                 Log.d("viewmodelregister", "he")
                 viewModel.singup(nameInput, emailInput, passwordInput)
-                viewModel.signupFlow.value?.let {
-                    Log.d("viewmodelregister", it.toString())
-                    when(it){
-                        is Resource.Failure -> {
-                            if (it.exception.toString() == "ERROR_EMAIL_ALREADY_IN_USE"){
+                viewModel.signupFlow.observe(viewLifecycleOwner) {
+                    it?.let {
+                        Log.d("viewmodelregister", it.toString())
+                        when (it) {
+                            is Resource.Failure -> {
+                                viewModel.resetFlow()
+                                if (it.exception.toString() == "ERROR_EMAIL_ALREADY_IN_USE") {
 
-                                Toast.makeText(activity, "El email ya se encuentra registrado", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(activity,
+                                        "El email ya se encuentra registrado",
+                                        Toast.LENGTH_SHORT).show()
+                                } else if (it.exception.toString() == "ERROR_INVALID_EMAIL") {
+                                    Toast.makeText(activity,
+                                        "El formato del email es inválido",
+                                        Toast.LENGTH_SHORT).show()
+                                } else if (it.exception.toString() == "ERROR_WEAK_PASSWORD") {
+                                    Toast.makeText(activity,
+                                        "La contraseña debe tener al menos 6 caracteres",
+                                        Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(activity, it.exception, Toast.LENGTH_SHORT)
+                                        .show()
+                                }
                             }
-                            else if (it.exception.toString() == "ERROR_INVALID_EMAIL"){
-                                Toast.makeText(activity, "El formato del email es inválido", Toast.LENGTH_SHORT).show()
-                            }
-                            else if (it.exception.toString() == "ERROR_WEAK_PASSWORD"){
-                                Toast.makeText(activity, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
-                            }
-                            else{
-                                Toast.makeText(activity, it.exception, Toast.LENGTH_SHORT).show()
+                            is Resource.Success -> {
+                                Toast.makeText(activity,
+                                    "Registro efectuado con éxito",
+                                    Toast.LENGTH_SHORT).show()
                             }
                         }
-                        else -> {}
                     }
                 }
             }

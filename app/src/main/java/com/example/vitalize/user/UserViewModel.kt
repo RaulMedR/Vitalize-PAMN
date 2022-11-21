@@ -17,11 +17,11 @@ import javax.inject.Inject
 @HiltViewModel
 class UserViewModel @Inject constructor(private val repository: AuthRepository) : ViewModel() {
 
-    private val _loginFlow = MutableStateFlow<Resource<FirebaseUser>?>(null)
-    val loginFlow: StateFlow<Resource<FirebaseUser>?> = _loginFlow
+    private val _loginFlow = MutableLiveData<Resource<FirebaseUser>?>()
+    val loginFlow: LiveData<Resource<FirebaseUser>?> = _loginFlow
 
-    private val _signupFlow = MutableStateFlow<Resource<FirebaseUser>?>(null)
-    val signupFlow: StateFlow<Resource<FirebaseUser>?> = _signupFlow
+    private val _signupFlow = MutableLiveData<Resource<FirebaseUser>?>()
+    val signupFlow: LiveData<Resource<FirebaseUser>?> = _signupFlow
 
     val currentUser: FirebaseUser?
         get() = repository.currentUser
@@ -46,6 +46,11 @@ class UserViewModel @Inject constructor(private val repository: AuthRepository) 
 
     fun logout() {
         repository.logout()
+        _loginFlow.value = null
+        _signupFlow.value = null
+    }
+
+    fun resetFlow(){
         _loginFlow.value = null
         _signupFlow.value = null
     }
