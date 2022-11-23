@@ -1,5 +1,6 @@
 package com.example.vitalize.user
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +14,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class UserViewModel @Inject constructor(private val repository: AuthRepository) : ViewModel() {
+class UserViewModel @Inject constructor(private val authRepository: AuthRepository, private val firestoreRepository: FirestoreRepository) : ViewModel() {
+
+    private val _userWeight = MutableLiveData<Resource<String>>()
+    val userWeight: LiveData<Resource<String>> = _userWeight
+
+    private val _userHeight = MutableLiveData<Resource<String>>()
+    val userHeight: LiveData<Resource<String>> = _userHeight
 
     private val _loginFlow = MutableLiveData<Resource<FirebaseUser>?>()
     val loginFlow: LiveData<Resource<FirebaseUser>?> = _loginFlow
@@ -22,26 +29,26 @@ class UserViewModel @Inject constructor(private val repository: AuthRepository) 
     val signupFlow: LiveData<Resource<FirebaseUser>?> = _signupFlow
 
     val currentUser: FirebaseUser?
-        get() = repository.currentUser
+        get() = authRepository.currentUser
 
     init {
-        if(repository.currentUser != null){
-            _loginFlow.value = Resource.Success(repository.currentUser!!)
+        if(authRepository.currentUser != null){
+            _loginFlow.value = Resource.Success(authRepository.currentUser!!)
         }
     }
 
     fun login(email: String, password: String) = viewModelScope.launch {
-        val result = repository.login(email, password)
+        val result = authRepository.login(email, password)
         _loginFlow.value = result
     }
 
     fun singup(name: String, email: String, password: String) = viewModelScope.launch {
-        val result = repository.signup(name, email, password)
+        val result = authRepository.signup(name, email, password)
         _signupFlow.value = result
     }
 
     fun logout() {
-        repository.logout()
+        authRepository.logout()
         _loginFlow.value = null
         _signupFlow.value = null
     }
@@ -50,4 +57,23 @@ class UserViewModel @Inject constructor(private val repository: AuthRepository) 
         _loginFlow.value = null
         _signupFlow.value = null
     }
+
+    fun getNameCurrentUser(): String? {
+        return currentUser?.displayName
+    }
+
+    fun getHeightCurrentUser() = viewModelScope.launch {
+        val result = firestoreRepository.getDataUser(currentUser!!.uid, "height")
+        _userHeight.value = result
+    }
+
+    fun getWeightCurrentUser() = viewModelScope.launch {
+        val result = firestoreRepository.getDataUser(currentUser!!.uid, "weight")
+        _userWeight.value = result
+    }
+
+    fun getPhotoUrl(): Uri? {
+        return currentUser?.photoUrl
+    }
+
 }

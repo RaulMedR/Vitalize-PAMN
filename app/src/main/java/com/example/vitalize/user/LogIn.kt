@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LogIn : Fragment() {
-    private val viewModel by viewModels<UserViewModel>()
+    private val userViewModel by viewModels<UserViewModel>()
     // Binding object instance with access to the views in the game_fragment.xml layout
     private lateinit var binding: FragmentLogInBinding
 
@@ -34,7 +34,7 @@ class LogIn : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.userViewModel = viewModel
+        binding.userViewModel = userViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         // Setup a click listener for the Submit and go to Register Page buttons.
         binding.IniciaSesionLogin.setOnClickListener { iniciaSesion() }
@@ -56,12 +56,12 @@ class LogIn : Fragment() {
             Toast.makeText(activity, "Correo requerido", Toast.LENGTH_SHORT).show()
         }
         else if (emailInput.isNotEmpty() && passwordInput.isNotEmpty()) {
-            viewModel.login(emailInput, passwordInput)
-            viewModel.loginFlow.observe(viewLifecycleOwner) {
+            userViewModel.login(emailInput, passwordInput)
+            userViewModel.loginFlow.observe(viewLifecycleOwner) {
                 it?.let {
                     when (it) {
                         is Resource.Failure -> {
-                            viewModel.resetFlow()
+                            userViewModel.resetFlow()
                             Toast.makeText(activity,
                                 "Inicio de sesión fallido",
                                 Toast.LENGTH_SHORT).show()

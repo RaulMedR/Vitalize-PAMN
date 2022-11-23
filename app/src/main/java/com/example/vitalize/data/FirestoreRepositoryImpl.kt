@@ -28,5 +28,18 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
         }
     }
 
+    override suspend fun getDataUser(userId: String, item: String): Resource<String>{
+        return try {
+            val docRef = dataBase?.collection("users")?.document(userId)!!.get().await()
+            val data = docRef.data?.get(item).toString()
+            Resource.Success(data + "cm")
+
+        } catch (e: FirebaseFirestoreException){
+            e.printStackTrace()
+            Resource.Failure(e.message!!)
+        }
+
+    }
+
 
 }

@@ -24,7 +24,7 @@ class AppModule {
     fun provideAuthRepository(impl: AuthRepositoryImpl): AuthRepository = impl
 
     @Provides
-    fun provideFirebaseFirestore(): FirebaseFirestore = Firebase.firestore
+    fun provideFirebaseFirestore(): FirebaseFirestore = FirebaseFirestore.getInstance()
 
     @Provides
     fun provideFirestoreRepository(impl: FirestoreRepositoryImpl): FirestoreRepository = impl
