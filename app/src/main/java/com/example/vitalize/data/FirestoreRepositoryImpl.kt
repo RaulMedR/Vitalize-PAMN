@@ -32,7 +32,12 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
         return try {
             val docRef = dataBase?.collection("users")?.document(userId)!!.get().await()
             val data = docRef.data?.get(item).toString()
-            Resource.Success(data + "cm")
+            if(item == "weight"){
+                Resource.Success(data + "kg")
+            } else {
+                Resource.Success(data + "cm")
+            }
+
 
         } catch (e: FirebaseFirestoreException){
             e.printStackTrace()

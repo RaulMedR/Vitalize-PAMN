@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentLogInBinding
 import com.example.vitalize.databinding.FragmentUserProfileBinding
@@ -49,7 +50,7 @@ class UserProfile : Fragment() {
         val photo = userViewModel.getPhotoUrl()
         Log.d("profiledata", photo.toString())
         if(photo != null){
-            binding.imagenPerfil.setImageURI(photo)
+            Glide.with(this).asBitmap().load(photo).into(binding.imagenPerfil)
         }
         userViewModel.getWeightCurrentUser()
         userViewModel.userWeight.observe(viewLifecycleOwner){
