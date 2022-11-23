@@ -70,6 +70,8 @@ class LogIn : Fragment() {
                             Toast.makeText(activity,
                                 "Inicio de sesión efectuado con éxito",
                                 Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(com.example.vitalize.R.id.action_logIn_to_homeSession)
+
                         }
                     }
                 }
