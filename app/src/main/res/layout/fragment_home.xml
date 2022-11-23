@@ -145,7 +145,8 @@
             android:layout_marginTop="28dp"
             android:src="@drawable/info_icon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:contentDescription="@string/informaci_n_con_detalle_de_las_calor_as_carbohidratos_prote_nas_y_grasa_consumidos" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -188,7 +189,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
-                android:src="@drawable/barra_home" />
+                android:src="@drawable/barra_home"
+                android:contentDescription="@string/barra_separadora_de_las_comidas_del_d_a" />
 
 
         </LinearLayout>

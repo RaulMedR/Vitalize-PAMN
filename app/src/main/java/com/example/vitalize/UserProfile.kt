@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentLogInBinding
@@ -34,7 +35,7 @@ class UserProfile : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, com.example.vitalize.R.layout.fragment_user_profile, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_profile, container, false)
         return binding.root
     }
 
@@ -42,6 +43,7 @@ class UserProfile : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.userViewModel = userViewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.buttonLogOut.setOnClickListener { logOut() }
         profileDataSync()
     }
 
@@ -79,6 +81,11 @@ class UserProfile : Fragment() {
             }
         }
 
+    }
+
+    private fun logOut(){
+        userViewModel.logout()
+        findNavController().navigate(R.id.action_userProfile_to_homeNoSession)
     }
 
 }

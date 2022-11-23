@@ -120,7 +120,7 @@
             android:contentDescription="@string/peso_del_usuario" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonRegister"
+            android:id="@+id/buttonLogOut"
             style="@style/ButtonStyle"
             android:layout_width="143dp"
             android:background="@drawable/input"

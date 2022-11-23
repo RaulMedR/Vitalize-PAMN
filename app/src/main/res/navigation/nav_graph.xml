@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/logIn">
+    app:startDestination="@id/homeNoSession">
 
     <fragment
         android:id="@+id/logIn"
         android:name="com.example.vitalize.user.LogIn"
         android:label="LogIn" >
+        <action
+            android:id="@+id/action_logIn_to_homeSession"
+            app:destination="@id/homeSession" />
         <action
             android:id="@+id/action_logIn_to_signUp"
             app:destination="@id/signUp" />
@@ -19,5 +23,29 @@
         <action
             android:id="@+id/action_signUp_to_logIn"
             app:destination="@id/logIn" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeNoSession"
+        android:name="com.example.vitalize.HomeNoSession"
+        android:label="fragment_home_no_session"
+        tools:layout="@layout/fragment_home_no_session" >
+        <action
+            android:id="@+id/action_homeNoSession_to_signUp"
+            app:destination="@id/signUp" />
+        <action
+            android:id="@+id/action_homeNoSession_to_logIn"
+            app:destination="@id/logIn" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeSession"
+        android:name="com.example.vitalize.HomeSession"
+        android:label="HomeSession" />
+    <fragment
+        android:id="@+id/userProfile"
+        android:name="com.example.vitalize.UserProfile"
+        android:label="UserProfile" >
+        <action
+            android:id="@+id/action_userProfile_to_homeNoSession"
+            app:destination="@id/homeNoSession" />
     </fragment>
 </navigation>
