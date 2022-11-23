@@ -21,12 +21,28 @@ A continuación, se detallará **documentación y vídeos** utilizados para pode
 - https://www.youtube.com/watch?v=tbh9YaWPKKs
 - https://www.youtube.com/watch?v=TwHmrZxiPA8
 - https://www.youtube.com/watch?v=2aML6wfUGGA
+- https://www.youtube.com/watch?v=LHh2_TXBmS8
+
+*Inserción de dependencias*
+- https://developer.android.com/training/dependency-injection/dagger-android
 
 *ImageView circular*
-- https://www.youtube.com/watch?v=An-mS2oneC
+- https://developer.android.com/training/dependency-injection
+- https://developer.android.com/training/dependency-injection/dagger-android
+- https://developer.android.com/training/dependency-injection/hilt-android?hl=es-419
+
+*Cargar imagen desde URL*
+- https://github.com/bumptech/glide
 
 *Líneas espaciadoras*
 - https://danielme.com/tip-android-4-dibujar-lineas-separadoras/
 
 *Bottom Bar Navegation*
 - https://www.youtube.com/watch?v=YlIHxIAoHzU
+
+*Cuestiones que han surgido durante el desarrollo*
+- Diferencia entre AndroidViewModel y ViewModel
+https://stackoverflow.com/questions/44148966/androidviewmodel-vs-viewmodel
+- Significado del operador !! en Kotlin
+https://stackoverflow.com/questions/34342413/what-is-the-kotlin-double-bang-operator
+
