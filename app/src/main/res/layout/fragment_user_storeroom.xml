@@ -1,0 +1,160 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--<data>
+        <variable
+            name="userViewModel"
+            type="com.example.vitalize.user.UserViewModel" />
+    </data>-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".HomeSession">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/arrow_back_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/vuelve_a_la_p_gina_anterior" />
+
+        <TextView
+            android:id="@+id/texto_despensa"
+            style="@style/TextStyleBarraNavegacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/despensa"
+            app:layout_constraintStart_toEndOf="@+id/back_arrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="412dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_despensa">
+
+            <EditText
+                android:id="@+id/editTextProduct"
+                style="@style/TextStyleInput"
+                android:drawableEnd="@drawable/icon_lupa"
+                android:ems="10"
+                android:hint="@string/producto"
+                android:inputType="text"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+
+        </LinearLayout>
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="388dp"
+            android:layout_height="70dp"
+            android:layout_rowSpan="3"
+            android:layout_columnSpan="3"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagen_producto"
+                android:layout_width="89dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:src="@drawable/logo_with_background" />
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_columnWeight="1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/nombre_producto"
+                    style="@style/TextStyleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre del producto" />
+
+                <TextView
+                    android:id="@+id/peso_producto"
+                    style="@style/TextStyleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="100g" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/más_ampliar"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/simbolo_mas"
+                android:textAlignment="center"
+                android:textSize="25sp" />
+
+        </GridLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/datos_calorias_home"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/icon_lupa"
+
+
+
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/icon_scan"
+                android:layout_marginLeft="30dp"
+                />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

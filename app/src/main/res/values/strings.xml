@@ -36,5 +36,7 @@
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="barra_separadora_de_las_comidas_del_d_a">Barra separadora de las comidas del día</string>
     <string name="informaci_n_con_detalle_de_las_calor_as_carbohidratos_prote_nas_y_grasa_consumidos">Información con detalle de las calorías, carbohidratos, proteínas y grasa consumidos</string>
+    <string name="producto">producto</string>
+    <string name="despensa">Despensa</string>
 
 </resources>
