@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/home"
-        android:id="@+id/home_bottomNav"
-        android:icon="@drawable/icon_home" />
-    <item android:title="@string/scan"
-        android:id="@+id/scan_bottomNav"
-        android:icon="@drawable/icon_scan"/>
-    <item android:title="@string/list"
-        android:id="@+id/list_bottomNav"
-        android:icon="@drawable/icon_list"/>
-    <item android:title="@string/user"
-        android:id="@+id/user_bottomNav"
-        android:icon="@drawable/icon_user"/>
+    <item android:title=" "
+        android:id="@+id/homeSession_nav"
+        android:icon="@drawable/icon_home_bottom_nav" />
+    <item android:title=" "
+        android:id="@+id/scan"
+        android:icon="@drawable/icon_scan_bottom_nav"/>
+    <item android:title=" "
+        android:id="@+id/list"
+        android:icon="@drawable/icon_list_bottom_nav"/>
+    <item android:title=" "
+        android:id="@+id/userProfile_nav"
+        android:icon="@drawable/icon_user_bottom_nav"/>
 </menu>

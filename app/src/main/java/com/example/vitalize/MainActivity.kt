@@ -1,102 +1,84 @@
 package com.example.vitalize
 
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.vitalize.user.LogIn
-import com.example.vitalize.user.SignUp
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.vitalize.databinding.ActivityMainBinding
 import com.example.vitalize.user.UserViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.auth.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+    private val viewModel: UserViewModel by viewModels()
+    private lateinit var  bottomNavigationView: BottomNavigationView;
 
     private val TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        if (viewModel.currentUser != null) {
+            replaceFragment(HomeSession())
+        } else {
+            replaceFragment(HomeNoSession())
+        }
+        setupNav()
+        binding.bottomNav.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.homeSession_nav -> replaceFragment(HomeSession())
+                R.id.userProfile_nav -> replaceFragment(UserProfile())
+                //R.id.scan_bottomNav -> replaceFragment(ScanBarCode())
+                //R.id.list_bottomNav -> replaceFragment(List())
+                else -> {
+
+                }
+            }
+            true
+        }
 
 
         //Establecemos la primera página
         //supportFragmentManager.beginTransaction().replace(R.id.nav_graph, SignUp()).commit()
     }
 
-    /*fun checkCurrentUser() {
-        // [START check_current_user]
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            // User is signed in
-        } else {
-            // No user is signed in
-        }
-        // [END check_current_user]
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
+        fragmentTransaction.commit()
     }
 
-    fun getUserProfile() {
-        // [START get_user_profile]
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            val name = user.displayName
-            val email = user.email
-            val photoUrl = user.photoUrl
+    private fun setupNav() {
+        val navController = findNavController(R.id.nav_host_fragment)
+        findViewById<BottomNavigationView>(R.id.bottom_nav)
+            .setupWithNavController(navController)
 
-            // Check if user's email is verified
-            val emailVerified = user.isEmailVerified
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
-            val uid = user.uid
-        }
-        // [END get_user_profile]
-    }
-
-    fun getProviderData() {
-        // [START get_provider_data]
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            for (profile in user.providerData) {
-                // Id of the provider (ex: google.com)
-                val providerId = profile.providerId
-
-                // UID specific to the provider
-                val uid = profile.uid
-
-                // Name, email address, and profile photo Url
-                val name = profile.displayName
-                val email = profile.email
-                val photoUrl = profile.photoUrl
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeSession -> showBottomNav()
+                R.id.userProfile -> showBottomNav()
+                else -> hideBottomNav()
             }
         }
-        // [END get_provider_data]
+
+
     }
 
-    fun updateProfile() {
-        // [START update_profile]
-        val user = FirebaseAuth.getInstance().currentUser
-        val profileUpdates = UserProfileChangeRequest.Builder()
-            .setDisplayName("Jane Q. User")
-            .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
-            .build()
-        user!!.updateProfile(profileUpdates)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "User profile updated.")
-                }
-            }
-        // [END update_profile]
+    private fun showBottomNav() {
+        binding.bottomNav.visibility = View.VISIBLE
     }
 
-    fun logOut() {
-        // [START auth_sign_out]
-        FirebaseAuth.getInstance().signOut()
-        // [END auth_sign_out]
-    }*/
+    private fun hideBottomNav() {
+        binding.bottomNav.visibility = View.GONE
 
+    }
 }

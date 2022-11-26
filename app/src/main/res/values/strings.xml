@@ -36,5 +36,20 @@
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="barra_separadora_de_las_comidas_del_d_a">Barra separadora de las comidas del día</string>
     <string name="informaci_n_con_detalle_de_las_calor_as_carbohidratos_prote_nas_y_grasa_consumidos">Información con detalle de las calorías, carbohidratos, proteínas y grasa consumidos</string>
+    <string name="mas_detalle">más detalle</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 </resources>
