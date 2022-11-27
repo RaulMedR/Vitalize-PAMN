@@ -59,4 +59,8 @@
             android:id="@+id/action_userEditProfile_to_userProfile"
             app:destination="@id/userProfile" />
     </fragment>
+    <fragment
+        android:id="@+id/registerWeight"
+        android:name="com.example.vitalize.RegisterWeight"
+        android:label="RegisterWeight" />
 </navigation>
