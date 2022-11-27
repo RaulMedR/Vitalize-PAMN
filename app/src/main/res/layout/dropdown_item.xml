@@ -7,4 +7,4 @@
     android:text="TextView"
     style="@style/TextStyleText"
     android:textSize="16sp"
-    android:padding="9dp"/>
+    android:padding="5dp"/>

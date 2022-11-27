@@ -36,10 +36,18 @@ class UserEditProfile : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_edit_profile, container, false)
+
         val estaturas = resources.getStringArray(R.array.estaturas)
-        val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, estaturas)
-        Log.d("prueba", binding.autoCompleteTextViewEstaturas.dropDownHeight.toString())
-        binding.autoCompleteTextViewEstaturas.setAdapter(adapter)
+        val adapter_estaturas = ArrayAdapter(requireContext(), R.layout.dropdown_item, estaturas)
+        binding.autoCompleteTextViewEstaturas.setAdapter(adapter_estaturas)
+
+        val pesos = resources.getStringArray(R.array.pesos)
+        val adapter_pesos = ArrayAdapter(requireContext(), R.layout.dropdown_item, pesos)
+        binding.autoCompleteTextViewPesos.setAdapter(adapter_pesos)
+
+        val pesos_decimales = resources.getStringArray(R.array.pesos_decimales)
+        val adapter_pesos_decimales = ArrayAdapter(requireContext(), R.layout.dropdown_item, pesos_decimales)
+        binding.autoCompleteTextViewPesosDecimales.setAdapter(adapter_pesos_decimales)
 
         return binding.root
     }

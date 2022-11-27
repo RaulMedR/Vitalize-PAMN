@@ -101,131 +101,127 @@
             app:layout_constraintTop_toBottomOf="@+id/imagen_perfil" />
 
 
-        <LinearLayout
-            android:id="@+id/linearLayout3"
+        <ImageView
+            android:id="@+id/icono_altura_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/altura_del_usuario"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos"
+            app:srcCompat="@drawable/height_icon" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_menu_estaturas"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/icono_altura_edit"
             app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos">
 
-            <ImageView
-                android:id="@+id/icono_altura_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/altura_del_usuario"
-                app:srcCompat="@drawable/height_icon"
-                android:layout_marginStart="10dp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dropdown_menu_estaturas"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:dropDownHeight="1dp"
-                android:layout_marginStart="10dp">
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewEstaturas"
-                    style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:dropDownHeight="1dip"
-                    android:hint="172"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/cm"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewEstaturas"
                 style="@style/TextStyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="cm"
-                android:textSize="20sp"
-                android:layout_marginStart="10dp"
-                app:layout_constraintStart_toEndOf="@+id/dropdown_menu_estaturas"
-                app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos" />
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:dropDownHeight="180dp"
+                android:hint="172"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/cm"
+            style="@style/TextStyleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="36dp"
+            android:text="cm"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.039"
+            app:layout_constraintStart_toEndOf="@+id/dropdown_menu_estaturas"
+            app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos" />
+
+        <ImageView
+            android:id="@+id/icono_peso_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="28dp"
+            android:contentDescription="@string/peso_del_usuario"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-            app:layout_constraintVertical_bias="0.168">
+            app:layout_constraintTop_toBottomOf="@+id/icono_altura_edit"
+            app:srcCompat="@drawable/scale_icon" />
 
-            <ImageView
-                android:id="@+id/icono_peso_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/peso_del_usuario"
-                app:srcCompat="@drawable/scale_icon"
-                android:layout_marginStart="10dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_menu_pesos"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="78dp"
+            app:layout_constraintStart_toEndOf="@+id/icono_peso_edit"
+            app:layout_constraintTop_toTopOf="@+id/dropdown_menu_estaturas">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dropdown_menu_pesos"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="87dp"
-                android:layout_height="wrap_content"
-                android:dropDownHeight="1dp"
-                android:layout_marginStart="10dp">
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewPesos"
-                    style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="72"
-                    android:inputType="none" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/coma"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewPesos"
                 style="@style/TextStyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=","
-                android:textSize="50sp"
-                android:layout_marginStart="10dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="72"
+                android:dropDownHeight="120dp"
+                android:inputType="none" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dropdown_menu_decimales_pesos"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="79dp"
-                android:layout_height="wrap_content"
-                android:dropDownHeight="1dp"
-                android:layout_marginStart="10dp">
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewPesosDecimales"
-                    style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="5"
-                    android:inputType="none" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/coma"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text=","
+            android:textSize="50sp"
+            app:layout_constraintStart_toEndOf="@+id/dropdown_menu_pesos"
+            app:layout_constraintTop_toBottomOf="@+id/dropdown_menu_estaturas" />
 
-            <TextView
-                android:id="@+id/kg"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_menu_decimales_pesos"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toEndOf="@+id/coma"
+            app:layout_constraintTop_toBottomOf="@+id/dropdown_menu_estaturas">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewPesosDecimales"
                 style="@style/TextStyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:hint="5"
+                android:dropDownHeight="120dp"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                android:text="kg"
-                android:textSize="20sp"
-                android:layout_marginStart="10dp"/>
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/kg"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="44dp"
+            android:text="kg"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.027"
+            app:layout_constraintStart_toEndOf="@+id/dropdown_menu_decimales_pesos"
+            app:layout_constraintTop_toBottomOf="@+id/cm" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
