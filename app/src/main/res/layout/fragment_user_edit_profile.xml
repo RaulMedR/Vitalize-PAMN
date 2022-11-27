@@ -1,0 +1,232 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userViewModel"
+            type="com.example.vitalize.user.UserViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".UserEditProfile">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/arrow_back_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/vuelve_a_la_p_gina_anterior" />
+
+
+        <TextView
+            android:id="@+id/texto_perfil"
+            style="@style/TextStyleBarraNavegacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="Edición de perfil"
+            app:layout_constraintStart_toEndOf="@+id/back_arrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagen_perfil"
+            android:layout_width="185dp"
+            android:layout_height="171dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logo_with_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_perfil" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagen_perfil_change_photo"
+            android:layout_width="185dp"
+            android:layout_height="171dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/update_photo_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_perfil" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonSave"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/input"
+            android:padding="2dp"
+            android:text="@string/guardar_cambios"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonCancel"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/input"
+            android:text="Cancelar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSave"
+            app:layout_constraintHorizontal_bias="0.746"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/edit_nombre_apellidos"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:hint="@string/nombre_y_apellidos"
+            android:minHeight="48dp"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:theme="@style/CampoTextoEditable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagen_perfil" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos">
+
+            <ImageView
+                android:id="@+id/icono_altura_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/altura_del_usuario"
+                app:srcCompat="@drawable/height_icon"
+                android:layout_marginStart="10dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropdown_menu_estaturas"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:dropDownHeight="1dp"
+                android:layout_marginStart="10dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewEstaturas"
+                    style="@style/TextStyleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:dropDownHeight="1dip"
+                    android:hint="172"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/cm"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cm"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toEndOf="@+id/dropdown_menu_estaturas"
+                app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0.168">
+
+            <ImageView
+                android:id="@+id/icono_peso_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/peso_del_usuario"
+                app:srcCompat="@drawable/scale_icon"
+                android:layout_marginStart="10dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropdown_menu_pesos"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="87dp"
+                android:layout_height="wrap_content"
+                android:dropDownHeight="1dp"
+                android:layout_marginStart="10dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewPesos"
+                    style="@style/TextStyleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="72"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/coma"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=","
+                android:textSize="50sp"
+                android:layout_marginStart="10dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropdown_menu_decimales_pesos"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="79dp"
+                android:layout_height="wrap_content"
+                android:dropDownHeight="1dp"
+                android:layout_marginStart="10dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewPesosDecimales"
+                    style="@style/TextStyleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="5"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/kg"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="kg"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
