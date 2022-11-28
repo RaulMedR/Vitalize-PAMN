@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.fragment.findNavController
 import com.example.vitalize.camera.CameraPreview
 import com.example.vitalize.databinding.FragmentScanBarcodeBinding
 
@@ -21,6 +23,10 @@ class ScanBarcode : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            findNavController().navigate(R.id.action_scanBarcode_to_homeSession)
+        }
     }
 
     override fun onCreateView(

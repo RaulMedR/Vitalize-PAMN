@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.vitalize.databinding.FragmentHomeBinding
+import kotlin.system.exitProcess
 
 class HomeSession : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -14,6 +17,12 @@ class HomeSession : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            activity?.finishActivity(0)
+            exitProcess(0)
+
+        }
     }
 
     override fun onCreateView(

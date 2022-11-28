@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_userProfile_to_userEditProfile"
             app:destination="@id/userEditProfile" />
+        <action
+            android:id="@+id/action_userProfile_to_homeSession"
+            app:destination="@id/homeSession" />
     </fragment>
     <fragment
         android:id="@+id/userEditProfile"
@@ -66,9 +69,17 @@
     <fragment
         android:id="@+id/scanBarcode"
         android:name="com.example.vitalize.ScanBarcode"
-        android:label="ScanBarcode" />
+        android:label="ScanBarcode" >
+        <action
+            android:id="@+id/action_scanBarcode_to_homeSession"
+            app:destination="@id/homeSession" />
+    </fragment>
     <fragment
         android:id="@+id/userStoreroom"
         android:name="com.example.vitalize.UserStoreroom"
-        android:label="UserStoreroom" />
+        android:label="UserStoreroom" >
+        <action
+            android:id="@+id/action_userStoreroom_to_homeSession"
+            app:destination="@id/homeSession" />
+    </fragment>
 </navigation>

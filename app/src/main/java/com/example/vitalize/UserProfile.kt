@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -28,6 +29,10 @@ class UserProfile : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            goBack()
+        }
     }
 
     override fun onCreateView(
@@ -45,6 +50,7 @@ class UserProfile : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.buttonLogOut.setOnClickListener { logOut() }
         binding.editUserProfileIcon.setOnClickListener{ toEditUserProfile()}
+        binding.backArrow.setOnClickListener { goBack() }
         profileDataSync()
     }
 
@@ -87,7 +93,9 @@ class UserProfile : Fragment() {
         }
 
     }
-
+    private fun goBack(){
+        findNavController().navigate(R.id.action_userProfile_to_homeSession)
+    }
     private fun logOut(){
         userViewModel.logout()
         Toast.makeText(activity,
