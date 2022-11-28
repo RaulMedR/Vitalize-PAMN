@@ -155,4 +155,7 @@
         <item>99</item>
         <item>100</item>
     </string-array>
+    <string name="producto">producto</string>
+    <string name="despensa">Despensa</string>
+
 </resources>

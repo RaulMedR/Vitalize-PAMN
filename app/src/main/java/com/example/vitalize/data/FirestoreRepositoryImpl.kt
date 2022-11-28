@@ -37,8 +37,6 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             } else {
                 Resource.Success(data + "cm")
             }
-
-
         } catch (e: FirebaseFirestoreException){
             e.printStackTrace()
             Resource.Failure(e.message!!)
