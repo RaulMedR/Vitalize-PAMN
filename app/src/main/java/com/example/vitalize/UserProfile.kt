@@ -90,7 +90,11 @@ class UserProfile : Fragment() {
 
     private fun logOut(){
         userViewModel.logout()
+        Toast.makeText(activity,
+            "Se ha cerrado sesión correctamente",
+            Toast.LENGTH_SHORT).show()
         findNavController().navigate(R.id.action_userProfile_to_homeNoSession)
+
     }
 
 }

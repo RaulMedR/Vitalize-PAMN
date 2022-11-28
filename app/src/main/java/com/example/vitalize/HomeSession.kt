@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
 import com.example.vitalize.databinding.FragmentHomeBinding
 
 class HomeSession : Fragment() {
@@ -29,8 +28,6 @@ class HomeSession : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //binding.lifecycleOwner = viewLifecycleOwner
-        // Setup a click listener for the Submit and go to Login Page buttons.
-
     }
 
 }

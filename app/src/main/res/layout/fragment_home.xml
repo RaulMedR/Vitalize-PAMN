@@ -130,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="136dp"
-            android:text="más detalle"
+            android:text="@string/mas_detalle"
             android:textColor="@color/green_text"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
