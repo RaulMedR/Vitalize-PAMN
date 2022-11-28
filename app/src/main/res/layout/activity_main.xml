@@ -8,16 +8,9 @@
     android:background="@color/white"
     android:id="@+id/main_container">
 
-
-    <!--<FrameLayout
-        android:id="@+id/frame_main"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav" />-->
-
     <fragment
         android:id="@+id/nav_host_fragment"
-        android:name="com.example.vitalize.ScanBarcode"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -44,7 +37,6 @@
         app:menu="@menu/bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 

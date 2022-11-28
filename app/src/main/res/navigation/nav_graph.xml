@@ -63,4 +63,12 @@
         android:id="@+id/registerWeight"
         android:name="com.example.vitalize.RegisterWeight"
         android:label="RegisterWeight" />
+    <fragment
+        android:id="@+id/scanBarcode"
+        android:name="com.example.vitalize.ScanBarcode"
+        android:label="ScanBarcode" />
+    <fragment
+        android:id="@+id/userStoreroom"
+        android:name="com.example.vitalize.UserStoreroom"
+        android:label="UserStoreroom" />
 </navigation>

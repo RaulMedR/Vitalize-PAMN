@@ -5,10 +5,10 @@
         android:id="@+id/homeSession"
         android:icon="@drawable/icon_home_bottom_nav" />
     <item android:title=" "
-        android:id="@+id/scan"
+        android:id="@+id/scanBarcode"
         android:icon="@drawable/icon_scan_bottom_nav"/>
     <item android:title=" "
-        android:id="@+id/list"
+        android:id="@+id/userStoreroom"
         android:icon="@drawable/icon_list_bottom_nav"/>
     <item android:title=" "
         android:id="@+id/userProfile"
