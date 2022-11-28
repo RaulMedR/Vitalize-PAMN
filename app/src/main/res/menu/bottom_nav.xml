@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title=" "
-        android:id="@+id/homeSession_nav"
+        android:id="@+id/homeSession"
         android:icon="@drawable/icon_home_bottom_nav" />
     <item android:title=" "
         android:id="@+id/scan"
@@ -11,6 +11,6 @@
         android:id="@+id/list"
         android:icon="@drawable/icon_list_bottom_nav"/>
     <item android:title=" "
-        android:id="@+id/userProfile_nav"
+        android:id="@+id/userProfile"
         android:icon="@drawable/icon_user_bottom_nav"/>
 </menu>

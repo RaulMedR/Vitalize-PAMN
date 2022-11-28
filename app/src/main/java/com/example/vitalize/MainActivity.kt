@@ -1,6 +1,7 @@
 package com.example.vitalize
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -26,28 +27,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupNav()
         if (viewModel.currentUser != null) {
             replaceFragment(HomeSession())
+            showBottomNav()
         } else {
             replaceFragment(HomeNoSession())
         }
-        setupNav()
-        binding.bottomNav.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.homeSession_nav -> replaceFragment(HomeSession())
-                R.id.userProfile_nav -> replaceFragment(UserProfile())
-                //R.id.scan_bottomNav -> replaceFragment(ScanBarCode())
-                //R.id.list_bottomNav -> replaceFragment(List())
-                else -> {
+        val navController = this.findNavController(R.id.nav_host_fragment)
+        binding.bottomNav.setupWithNavController(navController)
 
-                }
-            }
-            true
-        }
-
-
-        //Establecemos la primera página
-        //supportFragmentManager.beginTransaction().replace(R.id.nav_graph, SignUp()).commit()
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -69,8 +58,6 @@ class MainActivity : AppCompatActivity() {
                 else -> hideBottomNav()
             }
         }
-
-
     }
 
     private fun showBottomNav() {
