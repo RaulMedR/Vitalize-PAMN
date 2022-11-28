@@ -13,6 +13,8 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="boxStrokeColor">@color/yellow_button</item>
+        <item name="colorSecondaryContainer">@color/green_app</item>
+        <item name="itemIconSize">16dp</item>
 
     </style>
 </resources>
