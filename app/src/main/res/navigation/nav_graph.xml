@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeNoSession">
+    app:startDestination="@id/registerWeight">
 
     <fragment
         android:id="@+id/logIn"
@@ -47,5 +47,20 @@
         <action
             android:id="@+id/action_userProfile_to_homeNoSession"
             app:destination="@id/homeNoSession" />
+        <action
+            android:id="@+id/action_userProfile_to_userEditProfile"
+            app:destination="@id/userEditProfile" />
     </fragment>
+    <fragment
+        android:id="@+id/userEditProfile"
+        android:name="com.example.vitalize.UserEditProfile"
+        android:label="UserEditProfile" >
+        <action
+            android:id="@+id/action_userEditProfile_to_userProfile"
+            app:destination="@id/userProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerWeight"
+        android:name="com.example.vitalize.RegisterWeight"
+        android:label="RegisterWeight" />
 </navigation>

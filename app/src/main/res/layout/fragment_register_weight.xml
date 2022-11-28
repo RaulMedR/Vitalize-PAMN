@@ -1,0 +1,182 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userViewModel"
+            type="com.example.vitalize.user.UserViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".UserEditProfile"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="337dp">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/vuelve_a_la_p_gina_anterior"
+            android:src="@drawable/arrow_back_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/texto_peso"
+            style="@style/TextStyleBarraNavegacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="Peso"
+            app:layout_constraintStart_toEndOf="@+id/back_arrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRegistrarPeso"
+            style="@style/ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/input"
+            android:padding="2dp"
+            android:text="@string/registrar_peso"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_menu_pesos"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registro_fechas">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewPesos"
+                style="@style/TextStyleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dropDownHeight="120dp"
+                android:hint="72"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/coma"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
+            android:text=","
+            android:textSize="50sp"
+            app:layout_constraintStart_toEndOf="@+id/dropdown_menu_pesos"
+            app:layout_constraintTop_toBottomOf="@+id/registro_fechas" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_menu_decimales_pesos"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="26dp"
+            app:layout_constraintStart_toEndOf="@+id/coma"
+            app:layout_constraintTop_toBottomOf="@+id/registro_fechas">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextViewPesosDecimales"
+                style="@style/TextStyleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dropDownHeight="120dp"
+                android:hint="5"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/kg"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="47dp"
+            android:text="kg"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/dropdown_menu_decimales_pesos"
+            app:layout_constraintTop_toBottomOf="@+id/registro_fechas" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="175dp"
+            android:layout_height="188dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/scale_icon_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_peso" />
+
+        <TextView
+            android:id="@+id/registro_fechas"
+            style="@style/TextStyleText"
+            android:layout_width="326dp"
+            android:layout_height="126dp"
+            android:layout_marginTop="12dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
+        <TextView
+            android:id="@+id/fecha"
+            style="@style/TextStyleText"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="10dp"
+            android:focusable="false"
+            android:inputType="date"
+            android:maxLines="1"
+            android:text="@string/fecha_seleccionada"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRegistrarPeso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dropdown_menu_pesos"
+            app:layout_constraintVertical_bias="0.075" />
+
+        <ImageView
+            android:id="@+id/calendar_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/calendar_icon"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRegistrarPeso"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.091"
+            app:layout_constraintStart_toEndOf="@+id/fecha"
+            app:layout_constraintTop_toBottomOf="@+id/dropdown_menu_decimales_pesos"
+            app:layout_constraintVertical_bias="0.145" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
