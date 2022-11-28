@@ -1,0 +1,132 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".SearchFood">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/arrow_back_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/vuelve_a_la_p_gina_anterior" />
+
+        <TextView
+            android:id="@+id/texto_busqueda"
+            style="@style/TextStyleBarraNavegacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="Búsqueda"
+            app:layout_constraintStart_toEndOf="@+id/back_arrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/editTextProduct"
+            style="@style/TextStyleInput"
+            android:layout_width="267dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="24dp"
+            android:drawableEnd="@drawable/icon_lupa"
+            android:ems="10"
+            android:hint="@string/producto"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_busqueda" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_circular"
+            android:padding="3dp"
+            android:src="@drawable/icon_scan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.262"
+            app:layout_constraintStart_toEndOf="@+id/editTextProduct"
+            app:layout_constraintTop_toBottomOf="@+id/texto_busqueda" />
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_rowSpan="3"
+            android:layout_columnSpan="3"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextProduct">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagen_producto"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:src="@drawable/logo_with_background" />
+
+            <TextView
+                android:id="@+id/nombre_producto"
+                style="@style/TextStyleText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Nombre del producto"
+                android:textAlignment="center"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/más_ampliar"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/simbolo_mas"
+                android:textAlignment="center"
+                android:textSize="25sp" />
+
+        </GridLayout>
+
+        <TextView
+            android:id="@+id/texto_no_encuentra_producto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="¿No encuentra el producto deseado?"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSugerirProducto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/TextStyleText"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonSugerirProducto"
+            style="@style/ButtonStyle"
+            android:layout_width="143dp"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/input"
+            android:text="Sugerir producto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
