@@ -1,7 +1,7 @@
 package com.example.vitalize.data
 
+import com.example.vitalize.Food
 import com.example.vitalize.data.utils.await
-import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
@@ -42,6 +42,23 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             Resource.Failure(e.message!!)
         }
 
+    }
+
+    override suspend fun foodToArray(): Resource<ArrayList<Food>> {
+        return try{
+            val result = dataBase?.collection("foods")?.get()!!.await()
+            var returnResult: ArrayList<Food> = arrayListOf<Food>()
+            for(doc in result){
+                returnResult.add(Food(name = doc.data["name"].toString(), carbohydrates =  doc.data["carbohydrates"].toString().toFloat(),
+                    kcal = doc.data["kcal"].toString().toInt(), proteins = doc.data["proteins"].toString().toFloat(),
+                    fats = doc.data["fats"].toString().toFloat()))
+            }
+            Resource.Success(returnResult)
+
+        } catch (e: FirebaseFirestoreException){
+            e.printStackTrace()
+            Resource.Failure(e.message!!)
+        }
     }
 
 
