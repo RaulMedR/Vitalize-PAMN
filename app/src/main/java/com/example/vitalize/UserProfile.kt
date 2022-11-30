@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.vitalize.data.Resource
@@ -23,7 +24,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class UserProfile : Fragment() {
-    private val userViewModel by viewModels<UserViewModel>()
+    private lateinit var userViewModel : UserViewModel
+
     // Binding object instance with access to the views in the game_fragment.xml layout
     private lateinit var binding: FragmentUserProfileBinding
 
@@ -46,6 +48,7 @@ class UserProfile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        userViewModel = ViewModelProvider(requireActivity())[UserViewModel::class.java]
         binding.userViewModel = userViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.buttonLogOut.setOnClickListener { logOut() }
@@ -65,7 +68,6 @@ class UserProfile : Fragment() {
         if(photo != null){
             Glide.with(this).asBitmap().load(photo).into(binding.imagenPerfil)
         }
-        userViewModel.getWeightCurrentUser()
         userViewModel.userWeight.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success -> {
@@ -78,11 +80,11 @@ class UserProfile : Fragment() {
                 }
             }
         }
-        userViewModel.getHeightCurrentUser()
         userViewModel.userHeight.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success -> {
                     binding.textAltura.text = it.result
+
                 }
                 is Resource.Failure -> {
                     Toast.makeText(activity,
