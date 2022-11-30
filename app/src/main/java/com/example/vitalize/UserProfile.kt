@@ -91,7 +91,6 @@ class UserProfile : Fragment() {
                 }
             }
         }
-
     }
     private fun goBack(){
         findNavController().navigate(R.id.action_userProfile_to_homeSession)

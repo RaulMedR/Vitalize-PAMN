@@ -38,4 +38,17 @@ class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseA
     override fun logout() {
         firebaseAuth.signOut()
     }
+
+    override suspend fun setNameUser(newName: String): Resource<String>{
+        return try{
+            currentUser?.updateProfile(UserProfileChangeRequest.Builder().setDisplayName(newName).build())
+                ?.await()
+            Resource.Success(newName)
+
+        } catch (e: FirebaseAuthException){
+            e.printStackTrace()
+            Resource.Failure(e.errorCode)
+        }
+
+    }
 }
