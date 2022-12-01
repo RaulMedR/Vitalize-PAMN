@@ -79,3 +79,16 @@ https://stackoverflow.com/questions/34342413/what-is-the-kotlin-double-bang-oper
 
 *Nav Controller*
 - https://stackoverflow.com/questions/73708642/does-not-have-a-navcontroller-set
+
+*Update user profile*
+- https://firebase.google.com/docs/auth/android/manage-users
+- https://www.youtube.com/watch?v=CMAup2xxsJw
+- https://www.youtube.com/watch?v=TYtL8QpXbIk
+
+*Dialog Alert*
+- https://www.digitalocean.com/community/tutorials/android-alert-dialog-using-kotlin
+- https://es.stackoverflow.com/questions/166077/cambiar-foto-perfil-firebase-auth-android
+
+*Upload photo from gallery*
+- https://www.youtube.com/watch?v=H1ja8gvTtBE
+- https://www.youtube.com/watch?v=EiQn3zVlPtQ
