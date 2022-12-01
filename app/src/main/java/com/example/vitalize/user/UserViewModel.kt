@@ -1,7 +1,6 @@
 package com.example.vitalize.user
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -68,13 +67,11 @@ class UserViewModel @Inject constructor(private val authRepository: AuthReposito
     fun getHeightCurrentUser() = viewModelScope.launch {
         val result = firestoreRepository.getDataUser(currentUser!!.uid, "height")
         _userHeight.value = result
-        Log.d("userviewmodel", _userHeight.value.toString())
     }
 
     fun getWeightCurrentUser() = viewModelScope.launch {
         val result = firestoreRepository.getDataUser(currentUser!!.uid, "weight")
         _userWeight.value = result
-        Log.d("userviewmodel", _userWeight.value.toString())
     }
 
     fun getPhotoUrl(): Uri? {
@@ -84,6 +81,25 @@ class UserViewModel @Inject constructor(private val authRepository: AuthReposito
         getWeightCurrentUser()
         getHeightCurrentUser()
     }
+
+    fun setNameUser(name: String) = viewModelScope.launch {
+        val result = authRepository.setNameUser(name)
+    }
+
+    fun setPhotoUrl(photo: Uri) = viewModelScope.launch {
+        val result = authRepository.setPhotoUrl(photo)
+    }
+
+    fun setHeight(height: String) = viewModelScope.launch {
+        val result = firestoreRepository.setDataUser(currentUser!!.uid, "height", height)
+        _userHeight.value = result
+    }
+
+    fun setWeight(weight: String) = viewModelScope.launch {
+        val result = firestoreRepository.setDataUser(currentUser!!.uid, "weight", weight)
+        _userWeight.value = result
+    }
+
 
 
 }

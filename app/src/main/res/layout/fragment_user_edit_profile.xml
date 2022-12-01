@@ -128,7 +128,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:dropDownHeight="180dp"
-                android:hint="172"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,7 +149,7 @@
             android:id="@+id/icono_peso_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
+            android:layout_marginStart="44dp"
             android:layout_marginTop="44dp"
             android:contentDescription="@string/peso_del_usuario"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,7 +159,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dropdown_menu_pesos"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="87dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="92dp"
@@ -173,7 +172,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:dropDownHeight="120dp"
-                android:hint="72"
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -206,7 +204,6 @@
                 android:layout_width="80dp"
                 android:layout_height="55dp"
                 android:dropDownHeight="120dp"
-                android:hint="5"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -223,6 +220,17 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/dropdown_menu_decimales_pesos"
             app:layout_constraintTop_toBottomOf="@+id/cm" />
+
+        <ImageView
+            android:id="@+id/icon_bin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/edit_nombre_apellidos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imagen_perfil"
+            app:srcCompat="@drawable/icon_bin" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

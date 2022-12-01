@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="40dp"
-            android:text="172cm"
+            android:text="0 cm"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/icono_altura"
             app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user" />
@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="72,50kg"
+            android:text="0 kg"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.228"
