@@ -1,17 +1,21 @@
 package com.example.vitalize
 
+import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -67,6 +71,7 @@ class UserEditProfile : Fragment() {
         binding.buttonSave.setOnClickListener { guardar() }
         binding.backArrow.setOnClickListener { cancel() }
         binding.iconBin.setOnClickListener{ alertaEliminar() }
+        binding.imagenPerfilChangePhoto.setOnClickListener{ requestPermission() }
     }
 
     private fun alertaEliminar() {
@@ -75,16 +80,14 @@ class UserEditProfile : Fragment() {
         builder.setMessage("¿Desea eliminar la foto de perfil?")
         builder.setPositiveButton("Aceptar", { dialog, id ->
             userViewModel.setPhotoUrl(Uri.parse("null"))
-            Log.d("pureba", userViewModel.getPhotoUrl().toString())
+            binding.imagenPerfil.setImageDrawable(getResources().getDrawable(R.drawable.logo_with_background))
             Toast.makeText(context,
                 "Se ha eliminado correctamente la foto de perfil", Toast.LENGTH_SHORT).show()
         })
         builder.setNegativeButton("Cancelar") { dialog, which ->
-
         }
         builder.show()
 
-        Log.d("pureba", userViewModel.getPhotoUrl().toString())
     }
 
     private fun guardar() {
@@ -171,7 +174,52 @@ class UserEditProfile : Fragment() {
         }
 
     }
+    private fun requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val value = when {
+                context?.let {
+                    ContextCompat.checkSelfPermission(
+                        it,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    )
+                } == PackageManager.PERMISSION_GRANTED -> {
+                    pickPhotoFromGallery()
+                }
+                else -> requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+        } else {
+            pickPhotoFromGallery()
+        }
+    }
 
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ){isGranted ->
+        if (isGranted){
+            pickPhotoFromGallery()
+        }
+        else{
+            Toast.makeText(context, "Se necesita habilitar los permisos", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+    private val startForActivityGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ){result->
+        if (result.resultCode == Activity.RESULT_OK){
+            val data = result.data?.data
+            if (data != null) {
+                userViewModel.setPhotoUrl(data)
+            }
+            binding.imagenPerfil.setImageURI(data)
+        }
+
+    }
+    private fun pickPhotoFromGallery() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startForActivityGallery.launch(intent)
+    }
 
 
 }
