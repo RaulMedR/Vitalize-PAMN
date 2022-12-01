@@ -77,16 +77,6 @@ class UserViewModel @Inject constructor(private val authRepository: AuthReposito
         Log.d("userviewmodel", _userWeight.value.toString())
     }
 
-    fun getWeightEnteroCurrentUser() = viewModelScope.launch {
-        val result = firestoreRepository.getDataUser(currentUser!!.uid, "weight_entero")
-        _userWeight.value = result
-    }
-
-    fun getWeightDecimalCurrentUser() = viewModelScope.launch {
-        val result = firestoreRepository.getDataUser(currentUser!!.uid, "weight_decimal")
-        _userWeight.value = result
-    }
-
     fun getPhotoUrl(): Uri? {
         return currentUser?.photoUrl
     }
@@ -98,19 +88,17 @@ class UserViewModel @Inject constructor(private val authRepository: AuthReposito
 
     fun setNameUser(name: String) = viewModelScope.launch {
         val result = authRepository.setNameUser(name)
-
     }
 
-    fun setHeight(height: Double) = viewModelScope.launch {
+    fun setHeight(height: String) = viewModelScope.launch {
         val result = firestoreRepository.setDataUser(currentUser!!.uid, "height", height)
+        _userHeight.value = result
     }
 
-    fun setWeight(weight: Double) = viewModelScope.launch {
+    fun setWeight(weight: String) = viewModelScope.launch {
         val result = firestoreRepository.setDataUser(currentUser!!.uid, "weight", weight)
+        _userWeight.value = result
     }
 
-    fun setWeightDecimals(weightDecimals: Double) = viewModelScope.launch {
-        val result = firestoreRepository.setDataUser(currentUser!!.uid, "weight_decimals", weightDecimals)
-    }
 
 }

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.vitalize.data.Resource
@@ -24,7 +25,7 @@ import kotlinx.coroutines.NonCancellable.cancel
 
 @AndroidEntryPoint
 class UserEditProfile : Fragment() {
-    private val userViewModel by viewModels<UserViewModel>()
+    private lateinit var userViewModel : UserViewModel
     // Binding object instance with access to the views in the game_fragment.xml layout
     private lateinit var binding: FragmentUserEditProfileBinding
 
@@ -60,12 +61,12 @@ class UserEditProfile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.userViewModel = userViewModel
+        userViewModel = ViewModelProvider(requireActivity())[UserViewModel::class.java]
+        profileDataSync()
         binding.lifecycleOwner = viewLifecycleOwner
         binding.buttonCancel.setOnClickListener { cancel() }
         binding.buttonSave.setOnClickListener { guardar() }
         binding.backArrow.setOnClickListener { cancel() }
-        profileDataSync()
     }
 
     private fun guardar() {
@@ -73,21 +74,38 @@ class UserEditProfile : Fragment() {
             userViewModel.setNameUser(binding.editNombreApellidos.text.toString())
         }
         if(binding.dropdownMenuEstaturas.getEditText()?.getText()?.isNotEmpty() == true) {
-            userViewModel.setHeight(binding.dropdownMenuEstaturas.getEditText()?.getText().toString().toDouble())
+            userViewModel.setHeight(binding.dropdownMenuEstaturas.getEditText()?.getText().toString())
         }
-
         val peso_entero = binding.dropdownMenuPesos.getEditText()?.getText().toString()
         val peso_decimales = binding.dropdownMenuDecimalesPesos.getEditText()?.getText().toString()
-
         if(peso_entero.isNotEmpty() && peso_decimales.isNotEmpty()) {
-            userViewModel.setWeight(peso_entero.toDouble())
-            userViewModel.setWeightDecimals(peso_decimales.toDouble())
+            userViewModel.setWeight((peso_entero.toDouble() + peso_decimales.toDouble()/10).toString())
         }
-        else if (peso_decimales.isNotEmpty() && peso_decimales.isEmpty()) {
-            userViewModel.setWeight(peso_entero.toDouble())
+        else if (peso_entero.isNotEmpty() && peso_decimales.isEmpty()) {
+            userViewModel.userWeight.value.let {
+                when (it) {
+                    is Resource.Success -> {
+                        val arrayPeso = it.result!!.split(" ").toTypedArray()
+                        userViewModel.setWeight((peso_entero.toDouble() + arrayPeso[0].toDouble() % 1).toString())
+                    }
+                    else -> {}
+                }
+            }
+
         }
-        else if (peso_decimales.isNotEmpty()  && peso_decimales.isEmpty() ) {
-            userViewModel.setWeightDecimals(peso_decimales.toDouble())
+        else if (peso_decimales.isNotEmpty()  && peso_entero.isEmpty() ) {
+            userViewModel.userWeight.value.let {
+                when (it) {
+                    is Resource.Success -> {
+                        val arrayPeso = it.result!!.split(" ").toTypedArray()
+                        userViewModel.setWeight((arrayPeso[0].toDouble()-arrayPeso[0].toDouble() % 1 + peso_decimales.toDouble()/10).toString())
+                    }
+                    else -> {}
+                }
+            }
+
+        }else{
+            Log.d("otro", "entra4")
         }
         findNavController().navigate(R.id.action_userEditProfile_to_userProfile)
 
@@ -96,9 +114,6 @@ class UserEditProfile : Fragment() {
         findNavController().navigate(R.id.action_userEditProfile_to_userProfile)
     }
 
-    private fun convertToDouble(entero: Double, decimales: Double){
-
-    }
 
     private fun profileDataSync() {
         binding.editNombreApellidos.setText(userViewModel.getNameCurrentUser())
@@ -109,11 +124,12 @@ class UserEditProfile : Fragment() {
         else{
             binding.imagenPerfil.setImageDrawable(photo)
         }
-        /*userViewModel.getWeightCurrentUser()
         userViewModel.userWeight.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success -> {
-                    binding.autoCompleteTextViewEstaturas.setText(it.result)
+                    val arrayPeso = it.result!!.split(" ").toTypedArray()
+                    binding.autoCompleteTextViewPesos.setHint((arrayPeso[0].toDouble() - arrayPeso[0].toDouble()%1).toInt().toString())
+                    binding.autoCompleteTextViewPesosDecimales.setHint((arrayPeso[0].toDouble()%1*10).toInt().toString())
                 }
                 is Resource.Failure -> {
                     Toast.makeText(activity,
@@ -121,12 +137,12 @@ class UserEditProfile : Fragment() {
                         Toast.LENGTH_SHORT).show()
                 }
             }
-        }*/
-        userViewModel.getHeightCurrentUser()
+        }
         userViewModel.userHeight.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success -> {
-                    binding.autoCompleteTextViewEstaturas.setText(it.result)
+                    val arrayEstaturas = it.result!!.split(" ").toTypedArray()
+                    binding.autoCompleteTextViewEstaturas.setHint(arrayEstaturas[0])
                 }
                 is Resource.Failure -> {
                     Toast.makeText(activity,

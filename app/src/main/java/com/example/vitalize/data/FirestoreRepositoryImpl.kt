@@ -1,5 +1,8 @@
 package com.example.vitalize.data
 
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
 import com.example.vitalize.data.utils.await
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.firestore.DocumentReference
@@ -17,7 +20,6 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             "age" to 0,
             "height" to 0,
             "weight" to 0,
-            "weight_decimals" to 0
         )
         return try{
             val document = dataBase?.collection("users")?.document(userId)!!
@@ -35,16 +37,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             val docRef = dataBase?.collection("users")?.document(userId)!!.get().await()
             if(item == "weight"){
                 val data = docRef.data?.get(item).toString()
-                val data_decimals = docRef.data?.get("weight_decimals").toString()
-                Resource.Success(data + "," + data_decimals + " kg")
-            }
-            else if(item == "weight_entero"){
-                val data = docRef.data?.get("weight").toString()
-                Resource.Success(data)
-            }
-            else if(item == "weight_decimal"){
-                val data_decimals = docRef.data?.get("weight_decimals").toString()
-                Resource.Success(data_decimals)
+                Resource.Success(data + " kg")
             }
             else {
                 val data = docRef.data?.get(item).toString()
@@ -57,15 +50,16 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
 
     }
 
-    override suspend fun setDataUser(userId: String, item: String, newValue: Double): Resource<String>{
+    @RequiresApi(Build.VERSION_CODES.N)
+    override suspend fun setDataUser(userId: String, item: String, newValue: String): Resource<String>{
         return try {
-            val docRef = dataBase?.collection("users")?.document(userId)!!.get().await()
-            docRef.data?.set(item, newValue)
             if(item == "weight" ){
-                Resource.Success(newValue.toString() + "kg")
+                val docRef = dataBase?.collection("users")?.document(userId)!!.update(item, newValue.toDouble())
+                Resource.Success(newValue + " kg")
             }
             else {
-                Resource.Success(newValue.toString() + "cm")
+                val docRef = dataBase?.collection("users")?.document(userId)!!.update(item, newValue.toInt())
+                Resource.Success(newValue + " cm")
             }
         } catch (e: FirebaseFirestoreException){
             e.printStackTrace()

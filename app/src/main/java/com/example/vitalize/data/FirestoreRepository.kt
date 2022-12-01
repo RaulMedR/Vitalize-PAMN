@@ -7,5 +7,5 @@ interface FirestoreRepository {
     val dataBase: FirebaseFirestore?
     suspend fun registerNewUser(userId: String): Resource<DocumentReference>
     suspend fun getDataUser(userId: String, item: String): Resource<String>
-    suspend fun setDataUser(userId: String, item: String, newValue: Double): Resource<String>
+    suspend fun setDataUser(userId: String, item: String, newValue: String): Resource<String>
 }

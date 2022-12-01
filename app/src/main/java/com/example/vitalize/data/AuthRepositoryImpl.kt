@@ -19,7 +19,6 @@ class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseA
             e.printStackTrace()
             Resource.Failure(e.errorCode)
         }
-
     }
 
     override suspend fun signup(name: String, email: String, password: String, ): Resource<FirebaseUser> {
