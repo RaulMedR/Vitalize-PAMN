@@ -1,6 +1,11 @@
 package com.example.vitalize
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,6 +66,25 @@ class UserEditProfile : Fragment() {
         binding.buttonCancel.setOnClickListener { cancel() }
         binding.buttonSave.setOnClickListener { guardar() }
         binding.backArrow.setOnClickListener { cancel() }
+        binding.iconBin.setOnClickListener{ alertaEliminar() }
+    }
+
+    private fun alertaEliminar() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Borrar foto de perfil")
+        builder.setMessage("¿Desea eliminar la foto de perfil?")
+        builder.setPositiveButton("Aceptar", { dialog, id ->
+            userViewModel.setPhotoUrl(Uri.parse("null"))
+            Log.d("pureba", userViewModel.getPhotoUrl().toString())
+            Toast.makeText(context,
+                "Se ha eliminado correctamente la foto de perfil", Toast.LENGTH_SHORT).show()
+        })
+        builder.setNegativeButton("Cancelar") { dialog, which ->
+
+        }
+        builder.show()
+
+        Log.d("pureba", userViewModel.getPhotoUrl().toString())
     }
 
     private fun guardar() {
@@ -110,11 +134,13 @@ class UserEditProfile : Fragment() {
     private fun profileDataSync() {
         binding.editNombreApellidos.setText(userViewModel.getNameCurrentUser())
         val photo = userViewModel.getPhotoUrl()
-        if(photo != null){
-            Glide.with(this).asBitmap().load(photo).into(binding.imagenPerfil)
-        }
-        else{
-            binding.imagenPerfil.setImageDrawable(photo)
+        if (photo != null) {
+            if(!photo.equals(Uri.parse("null"))){
+                Glide.with(this).asBitmap().load(photo).into(binding.imagenPerfil)
+            }
+            else{
+                binding.imagenPerfil.setImageDrawable(getResources().getDrawable(R.drawable.logo_with_background))
+            }
         }
         userViewModel.userWeight.observe(viewLifecycleOwner){
             when(it){

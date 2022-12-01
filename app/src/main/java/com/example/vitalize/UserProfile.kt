@@ -2,6 +2,7 @@ package com.example.vitalize
 
 import android.graphics.Bitmap
 import android.media.Image
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -64,9 +65,13 @@ class UserProfile : Fragment() {
     private fun profileDataSync() {
         binding.nombreApellidosProfileUser.text = userViewModel.getNameCurrentUser()
         val photo = userViewModel.getPhotoUrl()
-        Log.d("profiledata", photo.toString())
-        if(photo != null){
-            Glide.with(this).asBitmap().load(photo).into(binding.imagenPerfil)
+        if (photo != null) {
+            if(!photo.equals(Uri.parse("null"))){
+                Glide.with(this).asBitmap().load(photo).into(binding.imagenPerfil)
+            }
+            else{
+                binding.imagenPerfil.setImageDrawable(getResources().getDrawable(R.drawable.logo_with_background))
+            }
         }
         userViewModel.userWeight.observe(viewLifecycleOwner){
             when(it){

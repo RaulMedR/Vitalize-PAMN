@@ -82,9 +82,12 @@ class UserViewModel @Inject constructor(private val authRepository: AuthReposito
         getHeightCurrentUser()
     }
 
-
     fun setNameUser(name: String) = viewModelScope.launch {
         val result = authRepository.setNameUser(name)
+    }
+
+    fun setPhotoUrl(photo: Uri) = viewModelScope.launch {
+        val result = authRepository.setPhotoUrl(photo)
     }
 
     fun setHeight(height: String) = viewModelScope.launch {
@@ -96,6 +99,7 @@ class UserViewModel @Inject constructor(private val authRepository: AuthReposito
         val result = firestoreRepository.setDataUser(currentUser!!.uid, "weight", weight)
         _userWeight.value = result
     }
+
 
 
 }
