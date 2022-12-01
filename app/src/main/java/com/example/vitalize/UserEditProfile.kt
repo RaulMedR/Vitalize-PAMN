@@ -176,7 +176,7 @@ class UserEditProfile : Fragment() {
     }
     private fun requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val value = when {
+            when {
                 context?.let {
                     ContextCompat.checkSelfPermission(
                         it,
