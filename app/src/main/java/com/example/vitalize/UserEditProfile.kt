@@ -1,27 +1,21 @@
 package com.example.vitalize
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentUserEditProfileBinding
-import com.example.vitalize.databinding.FragmentUserProfileBinding
 import com.example.vitalize.user.UserViewModel
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.NonCancellable.cancel
 
 @AndroidEntryPoint
 class UserEditProfile : Fragment() {
@@ -104,8 +98,6 @@ class UserEditProfile : Fragment() {
                 }
             }
 
-        }else{
-            Log.d("otro", "entra4")
         }
         findNavController().navigate(R.id.action_userEditProfile_to_userProfile)
 

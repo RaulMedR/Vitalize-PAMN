@@ -1,7 +1,6 @@
 package com.example.vitalize.user
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -68,13 +67,11 @@ class UserViewModel @Inject constructor(private val authRepository: AuthReposito
     fun getHeightCurrentUser() = viewModelScope.launch {
         val result = firestoreRepository.getDataUser(currentUser!!.uid, "height")
         _userHeight.value = result
-        Log.d("userviewmodel", _userHeight.value.toString())
     }
 
     fun getWeightCurrentUser() = viewModelScope.launch {
         val result = firestoreRepository.getDataUser(currentUser!!.uid, "weight")
         _userWeight.value = result
-        Log.d("userviewmodel", _userWeight.value.toString())
     }
 
     fun getPhotoUrl(): Uri? {
