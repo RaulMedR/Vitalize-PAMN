@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.homeSession -> showBottomNav()
                 R.id.userProfile -> showBottomNav()
+                R.id.scanBarcode -> showBottomNav()
                 else -> hideBottomNav()
             }
         }
