@@ -13,13 +13,11 @@
         android:background="@color/white"
         tools:context=".UserProfile">
 
-        <!--android:onClick="@{() -> LogIn.toRegister(6)}"-->
-
         <ImageView
             android:id="@+id/back_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/arrow_back_icon"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,13 +32,14 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
             android:text="@string/perfil"
+            android:textSize="19sp"
             app:layout_constraintStart_toEndOf="@+id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagen_perfil"
-            android:layout_width="185dp"
-            android:layout_height="171dp"
+            android:layout_width="170dp"
+            android:layout_height="165dp"
             android:layout_marginTop="40dp"
             android:src="@drawable/logo_with_background"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,58 +65,68 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/nombre_y_apellidos"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imagen_perfil" />
 
-        <TextView
-            android:id="@+id/text_altura"
-            style="@style/TextStyleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="40dp"
-            android:text="0 cm"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/icono_altura"
-            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user" />
 
-        <TextView
-            android:id="@+id/text_peso"
-            style="@style/TextStyleText"
+        <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="0 kg"
-            android:textSize="20sp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.228"
-            app:layout_constraintStart_toEndOf="@+id/icono_peso"
-            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user" />
-
-        <ImageView
-            android:id="@+id/icono_altura"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user"
-            app:srcCompat="@drawable/height_icon"
-            android:contentDescription="@string/altura_del_usuario" />
+            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user">
 
-        <ImageView
-            android:id="@+id/icono_peso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="@+id/text_altura"
-            app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user"
-            app:srcCompat="@drawable/scale_icon"
-            android:contentDescription="@string/peso_del_usuario" />
+            <ImageView
+                android:id="@+id/icono_altura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/altura_del_usuario"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user"
+                app:srcCompat="@drawable/height_icon" />
+
+            <TextView
+                android:id="@+id/text_altura"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="0 cm"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/icono_altura"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user" />
+
+            <ImageView
+                android:id="@+id/icono_peso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:contentDescription="@string/peso_del_usuario"
+                app:layout_constraintStart_toStartOf="@+id/text_altura"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user"
+                app:srcCompat="@drawable/scale_icon" />
+
+            <TextView
+                android:id="@+id/text_peso"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="0 kg"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.228"
+                app:layout_constraintStart_toEndOf="@+id/icono_peso"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user" />
+
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLogOut"
@@ -125,12 +134,11 @@
             android:layout_width="143dp"
             android:background="@drawable/input"
             android:text="@string/cerrar_sesion"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/icono_peso"
-            app:layout_constraintVertical_bias="0.747"
-            tools:ignore="TouchTargetSizeCheck" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            tools:ignore="TouchTargetSizeCheck"
+            android:layout_marginTop="60dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

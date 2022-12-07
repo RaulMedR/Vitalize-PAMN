@@ -19,7 +19,7 @@
             android:id="@+id/back_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/arrow_back_icon"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,108 +28,149 @@
 
 
         <TextView
-            android:id="@+id/texto_perfil"
+            android:id="@+id/texto_escaneo"
             style="@style/TextStyleBarraNavegacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
             android:text="Escaneo"
+            android:textSize="19dp"
             app:layout_constraintStart_toEndOf="@+id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/texto_producto_escaneado"
-            style="@style/TextStyleBarraNavegacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="360dp"
+            android:layout_height="150dp"
             android:layout_marginTop="52dp"
-            android:text="Producto escaneado"
-            android:textSize="16dp"
+            android:orientation="vertical"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/texto_perfil" />
+            app:layout_constraintTop_toBottomOf="@+id/texto_escaneo">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_add_to_diet"
-            style="@style/ButtonStyle"
-            android:layout_width="190dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="Añadir a dieta"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_add_to_storeroom" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_add_to_storeroom"
-            style="@style/ButtonStyle"
-            android:layout_width="190dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="48dp"
-            android:text="Añadir a despensa"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
-
-        <GridLayout
-            android:id="@+id/gridLayout"
-            android:layout_width="350dp"
-            android:layout_height="70dp"
-            android:layout_rowSpan="3"
-            android:layout_columnSpan="3"
-            android:layout_marginTop="28dp"
-            android:orientation="horizontal"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.459"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/texto_producto_escaneado">
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imagen_producto"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_weight="1"
-                android:src="@drawable/logo_with_background" />
+            <ImageView
+                android:id="@+id/barra_separadora1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@string/barra_separadora_de_las_comidas_del_d_a"
+                android:src="@drawable/barra_scan" />
 
             <TextView
-                android:id="@+id/nombre_producto"
-                style="@style/TextStyleText"
-                android:layout_width="270dp"
+                android:id="@+id/texto_producto_escaneado"
+                style="@style/TextStyleBarraNavegacion"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_row="0"
-                android:layout_column="1"
                 android:layout_gravity="center"
-                android:text="Nombre del producto"
-                android:textAlignment="center" />
+                android:text="Producto escaneado"
+                android:textSize="16dp" />
 
-        </GridLayout>
+            <ImageView
+                android:id="@+id/barra_separadora"
+                android:layout_width="200dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/barra_separadora_de_las_comidas_del_d_a"
+                android:src="@drawable/barra_home" />
+
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="350dp"
+                android:layout_height="70dp"
+                android:layout_rowSpan="3"
+                android:layout_columnSpan="3"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imagen_producto"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:src="@drawable/logo_with_background" />
+
+                <TextView
+                    android:id="@+id/nombre_producto"
+                    style="@style/TextStyleText"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
+                    android:text="Nombre del producto"
+                    android:textAlignment="center" />
+
+            </GridLayout>
+
+            <ImageView
+                android:id="@+id/barra_separadora2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/barra_separadora_de_las_comidas_del_d_a"
+                android:src="@drawable/barra_scan" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:visibility="invisible">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_add_to_diet"
+                style="@style/ButtonStyle2"
+                android:layout_width="130dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:text="Añadir a dieta"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="288dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_add_to_storeroom"
+                style="@style/ButtonStyle2"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:textSize="13sp"
+                android:text="Añadir a despensa" />
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_capture"
             style="@style/ButtonStyle"
-            android:layout_width="127dp"
-            android:layout_height="56dp"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
             android:layout_gravity="center"
+            android:layout_marginTop="60dp"
             android:text="Scan"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_add_to_diet"
-            app:layout_constraintVertical_bias="0.262" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

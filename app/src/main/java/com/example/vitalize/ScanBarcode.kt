@@ -97,22 +97,14 @@ class ScanBarcode : Fragment() {
     }
 
     private fun showProducto(){
-        binding.gridLayout.visibility =  View.VISIBLE
-        binding.imagenProducto.visibility =  View.VISIBLE
-        binding.nombreProducto.visibility =  View.VISIBLE
-        binding.buttonAddToDiet.visibility =  View.VISIBLE
-        binding.buttonAddToStoreroom.visibility =  View.VISIBLE
-        binding.textoProductoEscaneado.visibility = View.VISIBLE
+        binding.linearLayout2.visibility =  View.VISIBLE
+        binding.linearLayout.visibility =  View.VISIBLE
         visibleProducto = true
     }
 
     private fun hideProducto(){
-        binding.gridLayout.visibility =  View.INVISIBLE
-        binding.imagenProducto.visibility =  View.INVISIBLE
-        binding.nombreProducto.visibility =  View.INVISIBLE
-        binding.buttonAddToDiet.visibility =  View.INVISIBLE
-        binding.buttonAddToStoreroom.visibility =  View.INVISIBLE
-        binding.textoProductoEscaneado.visibility = View.INVISIBLE
+        binding.linearLayout2.visibility =  View.INVISIBLE
+        binding.linearLayout.visibility =  View.INVISIBLE
     }
 
 
