@@ -1,6 +1,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="foodViewModel"
+            type="com.example.vitalize.FoodViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
@@ -10,32 +15,121 @@
         tools:context=".ScanBarcode"
         android:background="@color/white"
         >
-
-
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:outlineProvider="@color/white"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:foregroundGravity="center"
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/arrow_back_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/vuelve_a_la_p_gina_anterior" />
 
+
+        <TextView
+            android:id="@+id/texto_perfil"
+            style="@style/TextStyleBarraNavegacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="Escaneo"
+            app:layout_constraintStart_toEndOf="@+id/back_arrow"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/texto_producto_escaneado"
+            style="@style/TextStyleBarraNavegacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Producto escaneado"
+            android:textSize="16dp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_perfil" />
 
-            app:srcCompat="@drawable/icon_scan_barcode"
-            tools:layout_editor_absoluteY="-221dp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_add_to_diet"
+            style="@style/ButtonStyle"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Añadir a dieta"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_add_to_storeroom" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_add_to_storeroom"
+            style="@style/ButtonStyle"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:text="Añadir a despensa"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_rowSpan="3"
+            android:layout_columnSpan="3"
+            android:layout_marginTop="28dp"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.459"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_producto_escaneado">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagen_producto"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:src="@drawable/logo_with_background" />
+
+            <TextView
+                android:id="@+id/nombre_producto"
+                style="@style/TextStyleText"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:text="Nombre del producto"
+                android:textAlignment="center" />
+
+        </GridLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_capture"
             style="@style/ButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="127dp"
+            android:layout_height="56dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="48dp"
             android:text="Scan"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_add_to_diet"
+            app:layout_constraintVertical_bias="0.262" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

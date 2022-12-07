@@ -1,11 +1,11 @@
 package com.example.vitalize.data
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.vitalize.data.utils.await
-import com.google.firebase.auth.FirebaseAuthException
+import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import javax.inject.Inject
@@ -68,5 +68,10 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
 
     }
 
+    override suspend fun getFood(barcodeId: String): Resource.Success<Task<DocumentSnapshot>?> {
+        val docRef = dataBase?.collection("foods")?.document(barcodeId)?.get()
+        docRef?.await()
+        return Resource.Success(docRef)
+    }
 
 }
