@@ -127,7 +127,7 @@
 
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/linear_layout_adicion"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginBottom="36dp"

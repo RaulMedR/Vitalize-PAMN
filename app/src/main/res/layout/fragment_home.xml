@@ -150,7 +150,7 @@
             android:contentDescription="@string/informaci_n_con_detalle_de_las_calor_as_carbohidratos_prote_nas_y_grasa_consumidos" />
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/linear_layout_breakfast"
             android:layout_width="360dp"
             android:layout_height="48dp"
             android:layout_marginTop="32dp"
@@ -175,7 +175,7 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:id="@+id/mas_ampliar"
+                    android:id="@+id/mas_ampliar_desayuno"
                     style="@style/TextStyleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/barra_separadora"
+                android:id="@+id/barra_separadora_desayuno"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
@@ -200,12 +200,123 @@
             android:id="@+id/foodsBreakfast"
             android:layout_width="360dp"
 
-            android:layout_height="391dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_breakfast" />
+        <LinearLayout
+            android:id="@+id/linear_layout_almuerzo"
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foodsBreakfast">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nombre_comida_del_dia_almuerzo"
+                    style="@style/TextStyleText"
+                    android:layout_width="277dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/almuerzo"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/mas_ampliar_almuerzo"
+                    style="@style/TextStyleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/simbolo_mas"
+                    android:textAlignment="center"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/barra_separadora_almuerzo"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/barra_separadora_de_las_comidas_del_d_a"
+                android:src="@drawable/barra_home" />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/foodsLunchs"
+            android:layout_width="360dp"
+
+            android:layout_height="100dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_almuerzo" />
+        <LinearLayout
+            android:id="@+id/linear_layout_cena"
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foodsLunchs">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nombre_comida_del_dia_cena"
+                    style="@style/TextStyleText"
+                    android:layout_width="277dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cena"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/mas_ampliar_cena"
+                    style="@style/TextStyleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/simbolo_mas"
+                    android:textAlignment="center"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/barra_separadora_cena"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/barra_separadora_de_las_comidas_del_d_a"
+                android:src="@drawable/barra_home" />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/foodsDinners"
+            android:layout_width="360dp"
+
+            android:layout_height="100dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_cena" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

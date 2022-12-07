@@ -14,8 +14,9 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(private val firestoreRepository: FirestoreRepository) : ViewModel() {
     private val _allProducts = MutableLiveData<Resource<ArrayList<Food>>>()
     val allProducts: LiveData<Resource<ArrayList<Food>>> = _allProducts
-    private var _selectedProduct: Food? = null
-    var selectedProduct: Food? = _selectedProduct
+    var selectedProduct: Food? = null
+    var selectedType: String = ""
+    var searchProduct: Boolean = false
 
     init {
         getAllProducts()

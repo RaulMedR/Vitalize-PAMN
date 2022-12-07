@@ -9,4 +9,5 @@ interface FirestoreRepository {
     suspend fun registerNewUser(userId: String): Resource<DocumentReference>
     suspend fun getDataUser(userId: String, item: String): Resource<String>
     suspend fun foodToArray(): Resource<ArrayList<Food>>
+    suspend fun dailyDiet(type: String, uid: String): Resource<ArrayList<Food>>
 }
