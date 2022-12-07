@@ -175,7 +175,7 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:id="@+id/más_ampliar"
+                    android:id="@+id/mas_ampliar"
                     style="@style/TextStyleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,52 +190,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
-                android:src="@drawable/barra_home"
-                android:contentDescription="@string/barra_separadora_de_las_comidas_del_d_a" />
+                android:contentDescription="@string/barra_separadora_de_las_comidas_del_d_a"
+                android:src="@drawable/barra_home" />
 
 
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/foodsBreakfast"
             android:layout_width="360dp"
-            android:layout_height="68dp"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal"
+
+            android:layout_height="391dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imagen_producto"
-                android:layout_width="201dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/logo_with_background" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nombre_producto"
-                    style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre del producto" />
-
-                <TextView
-                    android:id="@+id/peso_producto"
-                    style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="100g" />
-            </LinearLayout>
-
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

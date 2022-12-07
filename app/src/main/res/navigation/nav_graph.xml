@@ -39,7 +39,11 @@
     <fragment
         android:id="@+id/homeSession"
         android:name="com.example.vitalize.HomeSession"
-        android:label="HomeSession" />
+        android:label="HomeSession" >
+        <action
+            android:id="@+id/action_homeSession_to_searchFood"
+            app:destination="@id/searchFood" />
+    </fragment>
     <fragment
         android:id="@+id/userProfile"
         android:name="com.example.vitalize.UserProfile"
@@ -80,6 +84,14 @@
         android:label="UserStoreroom" >
         <action
             android:id="@+id/action_userStoreroom_to_homeSession"
+            app:destination="@id/homeSession" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFood"
+        android:name="com.example.vitalize.SearchFood"
+        android:label="SearchFood" >
+        <action
+            android:id="@+id/action_searchFood_to_homeSession"
             app:destination="@id/homeSession" />
     </fragment>
 </navigation>

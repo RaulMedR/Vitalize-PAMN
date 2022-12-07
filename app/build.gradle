@@ -93,6 +93,9 @@ dependencies {
     //Barcode processing
     implementation 'com.google.android.gms:play-services-vision:16.2.0'
     implementation 'com.google.android.material:material:1.1.0-alpha07'
+
+    //Recyclerview
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
 }
 
 kapt {

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="68dp"
+    android:id="@+id/containerRecipe"
+    android:layout_gravity="center_horizontal"
+    >
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagen_producto"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/logo_with_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nombre_producto"
+                style="@style/TextStyleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre del producto" />
+
+            <TextView
+                android:id="@+id/peso_producto"
+                style="@style/TextStyleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="100g" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+

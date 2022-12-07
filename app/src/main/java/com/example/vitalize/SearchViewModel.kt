@@ -14,11 +14,12 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(private val firestoreRepository: FirestoreRepository) : ViewModel() {
     private val _allProducts = MutableLiveData<Resource<ArrayList<Food>>>()
     val allProducts: LiveData<Resource<ArrayList<Food>>> = _allProducts
-    private lateinit var _selectedProduct: Food
-    var selectedProduct: Food = _selectedProduct
+    private var _selectedProduct: Food? = null
+    var selectedProduct: Food? = _selectedProduct
 
     init {
         getAllProducts()
+
     }
 
     private fun getAllProducts() = viewModelScope.launch{

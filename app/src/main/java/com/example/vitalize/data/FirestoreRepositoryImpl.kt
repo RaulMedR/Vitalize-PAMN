@@ -1,5 +1,6 @@
 package com.example.vitalize.data
 
+import androidx.core.net.toUri
 import com.example.vitalize.Food
 import com.example.vitalize.data.utils.await
 import com.google.firebase.firestore.DocumentReference
@@ -51,7 +52,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             for(doc in result){
                 returnResult.add(Food(name = doc.data["name"].toString(), carbohydrates =  doc.data["carbohydrates"].toString().toFloat(),
                     kcal = doc.data["kcal"].toString().toInt(), proteins = doc.data["proteins"].toString().toFloat(),
-                    fats = doc.data["fats"].toString().toFloat()))
+                    fats = doc.data["fats"].toString().toFloat(), photo = doc.data["photoURL"].toString().toUri()))
             }
             Resource.Success(returnResult)
 

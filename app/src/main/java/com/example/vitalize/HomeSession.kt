@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.example.vitalize.adapter.CardViewAdapter
 import com.example.vitalize.databinding.FragmentHomeBinding
 import kotlin.system.exitProcess
 
 class HomeSession : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +36,9 @@ class HomeSession : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.masAmpliar.setOnClickListener {
+            findNavController().navigate(R.id.searchFood)
+        }
         //binding.lifecycleOwner = viewLifecycleOwner
     }
 
