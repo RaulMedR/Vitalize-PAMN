@@ -11,7 +11,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/camera_preview"
-        android:layout_weight="1"
         tools:context=".ScanBarcode"
         android:background="@color/white"
         >
@@ -34,8 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
-            android:text="Escaneo"
-            android:textSize="19dp"
+            android:text="@string/escaneo"
+            android:textSize="19sp"
             app:layout_constraintStart_toEndOf="@+id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,10 +45,10 @@
             android:layout_height="150dp"
             android:layout_marginTop="52dp"
             android:orientation="vertical"
-            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@+id/texto_escaneo">
 
             <ImageView
@@ -67,8 +66,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Producto escaneado"
-                android:textSize="16dp" />
+                android:text="@string/producto_escaneado"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/barra_separadora"
@@ -84,7 +83,7 @@
                 android:layout_height="70dp"
                 android:layout_rowSpan="3"
                 android:layout_columnSpan="3"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
@@ -106,8 +105,8 @@
                     android:layout_row="0"
                     android:layout_column="1"
                     android:layout_gravity="center"
-                    android:text="Nombre del producto"
-                    android:textAlignment="center" />
+                    android:text="@string/nombre_del_producto"
+                    android:layout_marginStart="10dp"/>
 
             </GridLayout>
 
@@ -142,7 +141,7 @@
                 android:layout_width="130dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:text="Añadir a dieta"
+                android:text="@string/a_adir_a_dieta"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:layout_editor_absoluteY="288dp" />
@@ -155,7 +154,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:textSize="13sp"
-                android:text="Añadir a despensa" />
+                android:text="@string/a_adir_a_despensa" />
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -165,8 +164,8 @@
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:text="Scan"
-            android:textSize="18dp"
+            android:text="@string/scan"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

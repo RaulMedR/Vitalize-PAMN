@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentScanBarcodeBinding
 import com.google.zxing.integration.android.IntentIntegrator
@@ -37,7 +38,7 @@ class ScanBarcode : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, com.example.vitalize.R.layout.fragment_scan_barcode, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_scan_barcode, container, false)
         binding.backArrow.setOnClickListener { goBack() }
         binding.buttonCapture.setOnClickListener{ escanear() }
         foodViewModel = ViewModelProvider(requireActivity())[FoodViewModel::class.java]
@@ -46,7 +47,7 @@ class ScanBarcode : Fragment() {
 
     private fun goBack() {
         hideProducto()
-        findNavController().navigate(com.example.vitalize.R.id.action_scanBarcode_to_homeSession)
+        findNavController().navigate(R.id.action_scanBarcode_to_homeSession)
     }
 
     private fun escanear() {
@@ -84,8 +85,9 @@ class ScanBarcode : Fragment() {
                         }
                         else{
                             food =  it.result?.result?.toObject(Food::class.java)!!
-                            showProducto()
                             food.name?.let { itName -> binding.nombreProducto.setText(itName) }
+                            Glide.with(this).asBitmap().load(food.urlPhoto).into(binding.imagenProducto)
+                            showProducto()
                         }
                     }
                     else -> {

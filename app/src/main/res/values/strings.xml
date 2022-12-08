@@ -160,5 +160,10 @@
     </string-array>
     <string name="producto">producto</string>
     <string name="despensa">Despensa</string>
+    <string name="escaneo">Escaneo</string>
+    <string name="producto_escaneado">Producto escaneado</string>
+    <string name="nombre_del_producto">Nombre del producto</string>
+    <string name="a_adir_a_dieta">Añadir a dieta</string>
+    <string name="a_adir_a_despensa">Añadir a despensa</string>
 
 </resources>
