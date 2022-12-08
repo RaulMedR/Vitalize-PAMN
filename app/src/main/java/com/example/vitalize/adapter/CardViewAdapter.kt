@@ -66,10 +66,10 @@ class CardViewAdapter(private var searchViewModel: SearchViewModel, private val 
 
             }
         }
-        if (currentItem.photo != Uri.EMPTY){
-            Glide.with(viewHolder.itemView.context).asBitmap().load(currentItem.photo).into(viewHolder.foodImage)
+        if (currentItem.urlPhoto != null){
+            Glide.with(viewHolder.itemView.context).asBitmap().load(currentItem.urlPhoto).into(viewHolder.foodImage)
         }
-        viewHolder.foodName.text = currentItem.name.replaceFirstChar { it.uppercaseChar() }
+        viewHolder.foodName.text = currentItem.name?.replaceFirstChar { it.uppercaseChar() }
 
 
     }

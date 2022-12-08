@@ -30,10 +30,10 @@ class HomeFoodCardAdapter(private val foodList: ArrayList<Food>, private val die
         val currentItem = foodList[position]
 
         viewHolder.foodGrams.text = currentItem.cuantity.toString() + " gramos"
-        if (currentItem.photo != Uri.EMPTY){
-            Glide.with(viewHolder.itemView.context).asBitmap().load(currentItem.photo).into(viewHolder.foodImage)
+        if (currentItem.urlPhoto != null){
+            Glide.with(viewHolder.itemView.context).asBitmap().load(currentItem.urlPhoto).into(viewHolder.foodImage)
         }
-        viewHolder.foodName.text = currentItem.name.replaceFirstChar { it.uppercaseChar() }
+        viewHolder.foodName.text = currentItem.name!!.replaceFirstChar { it.uppercaseChar() }
         viewHolder.itemView.setOnClickListener {
             val builder = AlertDialog.Builder(viewHolder.itemView.context)
             builder.setTitle("Modificar/Eliminar producto")
@@ -46,7 +46,7 @@ class HomeFoodCardAdapter(private val foodList: ArrayList<Food>, private val die
             builder.setPositiveButton("Modificar"
             ) { dialog, which -> run {
                 inputString = input.text.toString()
-                var inputFloat = currentItem.cuantity
+                var inputFloat = currentItem.cuantity!!
                 if (inputString != ""){
                     inputFloat = inputString.toFloat()
                 }

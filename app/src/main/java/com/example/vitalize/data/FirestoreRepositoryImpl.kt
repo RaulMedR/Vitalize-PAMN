@@ -62,7 +62,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             for(doc in result){
                 returnResult.add(Food(name = doc.data["name"].toString(), carbohydrates =  doc.data["carbohydrates"].toString().toFloat(),
                     kcal = doc.data["kcal"].toString().toInt(), proteins = doc.data["proteins"].toString().toFloat(),
-                    fats = doc.data["fats"].toString().toFloat(), photo = doc.data["urlPhoto"].toString().toUri(), cuantity = 0.0f))
+                    fats = doc.data["fats"].toString().toFloat(), urlPhoto = doc.data["urlPhoto"].toString(), cuantity = 0.0f))
             }
             Resource.Success(returnResult)
 
@@ -84,7 +84,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
                 Log.d("dailydiet", food.toString())
                 result.add(Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
                     cuantity = foodMap["cuantity"].toString().toFloat(), fats = foodMap["fats"].toString().toFloat(),
-                    proteins = foodMap["proteins"].toString().toFloat(), photo = foodMap["photo"].toString().toUri(),
+                    proteins = foodMap["proteins"].toString().toFloat(), urlPhoto = foodMap["photo"].toString(),
                     name = foodMap["name"].toString()))
             }
 

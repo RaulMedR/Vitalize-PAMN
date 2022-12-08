@@ -1,21 +1,16 @@
 package com.example.vitalize
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.vitalize.databinding.ActivityMainBinding
 import com.example.vitalize.user.UserViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.firestore.auth.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
