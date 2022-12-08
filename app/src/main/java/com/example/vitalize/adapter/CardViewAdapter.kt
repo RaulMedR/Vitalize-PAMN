@@ -1,21 +1,20 @@
 package com.example.vitalize.adapter
 
+import android.app.AlertDialog
 import android.net.Uri
-import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.vitalize.Food
 import com.example.vitalize.R
 import com.example.vitalize.SearchViewModel
-import com.example.vitalize.user.UserViewModel
 
 
 class CardViewAdapter(private var searchViewModel: SearchViewModel, private val foodList: ArrayList<Food>) :
@@ -39,8 +38,32 @@ class CardViewAdapter(private var searchViewModel: SearchViewModel, private val 
         val currentItem = foodList[position]
         viewHolder.itemView.setOnClickListener {
             if(searchViewModel.searchProduct){
-                searchViewModel.selectedProduct = currentItem
-                Navigation.createNavigateOnClickListener(R.id.action_searchFood_to_homeSession).onClick(viewHolder.itemView)
+                val builder = AlertDialog.Builder(viewHolder.itemView.context)
+                builder.setTitle("Cantidad de producto en gramos")
+                var inputString: String = ""
+
+                val input = EditText(viewHolder.itemView.context)
+                input.inputType =
+                    InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
+
+                builder.setView(input)
+                builder.setPositiveButton("Añadir"
+                ) { dialog, which -> run {
+                    inputString = input.text.toString()
+                    var inputFloat = 0.0f
+                    if (inputString != ""){
+                        inputFloat = inputString.toFloat()
+                    }
+                    currentItem.cuantity = inputFloat
+                    searchViewModel.selectedProduct = currentItem
+                    Navigation.createNavigateOnClickListener(R.id.action_searchFood_to_homeSession).onClick(viewHolder.itemView)
+                } }
+                builder.setNegativeButton("Cancelar"
+                ) { dialog, which -> dialog.cancel() }
+                builder.show()
+
+
+
             }
         }
         if (currentItem.photo != Uri.EMPTY){

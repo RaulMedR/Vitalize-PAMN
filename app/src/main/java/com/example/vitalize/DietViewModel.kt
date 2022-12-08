@@ -55,47 +55,50 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
     }
 
     fun addFood(food: Food, type: String) = viewModelScope.launch{
-        when(type){
-            "breakfast"-> {
-                _breakfastList.value.let {
-                    when(it){
-                        is Resource.Success -> {
-                            it.result.add(food)
-                            firestoreRepository.updateDailyDiet(userId, type, it.result)
-                        }
+        if(food.cuantity != 0.0f){
+            when(type){
+                "breakfast"-> {
+                    _breakfastList.value.let {
+                        when(it){
+                            is Resource.Success -> {
+                                it.result.add(food)
+                                firestoreRepository.updateDailyDiet(userId, type, it.result)
+                            }
 
-                        else -> {}
+                            else -> {}
+                        }
                     }
                 }
-            }
-            "lunch"->{
-                _lunchList.value.let {
-                    when(it){
-                        is Resource.Success -> {
-                            it.result.add(food)
-                            firestoreRepository.updateDailyDiet(userId, type, it.result)
-                        }
+                "lunch"->{
+                    _lunchList.value.let {
+                        when(it){
+                            is Resource.Success -> {
+                                it.result.add(food)
+                                firestoreRepository.updateDailyDiet(userId, type, it.result)
+                            }
 
-                        else -> {}
+                            else -> {}
+                        }
                     }
+
+                }
+                "dinner"->{
+                    _dinnerList.value.let {
+                        when(it){
+                            is Resource.Success -> {
+                                it.result.add(food)
+                                firestoreRepository.updateDailyDiet(userId, type, it.result)
+                            }
+
+                            else -> {}
+                        }
+                    }
+
                 }
 
             }
-            "dinner"->{
-                _dinnerList.value.let {
-                    when(it){
-                        is Resource.Success -> {
-                            it.result.add(food)
-                            firestoreRepository.updateDailyDiet(userId, type, it.result)
-                        }
-
-                        else -> {}
-                    }
-                }
-
-            }
-
         }
+
 
     }
 
