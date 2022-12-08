@@ -92,3 +92,14 @@ https://stackoverflow.com/questions/34342413/what-is-the-kotlin-double-bang-oper
 *Upload photo from gallery*
 - https://www.youtube.com/watch?v=H1ja8gvTtBE
 - https://www.youtube.com/watch?v=EiQn3zVlPtQ
+
+*Escaneo de código de barras*
+- https://medium.com/analytics-vidhya/creating-a-barcode-scanner-using-android-studio-71cff11800a2
+- https://www.youtube.com/watch?v=jzKaEA-6FIQ
+- https://www.youtube.com/watch?v=Wdb5okugwmU
+- https://www.youtube.com/watch?v=bANu0SZpmdQ
+- https://www.youtube.com/watch?v=eaOB-KS-Qjk
+- https://stackoverflow.com/questions/20013213/zxing-onactivityresult-not-called-in-fragment-only-in-activity
+- https://cursokotlin.com/zxing-leer-qr-codigos-de-barras-en-kotlin/
+- https://medium.com/@dev.jeevanyohan/zxing-qr-code-scanner-android-implementing-in-activities-fragment-custom-colors-faa68bfc761d
+
