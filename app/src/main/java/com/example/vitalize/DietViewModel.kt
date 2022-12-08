@@ -98,6 +98,85 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
 
             }
         }
+    }
+    fun removeFood(food: Food, type: String) = viewModelScope.launch{
+        when(type){
+            "breakfast"-> {
+                _breakfastList.value.let {
+                    when(it){
+                        is Resource.Success -> {
+                            it.result.remove(food)
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
+                        }
+
+                        else -> {}
+                    }
+                }
+            }
+            "lunch"->{
+                _lunchList.value.let {
+                    when(it){
+                        is Resource.Success -> {
+                            it.result.remove(food)
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
+                        }
+                        else -> {}
+                    }
+                }
+
+            }
+            "dinner"->{
+                _dinnerList.value.let {
+                    when(it){
+                        is Resource.Success -> {
+                            it.result.remove(food)
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
+                        }
+                        else -> {}
+                    }
+                }
+            }
+        }
+    }
+
+    fun updateFoodCuantity(food: Food, cuantity: Float, type: String) = viewModelScope.launch{
+        when(type){
+            "breakfast"-> {
+                _breakfastList.value.let {
+                    when(it){
+                        is Resource.Success -> {
+                            food.cuantity = cuantity
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
+                        }
+
+                        else -> {}
+                    }
+                }
+            }
+            "lunch"->{
+                _lunchList.value.let {
+                    when(it){
+                        is Resource.Success -> {
+                            food.cuantity = cuantity
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
+                        }
+                        else -> {}
+                    }
+                }
+
+            }
+            "dinner"->{
+                _dinnerList.value.let {
+                    when(it){
+                        is Resource.Success -> {
+                            food.cuantity = cuantity
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
+                        }
+                        else -> {}
+                    }
+                }
+            }
+        }
 
 
     }

@@ -105,7 +105,7 @@ class HomeSession : Fragment() {
                 is Resource.Success -> {
                     Log.d("searchview", it.result.size.toString())
                     breakfastArrayList = it.result
-                    foodAdapter = HomeFoodCardAdapter(breakfastArrayList)
+                    foodAdapter = HomeFoodCardAdapter(breakfastArrayList, dietViewModel, "breakfast")
                     breakfastRecyclerView.adapter = foodAdapter
                 }
                 is Resource.Failure -> {
@@ -119,7 +119,7 @@ class HomeSession : Fragment() {
             when(it){
                 is Resource.Success -> {
                     lunchArrayList = it.result
-                    foodAdapter = HomeFoodCardAdapter(lunchArrayList)
+                    foodAdapter = HomeFoodCardAdapter(lunchArrayList, dietViewModel, "lunch")
                     lunchRecyclerView.adapter = foodAdapter
                 }
                 is Resource.Failure -> {
@@ -133,7 +133,7 @@ class HomeSession : Fragment() {
             when(it){
                 is Resource.Success -> {
                     dinnerArrayList = it.result
-                    foodAdapter = HomeFoodCardAdapter(dinnerArrayList)
+                    foodAdapter = HomeFoodCardAdapter(dinnerArrayList, dietViewModel, "dinner")
                     dinnerRecyclerView.adapter = foodAdapter
                 }
                 is Resource.Failure -> {
