@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.navigation.NavController
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private val viewModel: UserViewModel by viewModels()
+    private val searchViewModel: SearchViewModel by viewModels()
     private lateinit var  bottomNavigationView: BottomNavigationView;
 
     private val TAG = "MainActivity"

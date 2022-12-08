@@ -58,73 +58,37 @@
             app:layout_constraintStart_toEndOf="@+id/editTextProduct"
             app:layout_constraintTop_toBottomOf="@+id/texto_busqueda" />
 
-        <GridLayout
-            android:id="@+id/gridLayout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/foodsSearchRecycler"
             android:layout_width="350dp"
-            android:layout_height="70dp"
-            android:layout_rowSpan="3"
-            android:layout_columnSpan="3"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
+
+            android:layout_height="450dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="28dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextProduct">
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imagen_producto"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_weight="1"
-                android:src="@drawable/logo_with_background" />
-
-            <TextView
-                android:id="@+id/nombre_producto"
-                style="@style/TextStyleText"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="Nombre del producto"
-                android:textAlignment="center"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/más_ampliar"
-                style="@style/TextStyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="0"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/simbolo_mas"
-                android:textAlignment="center"
-                android:textSize="25sp" />
-
-        </GridLayout>
+            app:layout_constraintTop_toBottomOf="@+id/editTextProduct" />
 
         <TextView
             android:id="@+id/texto_no_encuentra_producto"
+            style="@style/TextStyleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="20dp"
             android:text="¿No encuentra el producto deseado?"
-            app:layout_constraintBottom_toTopOf="@+id/buttonSugerirProducto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/TextStyleText"/>
+            app:layout_constraintTop_toBottomOf="@+id/foodsSearchRecycler" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonSugerirProducto"
             style="@style/ButtonStyle"
             android:layout_width="143dp"
-            android:layout_marginBottom="44dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/input"
             android:text="Sugerir producto"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_no_encuentra_producto"
             tools:ignore="TouchTargetSizeCheck" />
 
 
