@@ -1,5 +1,6 @@
 package com.example.vitalize
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -36,21 +37,20 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
         firestoreRepository.getDailyDietDate(userId).let {
             when(it){
                 is Resource.Success -> {
-                    if( calendar > it.result){
+                    Log.d("fechavitalize", calendar.get(Calendar.YEAR).toString() + " " + it.result.get(Calendar.YEAR))
+                    if( calendar.get(Calendar.YEAR) > it.result.get(Calendar.YEAR) ||
+                        calendar.get(Calendar.MONTH) > it.result.get(Calendar.MONTH) ||
+                        calendar.get(Calendar.DAY_OF_MONTH) > it.result.get(Calendar.DAY_OF_MONTH)){
                         firestoreRepository.resetDailyDiet(userId, calendar)
-                        _breakfastList.value = firestoreRepository.dailyDiet("breakfast", userId)
-                        _lunchList.value = firestoreRepository.dailyDiet("lunch", userId)
-                        _dinnerList.value = firestoreRepository.dailyDiet("dinner", userId)
-                    }
-                    else {
-                        _breakfastList.value = firestoreRepository.dailyDiet("breakfast", userId)
-                        _lunchList.value = firestoreRepository.dailyDiet("lunch", userId)
-                        _dinnerList.value = firestoreRepository.dailyDiet("dinner", userId)
+
                     }
                 }
                 else -> {}
             }
         }
+        _breakfastList.value = firestoreRepository.dailyDiet("breakfast", userId)
+        _lunchList.value = firestoreRepository.dailyDiet("lunch", userId)
+        _dinnerList.value = firestoreRepository.dailyDiet("dinner", userId)
 
     }
 

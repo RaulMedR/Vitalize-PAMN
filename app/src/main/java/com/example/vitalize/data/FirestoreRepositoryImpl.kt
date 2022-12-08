@@ -1,5 +1,6 @@
 package com.example.vitalize.data
 
+import android.util.Log
 import androidx.core.net.toUri
 import com.example.vitalize.Food
 import com.example.vitalize.data.utils.await
@@ -69,14 +70,16 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
         return try{
             val result: ArrayList<Food> = ArrayList()
             val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
-            val data = query?.data?.get(type) as? Map<*, *>
-            if(data != null){
-                for(key in data.keys){
-                    val food = dataBase?.collection("foods")?.document(key.toString())?.get()?.await()
-                    result.add(Food(name = food?.data?.get("name").toString(), carbohydrates = food?.data?.get("carbohydrates").toString().toFloat(),
-                        kcal = food?.data?.get("kcal").toString().toInt(), proteins = food?.data?.get("proteins").toString().toFloat(), fats = food?.data?.get("fats").toString().toFloat(),
-                        photo = food?.data?.get("urlPhoto").toString().toUri(), cuantity = data[key].toString().toFloat()))
-                }
+            val data = query?.data?.get(type) as ArrayList<*>
+            Log.d("dailydiet", data.toString())
+
+            for(food in data){
+                val foodMap = food as HashMap<*, *>
+                Log.d("dailydiet", food.toString())
+                result.add(Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
+                    cuantity = foodMap["cuantity"].toString().toFloat(), fats = foodMap["fats"].toString().toFloat(),
+                    proteins = foodMap["proteins"].toString().toFloat(), photo = foodMap["photo"].toString().toUri(),
+                    name = foodMap["name"].toString()))
             }
 
             Resource.Success(result)
@@ -88,15 +91,15 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
 
     override suspend fun getDailyDietDate(uid: String): Resource<Calendar>{
         return try{
-            val result = Calendar.getInstance()
+            var result = Calendar.getInstance()
             result.set(1900, 1, 1)
             val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
-            val date = query?.data?.get("date") as? Calendar
-            if(date != null && date < result){
-                Resource.Success(date)
-            } else {
-                Resource.Success(result)
+            val date = query?.data?.get("date") as? HashMap<*, *>
+            if(date != null) {
+                result.set(date["year"].toString().toInt(), date["month"].toString().toInt(), date["day"].toString().toInt())
             }
+            Resource.Success(result)
+
 
 
         } catch (e: FirebaseFirestoreException){
@@ -106,7 +109,13 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
     }
 
     override suspend fun resetDailyDiet(uid: String, date: Calendar){
-        val query = dataBase?.collection("dailydiet")?.document(uid)?.set(hashMapOf("date" to date))
+        val query = dataBase?.collection("dailydiet")?.document(uid)?.set(hashMapOf(
+            "date" to hashMapOf(
+                "year" to date.get(Calendar.YEAR),
+                "month" to date.get(Calendar.MONTH),
+                "day" to date.get(Calendar.DAY_OF_MONTH)
+            )
+        ))
     }
 
     override suspend fun updateDailyDiet(uid: String, type: String, foodList: ArrayList<Food>){
