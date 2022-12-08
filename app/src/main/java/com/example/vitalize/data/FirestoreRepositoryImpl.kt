@@ -6,6 +6,7 @@ import com.example.vitalize.data.utils.await
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import java.util.Calendar
 import javax.inject.Inject
 
 class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore: FirebaseFirestore): FirestoreRepository {
@@ -54,7 +55,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             for(doc in result){
                 returnResult.add(Food(name = doc.data["name"].toString(), carbohydrates =  doc.data["carbohydrates"].toString().toFloat(),
                     kcal = doc.data["kcal"].toString().toInt(), proteins = doc.data["proteins"].toString().toFloat(),
-                    fats = doc.data["fats"].toString().toFloat(), photo = doc.data["photoURL"].toString().toUri(), cuantity = 0.0f))
+                    fats = doc.data["fats"].toString().toFloat(), photo = doc.data["urlPhoto"].toString().toUri(), cuantity = 0.0f))
             }
             Resource.Success(returnResult)
 
@@ -66,7 +67,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
 
     override suspend fun dailyDiet(type: String, uid: String): Resource<ArrayList<Food>> {
         return try{
-            var result: ArrayList<Food> = ArrayList()
+            val result: ArrayList<Food> = ArrayList()
             val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
             val data = query?.data?.get(type) as? Map<*, *>
             if(data != null){
@@ -74,7 +75,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
                     val food = dataBase?.collection("foods")?.document(key.toString())?.get()?.await()
                     result.add(Food(name = food?.data?.get("name").toString(), carbohydrates = food?.data?.get("carbohydrates").toString().toFloat(),
                         kcal = food?.data?.get("kcal").toString().toInt(), proteins = food?.data?.get("proteins").toString().toFloat(), fats = food?.data?.get("fats").toString().toFloat(),
-                        photo = food?.data?.get("photoURL").toString().toUri(), cuantity = data[key].toString().toFloat()))
+                        photo = food?.data?.get("urlPhoto").toString().toUri(), cuantity = data[key].toString().toFloat()))
                 }
             }
 
@@ -84,6 +85,38 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             Resource.Failure(e.message!!)
         }
     }
+
+    override suspend fun getDailyDietDate(uid: String): Resource<Calendar>{
+        return try{
+            val result = Calendar.getInstance()
+            result.set(1900, 1, 1)
+            val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
+            val date = query?.data?.get("date") as? Calendar
+            if(date != null && date < result){
+                Resource.Success(date)
+            } else {
+                Resource.Success(result)
+            }
+
+
+        } catch (e: FirebaseFirestoreException){
+            e.printStackTrace()
+            Resource.Failure(e.message!!)
+        }
+    }
+
+    override suspend fun resetDailyDiet(uid: String, date: Calendar){
+        val query = dataBase?.collection("dailydiet")?.document(uid)?.set(hashMapOf("date" to date))
+    }
+
+    override suspend fun updateDailyDiet(uid: String, type: String, foodList: ArrayList<Food>){
+        val query = dataBase?.collection("dailydiet")?.document(uid)?.update(type, foodList)
+
+    }
+
+
+
+
 
 
 }

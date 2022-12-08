@@ -9,6 +9,8 @@ import com.example.vitalize.data.FirestoreRepository
 import com.example.vitalize.data.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.util.Calendar
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,6 +23,8 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
     val lunchList: LiveData<Resource<ArrayList<Food>>> = _lunchList
     private val _dinnerList = MutableLiveData<Resource<ArrayList<Food>>>()
     val dinnerList: LiveData<Resource<ArrayList<Food>>> = _dinnerList
+    private val _userid = authRepository.currentUser!!.uid
+    val userId = _userid
 
 
     init {
@@ -28,18 +32,36 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
     }
 
     private fun inicializacionDatos() = viewModelScope.launch{
-        _breakfastList.value = firestoreRepository.dailyDiet("breakfast", authRepository.currentUser!!.uid)
-        _lunchList.value = firestoreRepository.dailyDiet("lunch", authRepository.currentUser!!.uid)
-        _dinnerList.value = firestoreRepository.dailyDiet("dinner", authRepository.currentUser!!.uid)
+        val calendar = Calendar.getInstance()
+        firestoreRepository.getDailyDietDate(userId).let {
+            when(it){
+                is Resource.Success -> {
+                    if( calendar > it.result){
+                        firestoreRepository.resetDailyDiet(userId, calendar)
+                        _breakfastList.value = firestoreRepository.dailyDiet("breakfast", userId)
+                        _lunchList.value = firestoreRepository.dailyDiet("lunch", userId)
+                        _dinnerList.value = firestoreRepository.dailyDiet("dinner", userId)
+                    }
+                    else {
+                        _breakfastList.value = firestoreRepository.dailyDiet("breakfast", userId)
+                        _lunchList.value = firestoreRepository.dailyDiet("lunch", userId)
+                        _dinnerList.value = firestoreRepository.dailyDiet("dinner", userId)
+                    }
+                }
+                else -> {}
+            }
+        }
+
     }
 
-    fun addFood(food: Food, type: String){
+    fun addFood(food: Food, type: String) = viewModelScope.launch{
         when(type){
             "breakfast"-> {
                 _breakfastList.value.let {
                     when(it){
                         is Resource.Success -> {
                             it.result.add(food)
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
                         }
 
                         else -> {}
@@ -51,6 +73,7 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                     when(it){
                         is Resource.Success -> {
                             it.result.add(food)
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
                         }
 
                         else -> {}
@@ -63,6 +86,7 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                     when(it){
                         is Resource.Success -> {
                             it.result.add(food)
+                            firestoreRepository.updateDailyDiet(userId, type, it.result)
                         }
 
                         else -> {}
@@ -71,11 +95,9 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
 
             }
 
-
         }
 
-
-
     }
+
 
 }
