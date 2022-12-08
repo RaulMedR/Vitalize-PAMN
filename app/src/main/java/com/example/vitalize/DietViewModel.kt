@@ -37,7 +37,6 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
         firestoreRepository.getDailyDietDate(userId).let {
             when(it){
                 is Resource.Success -> {
-                    Log.d("fechavitalize", calendar.get(Calendar.YEAR).toString() + " " + it.result.get(Calendar.YEAR))
                     if( calendar.get(Calendar.YEAR) > it.result.get(Calendar.YEAR) ||
                         calendar.get(Calendar.MONTH) > it.result.get(Calendar.MONTH) ||
                         calendar.get(Calendar.DAY_OF_MONTH) > it.result.get(Calendar.DAY_OF_MONTH)){

@@ -84,7 +84,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
                 Log.d("dailydiet", food.toString())
                 result.add(Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
                     cuantity = foodMap["cuantity"].toString().toFloat(), fats = foodMap["fats"].toString().toFloat(),
-                    proteins = foodMap["proteins"].toString().toFloat(), urlPhoto = foodMap["photo"].toString(),
+                    proteins = foodMap["proteins"].toString().toFloat(), urlPhoto = foodMap["urlPhoto"].toString(),
                     name = foodMap["name"].toString()))
             }
 
