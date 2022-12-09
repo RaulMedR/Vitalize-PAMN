@@ -76,16 +76,18 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
         return try{
             val result: ArrayList<Food> = ArrayList()
             val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
-            val data = query?.data?.get(type) as ArrayList<*>
+            val data = query?.data?.get(type) as? ArrayList<*>
             Log.d("dailydiet", data.toString())
 
-            for(food in data){
-                val foodMap = food as HashMap<*, *>
-                Log.d("dailydiet", food.toString())
-                result.add(Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
-                    cuantity = foodMap["cuantity"].toString().toFloat(), fats = foodMap["fats"].toString().toFloat(),
-                    proteins = foodMap["proteins"].toString().toFloat(), urlPhoto = foodMap["urlPhoto"].toString(),
-                    name = foodMap["name"].toString()))
+            if(data != null) {
+                for(food in data){
+                    val foodMap = food as HashMap<*, *>
+                    Log.d("dailydiet", food.toString())
+                    result.add(Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
+                        cuantity = foodMap["cuantity"].toString().toFloat(), fats = foodMap["fats"].toString().toFloat(),
+                        proteins = foodMap["proteins"].toString().toFloat(), urlPhoto = foodMap["urlPhoto"].toString(),
+                        name = foodMap["name"].toString()))
+                }
             }
 
             Resource.Success(result)
