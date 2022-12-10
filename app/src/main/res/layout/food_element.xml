@@ -5,27 +5,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="360dp"
-    android:layout_height="68dp"
+    android:layout_height="wrap_content"
     android:id="@+id/containerRecipe"
     android:layout_gravity="center_horizontal"
     >
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="14dp"
+        android:gravity="center">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagen_producto"
-            android:layout_width="201dp"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:src="@drawable/logo_with_background" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="10dp">
 
             <TextView
                 android:id="@+id/nombre_producto"

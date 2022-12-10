@@ -12,7 +12,7 @@
             android:id="@+id/back_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/arrow_back_icon"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,57 +24,64 @@
             style="@style/TextStyleBarraNavegacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Búsqueda"
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
-            android:text="Búsqueda"
+            android:textSize="19sp"
             app:layout_constraintStart_toEndOf="@+id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
-            android:id="@+id/editTextProduct"
-            style="@style/TextStyleInput"
-            android:layout_width="267dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="24dp"
-            android:drawableEnd="@drawable/icon_lupa"
-            android:ems="10"
-            android:hint="@string/producto"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/texto_busqueda" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="36dp"
-            android:layout_weight="1"
-            android:background="@drawable/bottom_circular"
-            android:padding="3dp"
-            android:src="@drawable/icon_scan"
+        <LinearLayout
+            android:id="@+id/linearLayoutSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.262"
-            app:layout_constraintStart_toEndOf="@+id/editTextProduct"
-            app:layout_constraintTop_toBottomOf="@+id/texto_busqueda" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texto_busqueda">
+
+            <EditText
+                android:id="@+id/editTextProduct"
+                style="@style/TextStyleInput"
+                android:layout_width="280dp"
+                android:drawableEnd="@drawable/icon_lupa"
+                android:ems="10"
+                android:hint="@string/producto"
+                android:inputType="text" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_circular"
+                android:padding="3dp"
+                android:src="@drawable/icon_scan" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/foodsSearchRecycler"
-            android:layout_width="350dp"
-
-            android:layout_height="450dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="28dp"
+            android:layout_width="330dp"
+            android:layout_height="360dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextProduct" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSearch" />
 
         <TextView
             android:id="@+id/texto_no_encuentra_producto"
             style="@style/TextStyleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="¿No encuentra el producto deseado?"
+            android:layout_marginTop="34dp"
+            android:text="@string/no_encuentra_el_producto_deseado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/foodsSearchRecycler" />
@@ -83,9 +90,9 @@
             android:id="@+id/buttonSugerirProducto"
             style="@style/ButtonStyle"
             android:layout_width="143dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/input"
-            android:text="Sugerir producto"
+            android:text="@string/sugerir_producto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/texto_no_encuentra_producto"
