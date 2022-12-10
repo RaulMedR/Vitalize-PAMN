@@ -103,3 +103,13 @@ https://stackoverflow.com/questions/34342413/what-is-the-kotlin-double-bang-oper
 - https://cursokotlin.com/zxing-leer-qr-codigos-de-barras-en-kotlin/
 - https://medium.com/@dev.jeevanyohan/zxing-qr-code-scanner-android-implementing-in-activities-fragment-custom-colors-faa68bfc761d
 
+Búsqueda
+- https://developer.android.com/guide/topics/search/search-dialog?hl=es-419
+- https://es.stackoverflow.com/questions/173790/busqueda-en-fragment-que-contiene-elementos-listview
+- https://www.folkstalk.com/tech/searchview-filter-for-recyclerview-inside-fragment-with-examples/
+- https://www.geeksforgeeks.org/searchview-in-android-with-recyclerview/
+- https://stackoverflow.com/questions/30455723/android-make-whole-search-bar-clickable
+- https://www.youtube.com/watch?v=2I1NkJNBz9M
+- https://www.youtube.com/watch?v=TSnWWhUx1V4
+- https://stackoverflow.com/questions/41713777/search-function-on-recyclerview-in-fragment
+
