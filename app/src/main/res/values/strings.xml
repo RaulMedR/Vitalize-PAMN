@@ -167,5 +167,6 @@
     <string name="a_adir_a_despensa">Añadir a despensa</string>
     <string name="no_encuentra_el_producto_deseado">¿No encuentra el producto deseado?</string>
     <string name="sugerir_producto">Sugerir producto</string>
+    <string name="busqueda">Búsqueda</string>
 
 </resources>
