@@ -37,7 +37,7 @@ class CardViewAdapter(private var searchViewModel: SearchViewModel, private val 
         // contents of the view with that element
         val currentItem = foodList[position]
         viewHolder.itemView.setOnClickListener {
-            if(searchViewModel.searchProduct){
+            if(searchViewModel.searchProduct == "storeroom" || searchViewModel.searchProduct == "home"){
                 val builder = AlertDialog.Builder(viewHolder.itemView.context)
                 builder.setTitle("Cantidad de producto en gramos")
                 var inputString: String = ""
@@ -56,7 +56,12 @@ class CardViewAdapter(private var searchViewModel: SearchViewModel, private val 
                     }
                     currentItem.cuantity = inputFloat
                     searchViewModel.selectedProduct = currentItem
-                    Navigation.createNavigateOnClickListener(R.id.action_searchFood_to_homeSession).onClick(viewHolder.itemView)
+                    if(searchViewModel.searchProduct == "storeroom"){
+                        Navigation.createNavigateOnClickListener(R.id.action_searchFood_to_userStoreroom).onClick(viewHolder.itemView)
+                    } else {
+                        Navigation.createNavigateOnClickListener(R.id.action_searchFood_to_homeSession).onClick(viewHolder.itemView)
+                    }
+
                 } }
                 builder.setNegativeButton("Cancelar"
                 ) { dialog, which -> dialog.cancel() }

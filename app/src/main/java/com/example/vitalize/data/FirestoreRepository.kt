@@ -19,4 +19,6 @@ interface FirestoreRepository {
     suspend fun getDailyDietDate(uid: String): Resource<Calendar>
     suspend fun resetDailyDiet(uid: String, date: Calendar)
     suspend fun updateDailyDiet(uid: String, type: String, foodList: ArrayList<Food>)
+    suspend fun storeroomList(uid: String): Resource<ArrayList<Food>>
+    suspend fun updateStoreroom(uid: String, foodList: ArrayList<Food>)
 }

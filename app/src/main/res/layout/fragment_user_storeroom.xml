@@ -63,72 +63,23 @@
 
         </LinearLayout>
 
-        <GridLayout
-            android:id="@+id/gridLayout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/foodsStoreRoom"
             android:layout_width="388dp"
-            android:layout_height="70dp"
-            android:layout_rowSpan="3"
-            android:layout_columnSpan="3"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal"
+            android:layout_height="469dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imagen_producto"
-                android:layout_width="89dp"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_weight="1"
-                android:src="@drawable/logo_with_background" />
-
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:id="@+id/nombre_producto"
-                    style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre del producto" />
-
-                <TextView
-                    android:id="@+id/peso_producto"
-                    style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="100g" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/más_ampliar"
-                style="@style/TextStyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:layout_columnWeight="1"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/simbolo_mas"
-                android:textAlignment="center"
-                android:textSize="25sp" />
-
-        </GridLayout>
 
 
         <LinearLayout
             android:id="@+id/linear_layout_adicion"
-            android:layout_width="150dp"
+            android:layout_width="75dp"
             android:layout_height="50dp"
             android:layout_marginBottom="36dp"
             android:background="@drawable/datos_calorias_home"
@@ -146,12 +97,6 @@
 
 
 
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/icon_scan"
-                android:layout_marginLeft="30dp"
                 />
 
         </LinearLayout>

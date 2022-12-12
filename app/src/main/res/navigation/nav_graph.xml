@@ -93,5 +93,8 @@
         <action
             android:id="@+id/action_searchFood_to_homeSession"
             app:destination="@id/homeSession" />
+        <action
+            android:id="@+id/action_searchFood_to_userStoreroom"
+            app:destination="@id/userStoreroom" />
     </fragment>
 </navigation>

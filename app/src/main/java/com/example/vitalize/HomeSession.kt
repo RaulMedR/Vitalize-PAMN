@@ -74,26 +74,26 @@ class HomeSession : Fragment() {
     }
 
     private fun analizarEscenario(){
-        if(searchViewModel.searchProduct){
+        if(searchViewModel.searchProduct == "home"){
             dietViewModel.addFood(searchViewModel.selectedProduct!!, searchViewModel.selectedType)
-            searchViewModel.searchProduct = false
+            searchViewModel.searchProduct = ""
             searchViewModel.selectedProduct = null
         }
     }
     private fun establecerClickListeners() {
         binding.masAmpliarDesayuno.setOnClickListener {
             searchViewModel.selectedType = "breakfast"
-            searchViewModel.searchProduct = true
+            searchViewModel.searchProduct = "home"
             findNavController().navigate(R.id.searchFood)
         }
         binding.masAmpliarAlmuerzo.setOnClickListener {
             searchViewModel.selectedType = "lunch"
-            searchViewModel.searchProduct = true
+            searchViewModel.searchProduct = "home"
             findNavController().navigate(R.id.searchFood)
         }
         binding.masAmpliarCena.setOnClickListener {
             searchViewModel.selectedType = "dinner"
-            searchViewModel.searchProduct = true
+            searchViewModel.searchProduct = "home"
             findNavController().navigate(R.id.searchFood)
         }
 

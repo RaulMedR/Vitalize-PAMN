@@ -97,6 +97,35 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
         }
     }
 
+    override suspend fun storeroomList(uid: String): Resource<ArrayList<Food>> {
+        return try{
+            val result: ArrayList<Food> = ArrayList()
+            val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
+            val data = query?.data?.get("storeroomList") as? ArrayList<*>
+
+            if(data != null) {
+                for(food in data){
+                    val foodMap = food as HashMap<*, *>
+                    Log.d("dailydiet", food.toString())
+                    result.add(Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
+                        cuantity = foodMap["cuantity"].toString().toFloat(), fats = foodMap["fats"].toString().toFloat(),
+                        proteins = foodMap["proteins"].toString().toFloat(), urlPhoto = foodMap["urlPhoto"].toString(),
+                        name = foodMap["name"].toString()))
+                }
+            }
+
+            Resource.Success(result)
+        } catch (e: FirebaseFirestoreException){
+            e.printStackTrace()
+            Resource.Failure(e.message!!)
+        }
+    }
+
+    override suspend fun updateStoreroom(uid: String, foodList: ArrayList<Food>){
+        val query = dataBase?.collection("storeroom")?.document(uid)?.update("storeroomList", foodList)
+
+    }
+
     override suspend fun getDailyDietDate(uid: String): Resource<Calendar>{
         return try{
             var result = Calendar.getInstance()

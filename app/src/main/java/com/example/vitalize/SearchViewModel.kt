@@ -16,7 +16,7 @@ class SearchViewModel @Inject constructor(private val firestoreRepository: Fires
     val allProducts: LiveData<Resource<ArrayList<Food>>> = _allProducts
     var selectedProduct: Food? = null
     var selectedType: String = ""
-    var searchProduct: Boolean = false
+    var searchProduct: String = ""
 
     init {
         getAllProducts()
