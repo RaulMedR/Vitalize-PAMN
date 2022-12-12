@@ -54,14 +54,16 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
         _breakfastList.value = firestoreRepository.dailyDiet("breakfast", userId)
         _lunchList.value = firestoreRepository.dailyDiet("lunch", userId)
         _dinnerList.value = firestoreRepository.dailyDiet("dinner", userId)
-        _dailykcal.value = 0
+
+        _cantidadObjetivo.value = firestoreRepository.getKcalObjective(userId)
+
         actualizarCalorias()
 
 
     }
 
     private fun actualizarCalorias() = viewModelScope.launch{
-        _cantidadObjetivo.value = firestoreRepository.getKcalObjective(userId)
+        _dailykcal.value = 0
         contarCalorias(_breakfastList.value as Resource<ArrayList<Food>>)
         contarCalorias(_lunchList.value as Resource<ArrayList<Food>>)
         contarCalorias(_dinnerList.value as Resource<ArrayList<Food>>)
@@ -208,7 +210,6 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
             }
         }
         actualizarCalorias()
-
 
     }
 
