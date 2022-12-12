@@ -17,7 +17,7 @@
             android:id="@+id/back_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/arrow_back_icon"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,48 +31,41 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
+            android:textSize="19sp"
             android:text="@string/despensa"
             app:layout_constraintStart_toEndOf="@+id/back_arrow"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="412dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="4dp"
+        <SearchView
+            android:id="@+id/searchView"
+            style="@style/TextStyleInput"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp"
+            android:focusable="true"
             android:gravity="center"
             android:orientation="horizontal"
+            android:queryHint="@string/producto"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/texto_despensa">
-
-            <EditText
-                android:id="@+id/editTextProduct"
-                style="@style/TextStyleInput"
-                android:drawableEnd="@drawable/icon_lupa"
-                android:ems="10"
-                android:hint="@string/producto"
-                android:inputType="text"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
-
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/texto_despensa" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/foodsStoreRoom"
-            android:layout_width="388dp"
-            android:layout_height="469dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_width="330dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
 
 

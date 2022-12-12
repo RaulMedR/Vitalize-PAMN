@@ -168,5 +168,6 @@
     <string name="no_encuentra_el_producto_deseado">¿No encuentra el producto deseado?</string>
     <string name="sugerir_producto">Sugerir producto</string>
     <string name="busqueda">Búsqueda</string>
+    <string name="_100g">100g</string>
 
 </resources>
