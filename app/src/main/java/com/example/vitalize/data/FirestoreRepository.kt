@@ -21,4 +21,5 @@ interface FirestoreRepository {
     suspend fun updateDailyDiet(uid: String, type: String, foodList: ArrayList<Food>)
     suspend fun storeroomList(uid: String): Resource<ArrayList<Food>>
     suspend fun updateStoreroom(uid: String, foodList: ArrayList<Food>)
+    suspend fun getKcalObjective(uid: String): String
 }
