@@ -100,7 +100,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
     override suspend fun storeroomList(uid: String): Resource<ArrayList<Food>> {
         return try{
             val result: ArrayList<Food> = ArrayList()
-            val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
+            val query = dataBase?.collection("storeroom")?.document(uid)?.get()?.await()
             val data = query?.data?.get("storeroomList") as? ArrayList<*>
 
             if(data != null) {
@@ -122,7 +122,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
     }
 
     override suspend fun updateStoreroom(uid: String, foodList: ArrayList<Food>){
-        val query = dataBase?.collection("storeroom")?.document(uid)?.update("storeroomList", foodList)
+        dataBase?.collection("storeroom")?.document(uid)?.set(hashMapOf("storeroomList" to foodList))
 
     }
 

@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private val viewModel: UserViewModel by viewModels()
     private val searchViewModel: SearchViewModel by viewModels()
+    private val storeroomViewModel: StoreroomViewModel by viewModels()
     private lateinit var  bottomNavigationView: BottomNavigationView;
 
     private val TAG = "MainActivity"
