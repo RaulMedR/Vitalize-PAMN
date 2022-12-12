@@ -3,7 +3,6 @@ package com.example.vitalize.data
 import android.os.Build
 import androidx.annotation.RequiresApi
 import android.util.Log
-import androidx.core.net.toUri
 import com.example.vitalize.Food
 import com.example.vitalize.data.utils.await
 import com.google.android.gms.tasks.Task
@@ -23,6 +22,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             "age" to 0,
             "height" to 0,
             "weight" to 0,
+            "kcal_objective" to 2000
         )
         return try{
             val document = dataBase?.collection("users")?.document(userId)!!
@@ -100,7 +100,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
     override suspend fun storeroomList(uid: String): Resource<ArrayList<Food>> {
         return try{
             val result: ArrayList<Food> = ArrayList()
-            val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
+            val query = dataBase?.collection("storeroom")?.document(uid)?.get()?.await()
             val data = query?.data?.get("storeroomList") as? ArrayList<*>
 
             if(data != null) {
@@ -122,7 +122,13 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
     }
 
     override suspend fun updateStoreroom(uid: String, foodList: ArrayList<Food>){
-        val query = dataBase?.collection("storeroom")?.document(uid)?.update("storeroomList", foodList)
+        dataBase?.collection("storeroom")?.document(uid)?.set(hashMapOf("storeroomList" to foodList))
+
+    }
+
+    override suspend fun getKcalObjective(uid: String): String {
+        val query = dataBase?.collection("users")?.document(uid)?.get()?.await()
+        return query?.data?.get("kcal_objective").toString()
 
     }
 

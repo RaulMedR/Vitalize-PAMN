@@ -26,6 +26,10 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
     val dinnerList: LiveData<Resource<ArrayList<Food>>> = _dinnerList
     private val _userid = authRepository.currentUser!!.uid
     val userId = _userid
+    private val _dailykcal = MutableLiveData<Int>()
+    val dailykcal: LiveData<Int> = _dailykcal
+    private val _cantidadObjetivo = MutableLiveData<String>()
+    val cantidadObjetivo: LiveData<String> = _cantidadObjetivo
 
 
     init {
@@ -51,6 +55,33 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
         _lunchList.value = firestoreRepository.dailyDiet("lunch", userId)
         _dinnerList.value = firestoreRepository.dailyDiet("dinner", userId)
 
+        _cantidadObjetivo.value = firestoreRepository.getKcalObjective(userId)
+
+        actualizarCalorias()
+
+
+    }
+
+    private fun actualizarCalorias() = viewModelScope.launch{
+        _dailykcal.value = 0
+        contarCalorias(_breakfastList.value as Resource<ArrayList<Food>>)
+        contarCalorias(_lunchList.value as Resource<ArrayList<Food>>)
+        contarCalorias(_dinnerList.value as Resource<ArrayList<Food>>)
+    }
+
+    private fun contarCalorias(foodList: Resource<ArrayList<Food>>) {
+
+        foodList.let {
+            when(it){
+                is Resource.Success -> {
+                    for(food in it.result){
+                        _dailykcal.value = _dailykcal.value?.plus(((food.cuantity!! / 100) * food.kcal!!).toInt())
+                    }
+
+                }
+                else -> {}
+            }
+        }
     }
 
     fun addFood(food: Food, type: String) = viewModelScope.launch{
@@ -96,6 +127,7 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                 }
 
             }
+            actualizarCalorias()
         }
     }
     fun removeFood(food: Food, type: String) = viewModelScope.launch{
@@ -136,6 +168,7 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                 }
             }
         }
+        actualizarCalorias()
     }
 
     fun updateFoodCuantity(food: Food, cuantity: Float, type: String) = viewModelScope.launch{
@@ -176,7 +209,7 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                 }
             }
         }
-
+        actualizarCalorias()
 
     }
 

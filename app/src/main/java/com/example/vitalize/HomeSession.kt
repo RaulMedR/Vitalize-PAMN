@@ -57,7 +57,6 @@ class HomeSession : Fragment() {
         dietViewModel = ViewModelProvider(requireActivity())[DietViewModel::class.java]
         analizarEscenario()
         establecerClickListeners()
-
         breakfastRecyclerView = binding.foodsBreakfast
         breakfastRecyclerView.layoutManager = LinearLayoutManager(activity)
         breakfastRecyclerView.setHasFixedSize(true)
@@ -74,6 +73,16 @@ class HomeSession : Fragment() {
     }
 
     private fun analizarEscenario(){
+        dietViewModel.cantidadObjetivo.observe(viewLifecycleOwner) { cantidadObjetivo ->
+            binding.cantidadObjetivo.text = cantidadObjetivo
+
+            dietViewModel.dailykcal.observe(viewLifecycleOwner) {
+                binding.cantidadConsumo.text = it.toString()
+                binding.cantidadRestante.text = (binding.cantidadObjetivo.text.toString()
+                    .toInt() - binding.cantidadConsumo.text.toString().toInt()).toString()
+            }
+        }
+        
         if(searchViewModel.searchProduct == "home"){
             dietViewModel.addFood(searchViewModel.selectedProduct!!, searchViewModel.selectedType)
             searchViewModel.searchProduct = ""
