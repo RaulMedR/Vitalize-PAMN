@@ -28,6 +28,8 @@ class ScanBarcode : Fragment() {
     private lateinit var food: Food
     private var visibleProducto : Boolean = false
     private lateinit var storeroomViewModel: StoreroomViewModel
+    private lateinit var dietViewModel: DietViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,18 +46,16 @@ class ScanBarcode : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_scan_barcode, container, false)
         storeroomViewModel = ViewModelProvider(requireActivity())[StoreroomViewModel::class.java]
+        dietViewModel = ViewModelProvider(requireActivity())[DietViewModel::class.java]
         binding.backArrow.setOnClickListener { goBack() }
         binding.buttonCapture.setOnClickListener{ escanear() }
         binding.buttonAddToStoreroom.setOnClickListener{ addToStoreroom() }
+        binding.buttonAddToDiet.setOnClickListener{addToDiet()}
         foodViewModel = ViewModelProvider(requireActivity())[FoodViewModel::class.java]
         return binding.root
     }
 
     private fun addToStoreroom() {
-        alertaAddStoreroom()
-    }
-
-    private fun alertaAddStoreroom() {
 
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Cantidad a añadir a la despensa del producto")
@@ -83,6 +83,56 @@ class ScanBarcode : Fragment() {
         builder.show()
 
 
+    }
+
+    private fun addToDiet() {
+
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Cantidad del producto a añadir a la dieta")
+        var inputString: String = ""
+
+        val input = EditText(context)
+        input.inputType =
+            InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
+
+        builder.setView(input)
+        builder.setPositiveButton("Añadir"
+        ) { dialog, which -> run {
+            inputString = input.text.toString()
+            var inputFloat = 0.0f
+            if (inputString != ""){
+                inputFloat = inputString.toFloat()
+            }
+            food.cuantity = inputFloat
+            setFoodOfDay(food)
+
+        } }
+        builder.setNegativeButton("Cancelar"
+        ) { dialog, which -> dialog.cancel() }
+        builder.show()
+
+
+    }
+
+    private fun setFoodOfDay(food: Food) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Seleccione comida del día")
+        builder.setPositiveButton("Cena"
+        ) { dialog, which -> run {
+            dietViewModel.addFood(food, "dinner")
+            findNavController().navigate(R.id.action_scanBarcode_to_homeSession)
+        } }
+        builder.setNeutralButton("Desayuno"
+        ) { dialog, which -> run{
+            dietViewModel.addFood(food, "breakfast")
+            findNavController().navigate(R.id.action_scanBarcode_to_homeSession)
+        } }
+        builder.setNegativeButton("Almuerzo"
+        ) { dialog, which -> run{
+            dietViewModel.addFood(food, "lunch")
+            findNavController().navigate(R.id.action_scanBarcode_to_homeSession)
+        } }
+        builder.show()
     }
 
     private fun goBack() {

@@ -213,7 +213,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/foodsBreakfast"
-                android:layout_width="330dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="13dp"
@@ -274,7 +274,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/foodsLunchs"
-                android:layout_width="330dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="13dp"
@@ -335,7 +335,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/foodsDinners"
-                android:layout_width="330dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="13dp"
