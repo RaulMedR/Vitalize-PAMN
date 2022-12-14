@@ -40,8 +40,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagen_perfil"
-            android:layout_width="170dp"
-            android:layout_height="165dp"
+            android:layout_width="160dp"
+            android:layout_height="155dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/logo_with_background"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,8 +51,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagen_perfil_change_photo"
-            android:layout_width="170dp"
-            android:layout_height="165dp"
+            android:layout_width="160dp"
+            android:layout_height="155dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/update_photo_profile"
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +108,7 @@
             style="@style/TextStyleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="@string/nombre_y_apellidos"
             android:minHeight="48dp"
@@ -121,157 +121,186 @@
             app:layout_constraintTop_toBottomOf="@+id/imagen_perfil" />
 
         <LinearLayout
-            android:id="@+id/linearLayoutAltura"
+            android:id="@+id/linearLayoutPesoyAltura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
-            android:layout_marginTop="25dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos">
 
-            <ImageView
-                android:id="@+id/icono_altura_edit"
+            <LinearLayout
+                android:id="@+id/linearLayoutAltura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/altura_del_usuario"
+                android:gravity="center"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos"
-                app:srcCompat="@drawable/height_icon" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dropdown_menu_estaturas"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toEndOf="@+id/icono_altura_edit"
                 app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos">
 
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewEstaturas"
-                    style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:dropDownHeight="180dp"
-                    android:inputType="none"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:id="@+id/icono_altura_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/altura_del_usuario"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos"
+                    app:srcCompat="@drawable/height_icon" />
 
-            <TextView
-                android:id="@+id/cm"
-                style="@style/TextStyleText"
+                <EditText
+                    android:id="@+id/estaturaEditText"
+                    style="@style/TextStyleText"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:inputType="numberDecimal"
+                    android:hint="172"
+                    android:theme="@style/CampoTextoEditable"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.039"
+                    app:layout_constraintStart_toEndOf="@+id/dropdown_menu_estaturas"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos" />
+
+
+                <TextView
+                    android:id="@+id/cm"
+                    style="@style/TextStyleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="cm"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.039"
+                    app:layout_constraintStart_toEndOf="@+id/dropdown_menu_estaturas"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearLayoutPeso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cm"
-                android:textSize="20sp"
-                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.039"
-                app:layout_constraintStart_toEndOf="@+id/dropdown_menu_estaturas"
-                app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos" />
+                app:layout_constraintStart_toEndOf="@+id/linearLayoutAltura"
+                app:layout_constraintTop_toBottomOf="@+id/edit_nombre_apellidos">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/icono_peso_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/peso_del_usuario"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/icono_altura_edit"
+                    app:srcCompat="@drawable/scale_icon" />
 
 
-        <LinearLayout
-            android:id="@+id/linearLayoutPeso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.549"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutAltura">
-
-            <ImageView
-                android:id="@+id/icono_peso_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/peso_del_usuario"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/icono_altura_edit"
-                app:srcCompat="@drawable/scale_icon" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dropdown_menu_pesos"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="90dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toEndOf="@+id/icono_peso_edit"
-                app:layout_constraintTop_toTopOf="@+id/dropdown_menu_estaturas">
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewPesos"
+                <EditText
+                    android:id="@+id/pesoEditText"
                     style="@style/TextStyleText"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:dropDownHeight="100dp"
-                    android:inputType="none"
-                    android:textSize="15sp"/>
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:hint="72,5"
+                    android:theme="@style/CampoTextoEditable"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/dropdown_menu_decimales_pesos"
+                    app:layout_constraintTop_toBottomOf="@+id/cm" />
 
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/coma"
-                style="@style/TextStyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text=","
-                android:textSize="40sp"
-                app:layout_constraintStart_toEndOf="@+id/dropdown_menu_pesos"
-                app:layout_constraintTop_toBottomOf="@+id/dropdown_menu_estaturas" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dropdown_menu_decimales_pesos"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toEndOf="@+id/coma"
-                app:layout_constraintTop_toBottomOf="@+id/dropdown_menu_estaturas">
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewPesosDecimales"
+                <TextView
+                    android:id="@+id/kg"
                     style="@style/TextStyleText"
-                    android:layout_width="80dp"
-                    android:layout_height="55dp"
-                    android:dropDownHeight="100dp"
-                    android:inputType="none"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="kg"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/dropdown_menu_decimales_pesos"
+                    app:layout_constraintTop_toBottomOf="@+id/cm" />
 
-            <TextView
-                android:id="@+id/kg"
-                style="@style/TextStyleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="kg"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/dropdown_menu_decimales_pesos"
-                app:layout_constraintTop_toBottomOf="@+id/cm" />
-
+            </LinearLayout>
         </LinearLayout>
 
         <ImageView
             android:id="@+id/icon_bin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toTopOf="@+id/edit_nombre_apellidos"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.126"
             app:layout_constraintStart_toEndOf="@+id/imagen_perfil"
             app:srcCompat="@drawable/icon_bin" />
+
+
+        <TextView
+            android:id="@+id/text_objetivos"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/objetivos"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutPesoyAltura" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCalorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_objetivos">
+
+            <TextView
+                android:id="@+id/text_calorias"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calor_as"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/text_num_calorias"
+                style="@style/TextStyleText"
+                android:layout_width="60dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:hint="1000"
+                android:inputType="number"
+                android:textSize="14sp"
+                android:theme="@style/CampoTextoEditable"/>
+
+            <TextView
+                android:id="@+id/text_kcal"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/kcal"
+                android:textSize="14sp" />
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,7 +58,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
     override suspend fun foodToArray(): Resource<ArrayList<Food>> {
         return try{
             val result = dataBase?.collection("foods")?.get()!!.await()
-            var returnResult: ArrayList<Food> = arrayListOf<Food>()
+            val returnResult: ArrayList<Food> = arrayListOf<Food>()
             for(doc in result){
                 returnResult.add(Food(name = doc.data["name"].toString(), carbohydrates =  doc.data["carbohydrates"].toString().toFloat(),
                     kcal = doc.data["kcal"].toString().toInt(), proteins = doc.data["proteins"].toString().toFloat(),
@@ -132,9 +132,19 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
 
     }
 
+    override suspend fun setKcalObjective(userId: String, cantidad: Int): Resource<String> {
+        return try {
+            val docRef = dataBase?.collection("users")?.document(userId)!!.update("kcal_objective", cantidad)
+            Resource.Success(cantidad.toString() + " kcal")
+        } catch (e: FirebaseFirestoreException){
+            e.printStackTrace()
+            Resource.Failure(e.message!!)
+        }
+    }
+
     override suspend fun getDailyDietDate(uid: String): Resource<Calendar>{
         return try{
-            var result = Calendar.getInstance()
+            val result = Calendar.getInstance()
             result.set(1900, 1, 1)
             val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
             val date = query?.data?.get("date") as? HashMap<*, *>
@@ -178,7 +188,7 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
                 Resource.Success(newValue + " kg")
             }
             else {
-                val docRef = dataBase?.collection("users")?.document(userId)!!.update(item, newValue.toInt())
+                val docRef = dataBase?.collection("users")?.document(userId)!!.update(item, newValue.toDouble())
                 Resource.Success(newValue + " cm")
             }
         } catch (e: FirebaseFirestoreException){

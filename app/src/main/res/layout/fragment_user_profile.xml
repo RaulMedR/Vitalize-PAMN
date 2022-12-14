@@ -7,6 +7,7 @@
             name="userViewModel"
             type="com.example.vitalize.user.UserViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,39 +39,39 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagen_perfil"
-            android:layout_width="170dp"
-            android:layout_height="165dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="160dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/logo_with_background"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/texto_perfil" />
+
 
         <ImageView
             android:id="@+id/edit_user_profile_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="68dp"
+            android:contentDescription="@string/edita_el_perfil_del_usuario"
             android:src="@drawable/edit_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toEndOf="@+id/imagen_perfil"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/edita_el_perfil_del_usuario" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/nombre_apellidos_profile_user"
             style="@style/TextStyleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:text="@string/nombre_y_apellidos"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imagen_perfil" />
-
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -99,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="0 cm"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/icono_altura"
                 app:layout_constraintTop_toBottomOf="@+id/nombre_apellidos_profile_user" />
 
@@ -120,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="0 kg"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.228"
                 app:layout_constraintStart_toEndOf="@+id/icono_peso"
@@ -128,17 +129,71 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/text_objetivos"
+            style="@style/TextStyleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/objetivos"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            android:textStyle="bold"/>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCalorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_objetivos">
+
+            <TextView
+                android:id="@+id/text_calorias"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calor_as"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_num_calorias"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="1000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_kcal"
+                style="@style/TextStyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/kcal"
+                android:textSize="14sp" />
+        </LinearLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLogOut"
             style="@style/ButtonStyle"
             android:layout_width="143dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/input"
             android:text="@string/cerrar_sesion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-            tools:ignore="TouchTargetSizeCheck"
-            android:layout_marginTop="60dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCalorias"
+            tools:ignore="TouchTargetSizeCheck" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
