@@ -20,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class UserProfile : Fragment() {
     private lateinit var userViewModel : UserViewModel
+    private lateinit var dietViewModel : DietViewModel
 
     // Binding object instance with access to the views in the game_fragment.xml layout
     private lateinit var binding: FragmentUserProfileBinding
@@ -44,6 +45,7 @@ class UserProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(requireActivity())[UserViewModel::class.java]
+        dietViewModel = ViewModelProvider(requireActivity())[DietViewModel::class.java]
         binding.userViewModel = userViewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.buttonLogOut.setOnClickListener { logOut() }
@@ -91,6 +93,9 @@ class UserProfile : Fragment() {
                         Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+        dietViewModel.cantidadObjetivo.observe(viewLifecycleOwner) { cantidadObjetivo ->
+            binding.textNumCalorias.text = cantidadObjetivo
         }
     }
     private fun goBack(){

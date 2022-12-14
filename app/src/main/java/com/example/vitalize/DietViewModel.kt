@@ -1,6 +1,5 @@
 package com.example.vitalize
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,6 @@ import com.example.vitalize.data.FirestoreRepository
 import com.example.vitalize.data.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 import java.util.Calendar
 import javax.inject.Inject
 
@@ -211,6 +209,11 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
         }
         actualizarCalorias()
 
+    }
+
+     fun updateCantidadObjetivo(cantidad: Int)= viewModelScope.launch {
+        firestoreRepository.setKcalObjective(userId, cantidad)
+        _cantidadObjetivo.value = cantidad.toString()
     }
 
 

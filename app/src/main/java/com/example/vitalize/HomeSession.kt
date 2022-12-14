@@ -2,22 +2,20 @@ package com.example.vitalize
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vitalize.adapter.CardViewAdapter
 import com.example.vitalize.adapter.HomeFoodCardAdapter
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentHomeBinding
-import com.example.vitalize.user.UserViewModel
 import kotlin.system.exitProcess
 
 class HomeSession : Fragment() {
@@ -67,9 +65,6 @@ class HomeSession : Fragment() {
         dinnerRecyclerView.layoutManager = LinearLayoutManager(activity)
         dinnerRecyclerView.setHasFixedSize(true)
         getFoodArrays()
-
-
-        //binding.lifecycleOwner = viewLifecycleOwner
     }
 
     private fun analizarEscenario(){
@@ -78,8 +73,7 @@ class HomeSession : Fragment() {
 
             dietViewModel.dailykcal.observe(viewLifecycleOwner) {
                 binding.cantidadConsumo.text = it.toString()
-                binding.cantidadRestante.text = (binding.cantidadObjetivo.text.toString()
-                    .toInt() - binding.cantidadConsumo.text.toString().toInt()).toString()
+                binding.cantidadRestante.text = (binding.cantidadObjetivo.text.toString().toInt() - binding.cantidadConsumo.text.toString().toInt()).toString()
             }
         }
         

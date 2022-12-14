@@ -169,5 +169,8 @@
     <string name="sugerir_producto">Sugerir producto</string>
     <string name="busqueda">Búsqueda</string>
     <string name="_100g">100g</string>
+    <string name="objetivos">OBJETIVOS</string>
+    <string name="calor_as">Calorías:</string>
+    <string name="kcal">kcal</string>
 
 </resources>
