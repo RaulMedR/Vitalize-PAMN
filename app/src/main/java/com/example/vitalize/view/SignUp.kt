@@ -85,7 +85,7 @@ class SignUp : Fragment() {
                                 Toast.makeText(activity,
                                     "Registro efectuado con éxito",
                                     Toast.LENGTH_SHORT).show()
-                                findNavController().navigate(R.id.action_signUp_to_logIn)
+                                findNavController().navigate(R.id.homeSession)
 
                             }
                         }

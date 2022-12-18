@@ -65,13 +65,19 @@ class UserViewModel @Inject constructor(private val authRepository: AuthReposito
     }
 
     fun getHeightCurrentUser() = viewModelScope.launch {
-        val result = firestoreRepository.getDataUser(currentUser!!.uid, "height")
-        _userHeight.value = result
+        if(currentUser != null){
+            val result = firestoreRepository.getDataUser(currentUser!!.uid, "height")
+            _userHeight.value = result
+        }
+
     }
 
     fun getWeightCurrentUser() = viewModelScope.launch {
-        val result = firestoreRepository.getDataUser(currentUser!!.uid, "weight")
-        _userWeight.value = result
+        if(currentUser != null){
+            val result = firestoreRepository.getDataUser(currentUser!!.uid, "weight")
+            _userWeight.value = result
+
+        }
     }
 
     fun getPhotoUrl(): Uri? {

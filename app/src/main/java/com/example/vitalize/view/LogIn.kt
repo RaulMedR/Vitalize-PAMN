@@ -72,7 +72,7 @@ class LogIn : Fragment() {
                             Toast.makeText(activity,
                                 "Inicio de sesión efectuado con éxito",
                                 Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_logIn_to_homeSession)
+                            findNavController().navigate(R.id.homeSession)
 
                         }
                     }
