@@ -1,4 +1,4 @@
-package com.example.vitalize.user
+package com.example.vitalize.viewModels
 
 import android.net.Uri
 import androidx.lifecycle.LiveData

@@ -1,10 +1,10 @@
-package com.example.vitalize
+package com.example.vitalize.viewModels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.AuthRepository
 import com.example.vitalize.data.FirestoreRepository
 import com.example.vitalize.data.Resource
@@ -93,8 +93,6 @@ class StoreroomViewModel @Inject constructor(private val authRepository: AuthRep
                         for (foodItem in foodList) {
                             if (foodStore.name == foodItem.name) {
                                 if (foodStore.cuantity!! <= foodItem.cuantity!!) {
-                                    Log.d("updatestoreroomgen", foodStore.cuantity.toString())
-                                    Log.d("updatestoreroomgen", foodItem.cuantity.toString())
                                     removeList.add(foodStore)
                                 }
                             }

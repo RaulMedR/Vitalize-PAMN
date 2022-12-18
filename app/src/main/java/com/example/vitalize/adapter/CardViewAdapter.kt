@@ -1,7 +1,6 @@
 package com.example.vitalize.adapter
 
 import android.app.AlertDialog
-import android.net.Uri
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +11,9 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.vitalize.Food
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.R
-import com.example.vitalize.SearchViewModel
+import com.example.vitalize.viewModels.SearchViewModel
 
 
 class CardViewAdapter(private var searchViewModel: SearchViewModel, private val foodList: ArrayList<Food>) :

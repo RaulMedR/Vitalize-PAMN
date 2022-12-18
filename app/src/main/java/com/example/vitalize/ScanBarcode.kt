@@ -15,8 +15,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentScanBarcodeBinding
+import com.example.vitalize.viewModels.DietViewModel
+import com.example.vitalize.viewModels.FoodViewModel
+import com.example.vitalize.viewModels.StoreroomViewModel
 import com.google.zxing.integration.android.IntentIntegrator
 
 

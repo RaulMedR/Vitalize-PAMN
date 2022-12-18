@@ -8,7 +8,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +22,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentUserEditProfileBinding
-import com.example.vitalize.user.UserViewModel
+import com.example.vitalize.viewModels.UserViewModel
+import com.example.vitalize.viewModels.DietViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -86,19 +86,13 @@ class UserEditProfile : Fragment() {
         if (binding.editNombreApellidos.text.isNotEmpty()){
             userViewModel.setNameUser(binding.editNombreApellidos.text.toString())
         }
-        Log.d("prueba", binding.estaturaEditText.text.toString())
         if(binding.estaturaEditText.text.isNotEmpty()) {
-            Log.d("prueba", "entraEstatura")
             userViewModel.setHeight(binding.estaturaEditText.text.toString())
         }
-        Log.d("prueba", binding.pesoEditText.text.toString())
         if(binding.pesoEditText.text.isNotEmpty()) {
-            Log.d("prueba", "entraPeso")
             userViewModel.setWeight(binding.pesoEditText.text.toString())
         }
-        Log.d("prueba", binding.textNumCalorias.text.toString())
         if(binding.textNumCalorias.text.isNotEmpty()){
-            Log.d("prueba", "entraCalorias")
             dietViewModel.updateCantidadObjetivo(binding.textNumCalorias.text.toString().toInt())
         }
         findNavController().navigate(R.id.action_userEditProfile_to_userProfile)

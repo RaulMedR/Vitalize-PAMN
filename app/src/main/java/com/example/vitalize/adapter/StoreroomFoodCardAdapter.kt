@@ -11,9 +11,9 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.vitalize.Food
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.R
-import com.example.vitalize.StoreroomViewModel
+import com.example.vitalize.viewModels.StoreroomViewModel
 
 class StoreroomFoodCardAdapter(private val foodList: ArrayList<Food>, private val storeroomViewModel: StoreroomViewModel):
     RecyclerView.Adapter<StoreroomFoodCardAdapter.ViewHolder>() {

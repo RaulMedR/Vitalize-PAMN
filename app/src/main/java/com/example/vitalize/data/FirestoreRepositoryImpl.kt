@@ -2,8 +2,7 @@ package com.example.vitalize.data
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import android.util.Log
-import com.example.vitalize.Food
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.utils.await
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentReference
@@ -60,9 +59,11 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             val result = dataBase?.collection("foods")?.get()!!.await()
             val returnResult: ArrayList<Food> = arrayListOf<Food>()
             for(doc in result){
-                returnResult.add(Food(name = doc.data["name"].toString(), carbohydrates =  doc.data["carbohydrates"].toString().toFloat(),
+                returnResult.add(
+                    Food(name = doc.data["name"].toString(), carbohydrates =  doc.data["carbohydrates"].toString().toFloat(),
                     kcal = doc.data["kcal"].toString().toInt(), proteins = doc.data["proteins"].toString().toFloat(),
-                    fats = doc.data["fats"].toString().toFloat(), urlPhoto = doc.data["urlPhoto"].toString(), cuantity = 0.0f))
+                    fats = doc.data["fats"].toString().toFloat(), urlPhoto = doc.data["urlPhoto"].toString(), cuantity = 0.0f)
+                )
             }
             Resource.Success(returnResult)
 
@@ -77,16 +78,16 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             val result: ArrayList<Food> = ArrayList()
             val query = dataBase?.collection("dailydiet")?.document(uid)?.get()?.await()
             val data = query?.data?.get(type) as? ArrayList<*>
-            Log.d("dailydiet", data.toString())
 
             if(data != null) {
                 for(food in data){
                     val foodMap = food as HashMap<*, *>
-                    Log.d("dailydiet", food.toString())
-                    result.add(Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
+                    result.add(
+                        Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
                         cuantity = foodMap["cuantity"].toString().toFloat(), fats = foodMap["fats"].toString().toFloat(),
                         proteins = foodMap["proteins"].toString().toFloat(), urlPhoto = foodMap["urlPhoto"].toString(),
-                        name = foodMap["name"].toString()))
+                        name = foodMap["name"].toString())
+                    )
                 }
             }
 
@@ -106,11 +107,12 @@ class FirestoreRepositoryImpl @Inject constructor(private val firebaseFirestore:
             if(data != null) {
                 for(food in data){
                     val foodMap = food as HashMap<*, *>
-                    Log.d("dailydiet", food.toString())
-                    result.add(Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
+                    result.add(
+                        Food(carbohydrates = foodMap["carbohydrates"].toString().toFloat(), kcal = foodMap["kcal"].toString().toInt(),
                         cuantity = foodMap["cuantity"].toString().toFloat(), fats = foodMap["fats"].toString().toFloat(),
                         proteins = foodMap["proteins"].toString().toFloat(), urlPhoto = foodMap["urlPhoto"].toString(),
-                        name = foodMap["name"].toString()))
+                        name = foodMap["name"].toString())
+                    )
                 }
             }
 

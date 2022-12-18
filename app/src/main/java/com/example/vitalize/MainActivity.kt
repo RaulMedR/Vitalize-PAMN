@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.vitalize.databinding.ActivityMainBinding
-import com.example.vitalize.user.UserViewModel
+import com.example.vitalize.viewModels.UserViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 

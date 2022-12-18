@@ -1,10 +1,10 @@
-package com.example.vitalize
+package com.example.vitalize.viewModels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.AuthRepository
 import com.example.vitalize.data.FirestoreRepository
 import com.example.vitalize.data.Resource
@@ -242,7 +242,6 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                         val foodState = food.copy()
                         if(food.cuantity == grams){
                             foodEliminate = food
-                            Log.d("adicioncomidaalista", foodEliminate.toString())
                         } else {
                             foodState.cuantity = grams
                         }

@@ -1,7 +1,6 @@
 package com.example.vitalize.data
 
 import android.net.Uri
-import android.util.Log
 import com.example.vitalize.data.utils.await
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
@@ -57,7 +56,6 @@ class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseA
         return try{
             currentUser?.updateProfile(UserProfileChangeRequest.Builder().setPhotoUri(newPhoto).build())
                 ?.await()
-            Log.d("prueba", newPhoto.toString())
             Resource.Success(newPhoto.toString())
 
         } catch (e: FirebaseAuthException){

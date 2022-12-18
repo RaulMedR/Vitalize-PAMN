@@ -14,8 +14,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vitalize.adapter.CardViewAdapter
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentSearchFoodBinding
+import com.example.vitalize.viewModels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -49,8 +51,6 @@ class SearchFood : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                // inside on query text change method we are
-                // calling a method to filter our recycler view.
                 filter(newText)
                 return false
             }

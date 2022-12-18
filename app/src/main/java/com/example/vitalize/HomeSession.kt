@@ -1,7 +1,6 @@
 package com.example.vitalize
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vitalize.adapter.HomeFoodCardAdapter
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentHomeBinding
+import com.example.vitalize.viewModels.DietViewModel
+import com.example.vitalize.viewModels.SearchViewModel
+import com.example.vitalize.viewModels.StoreroomViewModel
 import kotlin.system.exitProcess
 
 class HomeSession : Fragment() {
@@ -142,7 +145,6 @@ class HomeSession : Fragment() {
         } else if(lunchArrayList.isEmpty()){
             if(dinnerArrayList.isEmpty()){
                 foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, lunchArrayList, dinnerArrayList)
-                Log.d("homesessionadicion", lunchArrayList.toString())
                 dietViewModel.updateDailyDiet("lunch", lunchArrayList)
                 dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
             } else {

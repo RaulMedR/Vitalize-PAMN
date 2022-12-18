@@ -5,7 +5,7 @@
     <data>
         <variable
             name="userViewModel"
-            type="com.example.vitalize.user.UserViewModel" />
+            type="com.example.vitalize.viewModels.UserViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

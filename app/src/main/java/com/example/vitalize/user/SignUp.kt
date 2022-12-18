@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.vitalize.R
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentSignUpBinding
+import com.example.vitalize.viewModels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

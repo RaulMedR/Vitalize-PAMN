@@ -1,4 +1,4 @@
-package com.example.vitalize
+package com.example.vitalize.dataClasses
 
 data class Food(var name: String ?= null,
                 var kcal: Int ?= null,

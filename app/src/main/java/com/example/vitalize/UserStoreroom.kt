@@ -1,7 +1,6 @@
 package com.example.vitalize
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vitalize.adapter.StoreroomFoodCardAdapter
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentUserStoreroomBinding
+import com.example.vitalize.viewModels.SearchViewModel
+import com.example.vitalize.viewModels.StoreroomViewModel
 import java.util.*
 
 class UserStoreroom : Fragment() {
@@ -83,7 +85,6 @@ class UserStoreroom : Fragment() {
         storeroomViewModel.storeroomList.observe(viewLifecycleOwner) {
             when(it){
                 is Resource.Success -> {
-                    Log.d("searchview", it.result.size.toString())
                     storeroomList = it.result
                     foodAdapter = StoreroomFoodCardAdapter(storeroomList, storeroomViewModel)
                     storeroomRecyclerView.adapter = foodAdapter

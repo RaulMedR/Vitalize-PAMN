@@ -14,7 +14,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentUserProfileBinding
-import com.example.vitalize.user.UserViewModel
+import com.example.vitalize.viewModels.UserViewModel
+import com.example.vitalize.viewModels.DietViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

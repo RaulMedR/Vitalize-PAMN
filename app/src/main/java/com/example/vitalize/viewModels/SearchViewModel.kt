@@ -1,9 +1,10 @@
-package com.example.vitalize
+package com.example.vitalize.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.FirestoreRepository
 import com.example.vitalize.data.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,8 +21,6 @@ class SearchViewModel @Inject constructor(private val firestoreRepository: Fires
 
     init {
         getAllProducts()
-
-
     }
 
     private fun getAllProducts() = viewModelScope.launch{

@@ -5,7 +5,7 @@
     <!--<data>
         <variable
             name="userViewModel"
-            type="com.example.vitalize.user.UserViewModel" />
+            type="com.example.vitalize.viewModels.UserViewModel" />
     </data>-->
     <ScrollView
         android:id="@+id/scrollView"
@@ -336,12 +336,12 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_gen_diet"
                     style="@style/ButtonStyle"
-                    android:layout_width="100dp"
-                    android:layout_height="48dp"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/generar_dieta"
-                    android:textSize="18sp"/>
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="18dp"
+                    android:text="@string/generar_dieta"/>
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
