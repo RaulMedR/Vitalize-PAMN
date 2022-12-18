@@ -172,5 +172,6 @@
     <string name="objetivos">OBJETIVOS</string>
     <string name="calor_as">Calorías:</string>
     <string name="kcal">kcal</string>
+    <string name="generar_dieta">Generar Dieta</string>
 
 </resources>

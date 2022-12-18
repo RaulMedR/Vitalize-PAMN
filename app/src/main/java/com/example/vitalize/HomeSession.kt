@@ -10,6 +10,7 @@ import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,7 @@ class HomeSession : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var searchViewModel : SearchViewModel
     private lateinit var dietViewModel: DietViewModel
+    private lateinit var storeroomViewModel: StoreroomViewModel
     private lateinit var breakfastArrayList: ArrayList<Food>
     private lateinit var lunchArrayList: ArrayList<Food>
     private lateinit var dinnerArrayList: ArrayList<Food>
@@ -53,6 +55,8 @@ class HomeSession : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         searchViewModel = ViewModelProvider(requireActivity())[SearchViewModel::class.java]
         dietViewModel = ViewModelProvider(requireActivity())[DietViewModel::class.java]
+        dietViewModel.inicializacionDatos()
+        storeroomViewModel = ViewModelProvider(requireActivity())[StoreroomViewModel::class.java]
         analizarEscenario()
         establecerClickListeners()
         breakfastRecyclerView = binding.foodsBreakfast
@@ -78,9 +82,12 @@ class HomeSession : Fragment() {
         }
         
         if(searchViewModel.searchProduct == "home"){
-            dietViewModel.addFood(searchViewModel.selectedProduct!!, searchViewModel.selectedType)
-            searchViewModel.searchProduct = ""
-            searchViewModel.selectedProduct = null
+            if(searchViewModel.selectedProduct != null){
+                dietViewModel.addFood(searchViewModel.selectedProduct!!, searchViewModel.selectedType)
+                searchViewModel.searchProduct = ""
+                searchViewModel.selectedProduct = null
+            }
+
         }
     }
     private fun establecerClickListeners() {
@@ -99,14 +106,69 @@ class HomeSession : Fragment() {
             searchViewModel.searchProduct = "home"
             findNavController().navigate(R.id.searchFood)
         }
+        binding.buttonGenDiet.setOnClickListener {
+            generarDietaAuto()
+        }
 
+
+    }
+
+    private fun generarDietaAuto() {
+        var foodUsed = ArrayList<Food>()
+        if(breakfastArrayList.isEmpty()){
+            if(lunchArrayList.isEmpty()){
+                if(dinnerArrayList.isEmpty()){
+                    foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, lunchArrayList, dinnerArrayList)
+                    dietViewModel.updateDailyDiet("breakfast", breakfastArrayList)
+                    dietViewModel.updateDailyDiet("lunch", lunchArrayList)
+                    dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
+                } else {
+                    foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, lunchArrayList)
+                    dietViewModel.updateDailyDiet("breakfast", breakfastArrayList)
+                    dietViewModel.updateDailyDiet("lunch", lunchArrayList)
+
+                }
+            } else if(dinnerArrayList.isEmpty()){
+                foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, dinnerArrayList)
+                dietViewModel.updateDailyDiet("breakfast", breakfastArrayList)
+                dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
+
+            } else {
+                foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList)
+                dietViewModel.updateDailyDiet("breakfast", breakfastArrayList)
+
+            }
+
+        } else if(lunchArrayList.isEmpty()){
+            if(dinnerArrayList.isEmpty()){
+                foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, lunchArrayList, dinnerArrayList)
+                Log.d("homesessionadicion", lunchArrayList.toString())
+                dietViewModel.updateDailyDiet("lunch", lunchArrayList)
+                dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
+            } else {
+                foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, lunchArrayList)
+                dietViewModel.updateDailyDiet("lunch", lunchArrayList)
+
+            }
+
+        } else {
+            foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, dinnerArrayList)
+            dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
+
+        }
+
+        storeroomViewModel.updateStoreroomAfterGen(foodUsed)
+
+        Toast.makeText(activity,
+            "Dieta generada",
+            Toast.LENGTH_SHORT).show()
+        Navigation.createNavigateOnClickListener(R.id.homeSession).onClick(binding.buttonGenDiet)
     }
 
     private fun getFoodArrays() {
         dietViewModel.breakfastList.observe(viewLifecycleOwner) {
             when(it){
                 is Resource.Success -> {
-                    Log.d("searchview", it.result.size.toString())
                     breakfastArrayList = it.result
                     foodAdapter = HomeFoodCardAdapter(breakfastArrayList, dietViewModel, "breakfast")
                     breakfastRecyclerView.adapter = foodAdapter

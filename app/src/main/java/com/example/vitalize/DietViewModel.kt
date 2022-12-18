@@ -1,5 +1,6 @@
 package com.example.vitalize
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,7 +35,7 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
         inicializacionDatos()
     }
 
-    private fun inicializacionDatos() = viewModelScope.launch{
+     fun inicializacionDatos() = viewModelScope.launch{
         val calendar = Calendar.getInstance()
         firestoreRepository.getDailyDietDate(userId).let {
             when(it){
@@ -216,5 +217,63 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
         _cantidadObjetivo.value = cantidad.toString()
     }
 
+    fun genDiet(storeRoomList: ArrayList<Food>, vararg listas: ArrayList<Food>): ArrayList<Food>{
+        var foodUsed = ArrayList<Food>()
+        var foodEliminate: Food? = null
+        if(storeRoomList.isEmpty()){
+            return foodUsed
+        }
+        val kcalGuide = (cantidadObjetivo.value!!.toInt() - dailykcal.value!!.toInt())/listas.size
+        for(lista in listas){
+            var kcalDiet = kcalGuide
+            while(kcalDiet > 0){
+                foodEliminate = null
+                var grams: Float
+                var countFoodNumber = storeRoomList.size
+                for (food in storeRoomList){
+                    grams = food.cuantity!!
+                    while(grams/100 * food.kcal!! >= kcalDiet && grams > 0.0f){
+                        if(grams < 25){
+                            grams = 0.0f
+                        }
+                        grams -= 25
+                    }
+                    if(grams > 0.0f) {
+                        val foodState = food.copy()
+                        if(food.cuantity == grams){
+                            foodEliminate = food
+                            Log.d("adicioncomidaalista", foodEliminate.toString())
+                        } else {
+                            foodState.cuantity = grams
+                        }
+                        lista.add(foodState)
+                        food.cuantity = food.cuantity!! - grams
+                        kcalDiet -= (grams * food.kcal!!).toInt()
+                        foodUsed.add(foodState)
 
+                    }
+                }
+                if(foodEliminate != null){
+                    storeRoomList.remove(foodEliminate)
+                    if(storeRoomList.isEmpty()){
+                        return foodUsed
+                    }
+
+                }
+                countFoodNumber -= 1
+                if(countFoodNumber == 0){
+                    kcalDiet = 0
+                }
+
+            }
+        }
+        return foodUsed
+    }
+
+    fun updateDailyDiet(type: String, lista: ArrayList<Food>) = viewModelScope.launch{
+        firestoreRepository.updateDailyDiet(userId, type, lista)
+
+    }
 }
+
+

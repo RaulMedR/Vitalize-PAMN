@@ -21,12 +21,14 @@ class SearchViewModel @Inject constructor(private val firestoreRepository: Fires
     init {
         getAllProducts()
 
+
     }
 
     private fun getAllProducts() = viewModelScope.launch{
         val result = firestoreRepository.foodToArray()
         _allProducts.value = result
     }
+
 
 
 
