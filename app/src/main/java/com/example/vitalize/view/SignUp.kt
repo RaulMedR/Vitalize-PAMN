@@ -1,4 +1,4 @@
-package com.example.vitalize.user
+package com.example.vitalize.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

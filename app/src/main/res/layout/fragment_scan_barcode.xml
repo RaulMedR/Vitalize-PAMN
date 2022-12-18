@@ -7,7 +7,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/camera_preview"
-        tools:context=".ScanBarcode"
+        tools:context=".view.ScanBarcode"
         android:background="@color/white"
         >
         <ImageView

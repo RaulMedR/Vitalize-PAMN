@@ -1,4 +1,4 @@
-package com.example.vitalize
+package com.example.vitalize.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.example.vitalize.R
 import com.example.vitalize.databinding.FragmentHomeNoSessionBinding
 
 class HomeNoSession : Fragment() {
@@ -22,7 +23,8 @@ class HomeNoSession : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_no_session, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_home_no_session, container, false)
         return binding.root
     }
 

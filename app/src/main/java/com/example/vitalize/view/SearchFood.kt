@@ -1,4 +1,4 @@
-package com.example.vitalize
+package com.example.vitalize.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vitalize.R
 import com.example.vitalize.adapter.CardViewAdapter
 import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.Resource

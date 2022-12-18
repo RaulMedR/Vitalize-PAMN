@@ -1,4 +1,4 @@
-package com.example.vitalize
+package com.example.vitalize.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.example.vitalize.R
 import com.example.vitalize.databinding.FragmentRegisterWeightBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -28,7 +29,8 @@ class RegisterWeight : Fragment(){
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register_weight, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_register_weight, container, false)
         return binding.root
     }
 
@@ -43,7 +45,8 @@ class RegisterWeight : Fragment(){
         binding.autoCompleteTextViewPesos.setAdapter(adapter_pesos)
 
         val pesos_decimales = resources.getStringArray(R.array.pesos_decimales)
-        val adapter_pesos_decimales = ArrayAdapter(requireContext(), R.layout.dropdown_item, pesos_decimales)
+        val adapter_pesos_decimales = ArrayAdapter(requireContext(),
+            R.layout.dropdown_item, pesos_decimales)
         binding.autoCompleteTextViewPesosDecimales.setAdapter(adapter_pesos_decimales)
         //profileDataSync()
     }

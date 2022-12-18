@@ -1,4 +1,4 @@
-package com.example.vitalize
+package com.example.vitalize.view
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.vitalize.R
 import com.example.vitalize.dataClasses.Food
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentScanBarcodeBinding

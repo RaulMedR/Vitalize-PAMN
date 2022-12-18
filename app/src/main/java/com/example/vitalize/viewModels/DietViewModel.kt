@@ -247,9 +247,13 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                         }
                         lista.add(foodState)
                         food.cuantity = food.cuantity!! - grams
-                        kcalDiet -= (grams * food.kcal!!).toInt()
+                        kcalDiet -= (grams/100 * food.kcal!!).toInt()
                         foodUsed.add(foodState)
 
+                    }
+                    countFoodNumber -= 1
+                    if(countFoodNumber == 0){
+                        kcalDiet = 0
                     }
                 }
                 if(foodEliminate != null){
@@ -258,10 +262,6 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                         return foodUsed
                     }
 
-                }
-                countFoodNumber -= 1
-                if(countFoodNumber == 0){
-                    kcalDiet = 0
                 }
 
             }

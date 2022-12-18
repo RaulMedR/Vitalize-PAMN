@@ -1,4 +1,4 @@
-package com.example.vitalize.user
+package com.example.vitalize.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.vitalize.R
 import com.example.vitalize.data.Resource
 import com.example.vitalize.databinding.FragmentLogInBinding
 import com.example.vitalize.viewModels.UserViewModel
@@ -29,7 +30,7 @@ class LogIn : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, com.example.vitalize.R.layout.fragment_log_in, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_log_in, container, false)
         return binding.root
     }
 
@@ -43,7 +44,7 @@ class LogIn : Fragment() {
     }
 
     fun toRegister() {
-        findNavController().navigate(com.example.vitalize.R.id.action_logIn_to_signUp)
+        findNavController().navigate(R.id.action_logIn_to_signUp)
     }
 
 
@@ -71,7 +72,7 @@ class LogIn : Fragment() {
                             Toast.makeText(activity,
                                 "Inicio de sesión efectuado con éxito",
                                 Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(com.example.vitalize.R.id.action_logIn_to_homeSession)
+                            findNavController().navigate(R.id.action_logIn_to_homeSession)
 
                         }
                     }
