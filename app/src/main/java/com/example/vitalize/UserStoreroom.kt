@@ -103,9 +103,12 @@ class UserStoreroom : Fragment() {
 
     private fun analizarEscenario(){
         if(searchViewModel.searchProduct == "storeroom"){
-            storeroomViewModel.addFood(searchViewModel.selectedProduct!!)
-            searchViewModel.searchProduct = ""
-            searchViewModel.selectedProduct = null
+            if(searchViewModel.selectedProduct != null){
+                storeroomViewModel.addFood(searchViewModel.selectedProduct!!)
+                searchViewModel.searchProduct = ""
+                searchViewModel.selectedProduct = null
+
+            }
         }
     }
 

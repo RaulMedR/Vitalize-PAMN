@@ -1,5 +1,6 @@
 package com.example.vitalize
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -67,6 +68,44 @@ class StoreroomViewModel @Inject constructor(private val authRepository: AuthRep
                     else -> {}
                 }
             }
+        }
+    }
+    fun getStoreRoomList():ArrayList<Food>{
+        var result = ArrayList<Food>()
+        storeroomList.value.let {
+            when(it){
+                is Resource.Success -> {
+                    return it.result
+                }
+                else -> {
+                    return result
+                }
+            }
+        }
+    }
+
+    fun updateStoreroomAfterGen(foodList: ArrayList<Food>) {
+        val removeList = ArrayList<Food>()
+        _storeroomList.value.let {
+            when (it) {
+                is Resource.Success -> {
+                    for (foodStore in it.result) {
+                        for (foodItem in foodList) {
+                            if (foodStore.name == foodItem.name) {
+                                if (foodStore.cuantity!! <= foodItem.cuantity!!) {
+                                    Log.d("updatestoreroomgen", foodStore.cuantity.toString())
+                                    Log.d("updatestoreroomgen", foodItem.cuantity.toString())
+                                    removeList.add(foodStore)
+                                }
+                            }
+                        }
+                    }
+                }
+                else -> {}
+            }
+        }
+        for(food in removeList){
+            removeFood(food)
         }
     }
 
