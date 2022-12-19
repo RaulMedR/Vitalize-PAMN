@@ -84,18 +84,14 @@ class StoreroomViewModel @Inject constructor(private val authRepository: AuthRep
         }
     }
 
-    fun updateStoreroomAfterGen(foodList: ArrayList<Food>) {
+    fun updateStoreroomAfterGen() {
         val removeList = ArrayList<Food>()
         _storeroomList.value.let {
             when (it) {
                 is Resource.Success -> {
                     for (foodStore in it.result) {
-                        for (foodItem in foodList) {
-                            if (foodStore.name == foodItem.name) {
-                                if (foodStore.cuantity!! <= foodItem.cuantity!!) {
-                                    removeList.add(foodStore)
-                                }
-                            }
+                        if (foodStore.cuantity!! == 0.0f) {
+                            removeList.add(foodStore)
                         }
                     }
                 }

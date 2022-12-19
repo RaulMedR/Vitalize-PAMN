@@ -118,49 +118,48 @@ class HomeSession : Fragment() {
     }
 
     private fun generarDietaAuto() {
-        var foodUsed = ArrayList<Food>()
         if(breakfastArrayList.isEmpty()){
             if(lunchArrayList.isEmpty()){
                 if(dinnerArrayList.isEmpty()){
-                    foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, lunchArrayList, dinnerArrayList)
+                    dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, lunchArrayList, dinnerArrayList)
                     dietViewModel.updateDailyDiet("breakfast", breakfastArrayList)
                     dietViewModel.updateDailyDiet("lunch", lunchArrayList)
                     dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
                 } else {
-                    foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, lunchArrayList)
+                    dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, lunchArrayList)
                     dietViewModel.updateDailyDiet("breakfast", breakfastArrayList)
                     dietViewModel.updateDailyDiet("lunch", lunchArrayList)
 
                 }
             } else if(dinnerArrayList.isEmpty()){
-                foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, dinnerArrayList)
+                dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList, dinnerArrayList)
                 dietViewModel.updateDailyDiet("breakfast", breakfastArrayList)
                 dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
 
             } else {
-                foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList)
+                dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, breakfastArrayList)
                 dietViewModel.updateDailyDiet("breakfast", breakfastArrayList)
 
             }
 
         } else if(lunchArrayList.isEmpty()){
             if(dinnerArrayList.isEmpty()){
-                foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, lunchArrayList, dinnerArrayList)
+                dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, lunchArrayList, dinnerArrayList)
                 dietViewModel.updateDailyDiet("lunch", lunchArrayList)
                 dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
             } else {
-                foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, lunchArrayList)
+                dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, lunchArrayList)
                 dietViewModel.updateDailyDiet("lunch", lunchArrayList)
 
             }
 
         } else {
-            foodUsed = dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, dinnerArrayList)
+            dietViewModel.genDiet(storeroomViewModel.getStoreRoomList().clone() as ArrayList<Food>, dinnerArrayList)
             dietViewModel.updateDailyDiet("dinner", dinnerArrayList)
 
         }
 
-        storeroomViewModel.updateStoreroomAfterGen(foodUsed)
+        storeroomViewModel.updateStoreroomAfterGen()
 
         Toast.makeText(activity,
             "Dieta generada",

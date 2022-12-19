@@ -1,5 +1,6 @@
 package com.example.vitalize.viewModels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -217,11 +218,10 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
         _cantidadObjetivo.value = cantidad.toString()
     }
 
-    fun genDiet(storeRoomList: ArrayList<Food>, vararg listas: ArrayList<Food>): ArrayList<Food>{
-        var foodUsed = ArrayList<Food>()
+    fun genDiet(storeRoomList: ArrayList<Food>, vararg listas: ArrayList<Food>){
         var foodEliminate: Food? = null
         if(storeRoomList.isEmpty()){
-            return foodUsed
+            return
         }
         val kcalGuide = (cantidadObjetivo.value!!.toInt() - dailykcal.value!!.toInt())/listas.size
         for(lista in listas){
@@ -248,7 +248,6 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                         lista.add(foodState)
                         food.cuantity = food.cuantity!! - grams
                         kcalDiet -= (grams/100 * food.kcal!!).toInt()
-                        foodUsed.add(foodState)
 
                     }
                     countFoodNumber -= 1
@@ -259,14 +258,13 @@ class DietViewModel @Inject constructor(private val authRepository: AuthReposito
                 if(foodEliminate != null){
                     storeRoomList.remove(foodEliminate)
                     if(storeRoomList.isEmpty()){
-                        return foodUsed
+                        return
                     }
 
                 }
 
             }
         }
-        return foodUsed
     }
 
     fun updateDailyDiet(type: String, lista: ArrayList<Food>) = viewModelScope.launch{
