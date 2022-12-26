@@ -1,16 +1,26 @@
-# Vitalize-PAMN
+# Vitalize 
+Una oportunidad para crear una rutina saludable
 
-Nuestra aplicación relacionada con el campo fitness y salud, pretende ofrecer a sus usuarios la facilidad de controlar las kilocalorías, proteínas, grasas.. que consumen así como sus objetivos. 
-Asimismo, brinda la posibilidad de inspirar o aconsejar que productos consumir de su despensa para completar su dieta u objetivos.
+## Descripción del proyecto
+
+Nuestra aplicación relacionada con el campo fitness y salud, pretende ofrecer a sus usuarios la facilidad de controlar las kilocalorías, proteínas, grasas.. que consumen así como sus objetivos. Asimismo, brinda la posibilidad de inspirar o aconsejar que productos consumir de su despensa para completar su dieta u objetivos.
+
+## Autores
+Melba Pérez Santana
+Raúl Medina Rodríguez
+
+## Metodología SCRUM
 
 Se ha seguido la metología de SCRUM, para ello se ha hecho uso de la aplicación **Trello** para escribir y redactar nuestra pila de productos y las historias de usuario:
 
 https://trello.com/invite/b/IxO11mcK/ATTI8fc4920c79331750668e59bf4560f1baF5239DA2/proyecto-pamn
 
+## Bases de datos utilizadas
 Hemos creado una **base de datos** en Firebase con datos obtenidos de las siguientes bases de datos 
 - https://www.bedca.net/bdpub/ --> obtención de los carbohidratos, las proteínas, las kilocalorías y las grasas de 30 productos básicos
 - https://www.myfitnesspal.com/es/exercise/lookup --> obtención de las calorías quemadas según los diferentes ejercicios, tiempo y peso de la persona
 
+## Road Map
 A continuación, se detallará **documentación y vídeos** utilizados para poder obtener los conocimientos necesarios para realizar nuestro proyecto:
 
 *Autenticación usuario Firebase*
