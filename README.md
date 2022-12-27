@@ -5,6 +5,11 @@ Una oportunidad para crear una rutina saludable
 
 Nuestra aplicación relacionada con el campo fitness y salud, pretende ofrecer a sus usuarios la facilidad de controlar las kilocalorías, proteínas, grasas.. que consumen así como sus objetivos. Asimismo, brinda la posibilidad de inspirar o aconsejar que productos consumir de su despensa para completar su dieta u objetivos.
 
+## Ejemplo de código de barras a escanear
+
+![example_barcode](https://user-images.githubusercontent.com/91152497/209697892-be9d38fd-6205-476a-9d04-bc288cd4494b.png)
+
+
 ## Autores
 Melba Pérez Santana
 Raúl Medina Rodríguez
